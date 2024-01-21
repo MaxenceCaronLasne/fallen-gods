@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://hkyoltpvyp03"]
+[gd_scene load_steps=5 format=3 uid="uid://hkyoltpvyp03"]
 
 [ext_resource type="Texture2D" uid="uid://fcenoumfrg8f" path="res://assets/saw.png" id="1_fj56y"]
 [ext_resource type="Script" path="res://saw.gd" id="1_w563r"]
@@ -6,7 +6,10 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_7k0th"]
 radius = 4.0
 
-[node name="Saw" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4xpvc"]
+size = Vector2(8, 245)
+
+[node name="Saw" type="CharacterBody2D" groups=["saws"]]
 collision_layer = 4
 script = ExtResource("1_w563r")
 
@@ -15,3 +18,14 @@ texture = ExtResource("1_fj56y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_7k0th")
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, -122.5)
+shape = SubResource("RectangleShape2D_4xpvc")
+debug_color = Color(0.262745, 0.623529, 0.317647, 0.419608)
+
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

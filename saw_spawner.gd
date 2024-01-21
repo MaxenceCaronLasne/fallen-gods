@@ -9,8 +9,8 @@ var SAW_PRELOAD := preload("res://saw.tscn")
 func spawn() -> void:
 	var saw := SAW_PRELOAD.instantiate() as Saw
 	saw.position = Vector2(
-		randi_range(0, _collision_shape.shape.get_rect().size.x - 1),
-		randi_range(0, _collision_shape.shape.get_rect().size.y - 1))
+		randf_range(0, _collision_shape.shape.get_rect().size.x - 1),
+		randf_range(0, _collision_shape.shape.get_rect().size.y - 1))
 	saw.INITIAL_DIRECTION = Vector2.DOWN + [Vector2.LEFT, Vector2.RIGHT].pick_random()
 	add_child(saw)
 

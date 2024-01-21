@@ -4,7 +4,7 @@ signal just_touched_floor
 
 @export var SPEED: float = 100.0
 @export var JUMP_VELOCITY: float = -250.0
-@export var MAX_DOUBLE_JUMPS: int = 2
+@export var MAX_DOUBLE_JUMPS: int = 20
 
 var _gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -19,7 +19,7 @@ func _jump() -> void:
 		_nb_jumps -= 1
 		velocity.y = JUMP_VELOCITY
 
-func _physics_process_on_floor(delta: float) -> void:
+func _physics_process_on_floor(_delta: float) -> void:
 	if not _touched_floor_last_frame:
 		just_touched_floor.emit()
 	_nb_jumps = MAX_DOUBLE_JUMPS
@@ -44,8 +44,8 @@ func _physics_process(delta: float):
 	move_and_slide()
 
 func _on_just_touched_floor() -> void:
+	get_tree().call_group("saws", "maybe_destroy")
 	print_debug("touched floor")
 
-
-func _on_hit_box_body_entered(body):
+func _on_hit_box_body_entered(_body):
 	print_debug("touched!")
