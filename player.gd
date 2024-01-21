@@ -6,7 +6,7 @@ signal just_touched_floor
 @export var JUMP_VELOCITY: float = -250.0
 @export var MAX_DOUBLE_JUMPS: int = 2
 
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var _gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var _nb_jumps: int = 0
 var _touched_floor_last_frame := false
@@ -19,26 +19,33 @@ func _jump() -> void:
 		_nb_jumps -= 1
 		velocity.y = JUMP_VELOCITY
 
-func _physics_process(delta):
-	if not is_on_floor():
-		velocity.y += gravity * delta
-		_touched_floor_last_frame = false
+func _physics_process_on_floor(delta: float) -> void:
+	if not _touched_floor_last_frame:
+		just_touched_floor.emit()
+	_nb_jumps = MAX_DOUBLE_JUMPS
+	_touched_floor_last_frame = true
+
+func _physics_process_air(delta: float) -> void:
+	velocity.y += _gravity * delta
+	_touched_floor_last_frame = false
+
+func _physics_process(delta: float):
+	if is_on_floor():
+		_physics_process_on_floor(delta)
 	else:
-		_nb_jumps = MAX_DOUBLE_JUMPS
-		if not _touched_floor_last_frame:
-			just_touched_floor.emit()
-		_touched_floor_last_frame = true
+		_physics_process_air(delta)
 
 	if Input.is_action_just_pressed("accept"):
 		_jump()
 
-	var direction = Input.get_axis("left", "right")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-
+	var direction := Input.get_axis("left", "right")
+	velocity.x = move_toward(velocity.x, direction * SPEED, SPEED)
+	
 	move_and_slide()
 
 func _on_just_touched_floor() -> void:
 	print_debug("touched floor")
+
+
+func _on_hit_box_body_entered(body):
+	print_debug("touched!")
