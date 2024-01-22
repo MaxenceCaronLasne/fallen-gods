@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 signal just_touched_floor
+signal just_died
 
 @export var SPEED: float = 100.0
 @export var JUMP_VELOCITY: float = -250.0
@@ -48,4 +49,6 @@ func _on_just_touched_floor() -> void:
 	print_debug("touched floor")
 
 func _on_hit_box_body_entered(_body):
+	just_died.emit()
+	queue_free()
 	print_debug("touched!")

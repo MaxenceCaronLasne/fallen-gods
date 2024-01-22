@@ -17,6 +17,9 @@ func _ready():
 	velocity = INITIAL_DIRECTION * SPEED
 
 func _process(delta):
+	if _is_touched:
+		return
+
 	var collision := move_and_collide(velocity * delta)
 	if collision != null:
 		velocity = velocity.bounce(collision.get_normal())
