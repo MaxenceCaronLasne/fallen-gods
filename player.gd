@@ -7,6 +7,8 @@ signal just_died
 @export var JUMP_VELOCITY: float = -250.0
 @export var MAX_DOUBLE_JUMPS: int = 20
 
+@onready var _hitbox := $HitBox as Area2D
+
 var _gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var _nb_jumps: int = 0
@@ -14,6 +16,7 @@ var _touched_floor_last_frame := false
 
 func _ready() -> void:
 	just_touched_floor.connect(_on_just_touched_floor)
+	_hitbox.body_entered.connect(_on_hit_box_body_entered)
 
 func _jump() -> void:
 	if is_on_floor() or _nb_jumps > 0:

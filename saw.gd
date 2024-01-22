@@ -13,16 +13,19 @@ func maybe_destroy() -> bool:
 	queue_free()
 	return true
 
-func _ready():
-	velocity = INITIAL_DIRECTION * SPEED
-
-func _process(delta):
-	if _is_touched:
+func _move(delta) -> void:
+	if _is_touched and Toggles.saw_stops_when_hovered:
 		return
 
 	var collision := move_and_collide(velocity * delta)
 	if collision != null:
 		velocity = velocity.bounce(collision.get_normal())
+
+func _ready():
+	velocity = INITIAL_DIRECTION * SPEED
+
+func _process(delta):
+	_move(delta)
 
 func _on_hit_box_body_entered(_body):
 	print_debug("hello!")
