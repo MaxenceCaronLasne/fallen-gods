@@ -1,7 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdlafp6fbnvn6"]
+[gd_scene load_steps=9 format=3 uid="uid://bdlafp6fbnvn6"]
 
 [ext_resource type="Texture2D" uid="uid://lidrjc7f8inu" path="res://assets/player.png" id="1_sh734"]
 [ext_resource type="Script" path="res://player.gd" id="1_sjyse"]
+[ext_resource type="Script" path="res://jump_component.gd" id="2_jluf1"]
+[ext_resource type="Script" path="res://gravity_component.gd" id="2_k8g4i"]
+[ext_resource type="Script" path="res://move_component.gd" id="3_mwi1w"]
+[ext_resource type="Script" path="res://on_floor_notifier.gd" id="4_a2idf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ry6et"]
 size = Vector2(4, 1)
@@ -13,6 +17,29 @@ height = 6.0
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_sjyse")
+
+[node name="GravityComponent" type="Node" parent="." node_paths=PackedStringArray("_actor")]
+script = ExtResource("2_k8g4i")
+_actor = NodePath("..")
+
+[node name="MoveComponent" type="Node" parent="." node_paths=PackedStringArray("_actor")]
+script = ExtResource("3_mwi1w")
+_actor = NodePath("..")
+_speed = 1000.0
+_max_speed = 100.0
+
+[node name="JumpComponent" type="Node" parent="." node_paths=PackedStringArray("_actor")]
+script = ExtResource("2_jluf1")
+_actor = NodePath("..")
+_initial_impulse = 8000.0
+_continuous_impulse = 1500.0
+_max_impulse = 350.0
+_fall_added_gravity = 500.0
+_max_nb_jumps = 3
+
+[node name="OnFloorNotifier" type="Node" parent="." node_paths=PackedStringArray("_actor")]
+script = ExtResource("4_a2idf")
+_actor = NodePath("..")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_sh734")

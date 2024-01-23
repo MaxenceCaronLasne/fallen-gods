@@ -7,6 +7,8 @@ var SAW_PRELOAD := preload("res://saw.tscn")
 @onready var _timer := $Timer as Timer
 
 func spawn() -> void:
+	if not Toggles.spawn_saws:
+		return
 	var saw := SAW_PRELOAD.instantiate() as Saw
 	saw.position = Vector2(
 		randf_range(0, _collision_shape.shape.get_rect().size.x - 1),
