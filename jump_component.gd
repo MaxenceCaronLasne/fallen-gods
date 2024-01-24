@@ -6,6 +6,7 @@ class Jump:
 
 @export var _actor: CharacterBody2D
 @export var _initial_impulse: float
+@export var _then_jump_impulse: float
 @export var _continuous_impulse: float
 @export var _max_impulse: float
 @export var _fall_added_gravity: float = 0.0
@@ -25,11 +26,18 @@ func _jump(delta: float) -> void:
 
 	_actor.velocity.y = 0.0
 
-	_current_jump.total_impulse += _initial_impulse * delta
-	_actor.velocity.y -= _initial_impulse * delta
+	if _current_jump.nb_jump > 1:
+		_current_jump.total_impulse += _then_jump_impulse * delta
+		_actor.velocity.y -= _then_jump_impulse * delta
+	else:
+		_current_jump.total_impulse += _initial_impulse * delta
+		_actor.velocity.y -= _initial_impulse * delta
 
 func _continue_jump(delta: float) -> void:
 	if _current_jump == null:
+		return
+	
+	if _current_jump.nb_jump > 1:
 		return
 	
 	if _current_jump.total_impulse + _continuous_impulse * delta < _max_impulse:

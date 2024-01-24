@@ -13,7 +13,7 @@ func spawn() -> void:
 	saw.position = Vector2(
 		randf_range(0, _collision_shape.shape.get_rect().size.x - 1),
 		randf_range(0, _collision_shape.shape.get_rect().size.y - 1))
-	saw.INITIAL_DIRECTION = Vector2.DOWN + [Vector2.LEFT, Vector2.RIGHT].pick_random()
+	saw.INITIAL_DIRECTION = (Vector2.DOWN + [Vector2.LEFT, Vector2.RIGHT].pick_random() + Vector2(randf_range(-1.0, 1.0), 0)).normalized()
 	add_child(saw)
 
 func _ready():

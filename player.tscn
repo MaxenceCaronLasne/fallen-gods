@@ -32,9 +32,9 @@ _max_speed = 100.0
 script = ExtResource("2_jluf1")
 _actor = NodePath("..")
 _initial_impulse = 8000.0
+_then_jump_impulse = 13000.0
 _continuous_impulse = 1500.0
 _max_impulse = 350.0
-_fall_added_gravity = 500.0
 _max_nb_jumps = 3
 
 [node name="OnFloorNotifier" type="Node" parent="." node_paths=PackedStringArray("_actor")]
