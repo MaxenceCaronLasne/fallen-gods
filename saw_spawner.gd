@@ -11,8 +11,8 @@ func spawn() -> void:
 		return
 	var saw := SAW_PRELOAD.instantiate() as Saw
 	saw.position = Vector2(
-		randf_range(0, _collision_shape.shape.get_rect().size.x - 1),
-		randf_range(0, _collision_shape.shape.get_rect().size.y - 1))
+		randf_range(_collision_shape.position.x, _collision_shape.shape.get_rect().size.x - 1),
+		randf_range(_collision_shape.position.y, _collision_shape.shape.get_rect().size.y - 1))
 	saw.initial_direction = _get_initial_direction()
 	add_child(saw)
 

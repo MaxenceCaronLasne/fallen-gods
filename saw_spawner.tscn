@@ -1,16 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cit65nmayb275"]
+[gd_scene load_steps=2 format=3 uid="uid://cit65nmayb275"]
 
 [ext_resource type="Script" path="res://saw_spawner.gd" id="1_0eb8b"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pcqkv"]
-size = Vector2(112, 6)
-
 [node name="SawSpawner" type="Area2D"]
 script = ExtResource("1_0eb8b")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(56, 3)
-shape = SubResource("RectangleShape2D_pcqkv")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

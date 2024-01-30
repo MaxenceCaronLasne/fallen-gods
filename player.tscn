@@ -8,11 +8,11 @@
 [ext_resource type="Script" path="res://on_floor_notifier.gd" id="4_a2idf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ry6et"]
-size = Vector2(4, 1)
+size = Vector2(12, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ajxl5"]
-radius = 2.0
-height = 6.0
+radius = 4.0
+height = 10.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -42,6 +42,7 @@ script = ExtResource("4_a2idf")
 _actor = NodePath("..")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -3)
 texture = ExtResource("1_sh734")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -53,5 +54,6 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, -2)
 shape = SubResource("CapsuleShape2D_ajxl5")
 debug_color = Color(0, 0.65098, 0.113725, 0.419608)
