@@ -1,0 +1,206 @@
+#+title: Fallen Gods : Game Design Document
+
+* Présentation
+
+Fallen Gods est un jeu basé sur le gameplay de A Slight Chance of Sawblades,
+c'est-à-dire un jeu d'arcade-action où le joueur contrôle un personnage devant
+sauter au dessus de projectiles mortels tombant du ciel pour les détruire.
+
+* Pourquoi en faire un dérivatif ?
+
+J'ai beaucoup aimé ASCoS, mais j'ai été déçu de ne pas voir certaines mécaniques.
+
+1. Il n'y a pas de récompense importante qui encourage à sauter au-dessus de
+   plusieurs projectiles en un saut (les projectiles ne disparaissent qu'à
+   l'atterrissage du personnage).
+2. Il y a des trucs à ramasser, mais ils ne servent qu'à augmenter un timer qui
+   limite la durée du jeu. Cette mécanique de timer est inutile (dumoins dans
+   une utilisation normale du jeu), mais les trucs à ramasser sont
+   satisfaisants et obligent le joueur à bouger (et leur apparition est
+   multipliée en cas de combo !).
+3. Peu de progression (uniquement cosmétique). Pas de vie en plus, pas de triple
+   ou quadruple saut.
+
+Donc voici les mécaniques que j'aimerai ajouter ou modifier :
+
+- Une meilleure mécanique pour récompenser les combos.
+- Des mécaniques à acheter dans un magasin.
+  - Des sauts supplémentaires.
+  - Des vies supplémentaires.
+  - Autres ? Un dash ? Un dive ? Un TP ? Plein de moves, pour chaque run.
+- Un objectif à battre, un boss-fight avec des patterns de shoot-em-up.
+
+* Pitch narratif
+
+*Fallen Gods*, un mini-roguelite d'arcade-action boss-rush, dans un monde
+cyberpunk-post-fantasy-antique.
+
+La fin des temps approche. La plupart des dieux sont morts, les quelques
+derniers survivent grace à l'ancienne technologie, celle qui se nourrit de ce
+qui reste de la planète.
+
+Les uns après les autres, des héros se confrontent aux dieux déchus, mais cela
+fait bien longtemps que l'espoir s'est eteint.
+
+* Mécaniques
+
+** Espace et déplacement
+
+- Le joueur contrôle un personnage qui peut aller à droite, à gauche, et sauter.
+- Il peut aussi double-sauter, triple-sauter, selon les améliorations que le joueur a choisi.
+- Il évolue dans une zone de jeu rectangulaire, en hauteur, avec des limites solides.
+
+** Projectiles
+
+- Des projectiles tombent du haut de la zone de jeu.
+- Elles rebondissent sur les murs et sur le sol.
+- Elles sont mortelles au toucher pour le joueur.
+
+** Interaction avec les projectiles
+
+- Le joueur peut esquiver les projectiles, mais ils rebondissent sur le plafond.
+- Le joueur peut les faire disparaitre en sautant par-dessus, puis en touchant le sol.
+
+** Boucle : le saut (1 seconde)
+
+- Esquiver les projectiles.
+- Sauter au-dessus d'un ou plusieurs projectiles.
+- Retomber sur le sol : des projectiles disparaissent.
+
+** Boucle : la partie (1 minute)
+
+- Détruire un projectile fait des dégats au boss, selon le nombre de projectiles détruits et le combo multiplicateur.
+- Détruire plusieurs projectiles d'un coup fait augementer un compteur de combo multiplicateur.
+- Chaque projectile détruits fait tomber un certain nombre de pièce, selon le combo et le nombre de projectiles détruits d'un coup.
+- Toucher un projectile fait perdre une vie. Quand le joueur n'a plus de vie, c'est la fin de la partie.
+- Le boss envoie des patterns de projectiles particuliers selon l'avancement du joueur.
+- La partie se termine quand le joueur n'a plus de vie ou si le boss est battu (barre de vie vide).
+
+** Boucle : la progression roguelite (1 heure)
+
+- Avec l'argent accumulé, le joueur peut acheter des améliorations pour la partie suivante.
+  - Des vies supplémentaires.
+  - Des sauts supplémentaires.
+  - Des double-sauts particuliers.
+- Entre chaque parties, le joueur peut choisir d'équiper un double-saut particulier.
+  - Chaque partie, un double-saut aléatoire appliquera un multiplicateur si il est choisi par le joueur.
+
+Le personnage utilise l'ancienne technologie pour avoir des vies
+supplémentaires. Ne pas l'utiliser est encouragé pour plusieurs points.
+- Plus de pièces ?
+- Fin alternative si 1 vie
+
+* Todolist et milestones
+
+** TODO Milestone 1 : boucle de saut
+
+*** TODO Personnage
+**** TODO Déplacement (input) :PROG:
+**** TODO Saut (input) :PROG:
+**** TODO Sprite :ASSET:
+***** TODO Animation Idle :ASSET:
+***** TODO Animation Course :ASSET:
+***** TODO Animation Saut :ASSET:
+***** TODO Animation Double-Saut :ASSET:
+***** TODO Implementation Animation :PROG:
+***** TODO Anim dynamique :PROG:
+**** TODO SFX :ASSET:
+***** TODO Implementation SFX :PROG:
+
+*** TODO Projectiles
+**** TODO Déplacement :PROG:
+**** TODO Rebond :PROG:
+**** TODO Apparition/Destruction :PROG:
+**** TODO Sprite :ASSET:
+**** TODO Animation :PROG:
+***** TODO Transformations/modifications dynamiques :PROG:
+***** TODO Pulsation :PROG:
+***** TODO Destruction (particules ?) :PROG:
+***** TODO SFX implementation :PROG:
+**** TODO SFX :ASSET:
+**** TODO Patterns de spawn simple :PROG:
+
+*** TODO Interaction personnage-projectile
+**** TODO Toucher un projectile
+***** TODO Animation Game Over
+****** TODO Personnage Destruction :ASSET:PROG:
+****** TODO Reset du level :PROG:
+***** TODO Implementation :PROG:
+**** TODO Sauter au-dessus d'un projectile
+***** TODO Animation Saut :ASSET:PROG:
+***** TODO SFX :ASSET:
+***** TODO Compteur :ASSET:PROG:
+
+*** TODO Interface
+**** TODO Background :ASSET:
+**** TODO Reset du niveau :PROG:
+
+** TODO Milestone 2 : boucle de la partie
+
+*** TODO Boss
+**** TODO Barre de vie :PROG:ASSET:
+***** TODO Interface dynamique :PROG:ASSET:
+**** TODO Prise de dégat :PROG:ASSET:
+***** TODO Animation dynamique :PROG:
+***** TODO SFX :ASSET:
+**** TODO Paliers de barre de vie :PROG:ASSET:
+***** TODO Patterns selon le palier de barre de vie :PROG:
+***** TODO Juice a la fin d'un palier :PROG:
+**** TODO Boss battu
+***** TODO Animation dynamique :PROG:
+***** TODO Interface game over :ASSET:PROG:
+***** TODO Cinématique de fin ? :ASSET:PROG:
+
+*** TODO Combo multiplicateur
+**** TODO Compteur :PROG:
+**** TODO Augmentation lors des destructions multiples :PROG:
+**** TODO Cassage de combo :PROG:
+**** TODO Interface :ASSET:PROG:
+***** TODO Sprite :ASSET:
+***** TODO Animation dynamique :PROG:
+
+*** TODO Pièces/collectables
+**** TODO Gravité, déplacement :PROG:
+**** TODO Génération par les projectiles :PROG:
+***** TODO Calcul du nombre de pièces générées :PROG:
+***** TODO Juice :ASSET:PROG:
+**** TODO Ramassage :PROG:
+***** TODO Juice :ASSET:PROG:
+**** TODO Tracker global :PROG:
+***** TODO Interface :ASSET:PROG:
+
+*** TODO Vies du personnage
+**** TODO Game over :PROG:
+**** TODO Prise de dégats :PROG:
+***** TODO Juice :ASSET:PROG:
+**** TODO Interface :ASSET:PROG:
+
+*** TODO Patterns de projectiles
+**** TODO Abstraction sur les patterns :PROG:
+***** TODO Génération roguelikesque :PROG:
+Comme un donjon de roguelike, des pièces préfabriquées assemblées procéduralement.
+**** TODO Augmentation de la difficulté :LEVEL:
+***** TODO Patterns a difficulté variable :PROG:LEVEL:
+***** TODO Vitesse variable :PROG:
+
+** TODO Milestone 3 : la progression roguelike
+
+*** TODO Magasin
+**** TODO Interface :PROG:ASSET:
+**** TODO Acheter élément :PROG:
+
+*** TODO Inventaire
+**** TODO Équiper/Déséquiper :PROG:
+**** TODO Interface :ASSET:PROG:
+
+*** TODO Double-sauts :PROG:
+**** TODO Dash :PROG:ASSET:
+**** TODO TP :PROG:ASSET:
+**** TODO Dive :PROG:ASSET:
+**** TODO Avantage aléatoire sur un double-saut :PROG:
+
+*** TODO Vies supplémentaires :PROG:
+**** TODO Avantage à jouer avec moins de PV :PROG:
+
+*** TODO Saut supplémentaires :PROG:
+**** TODO Avantage à jouer avec moins de sauts :PROG:
