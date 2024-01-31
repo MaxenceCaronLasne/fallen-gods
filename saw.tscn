@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://wp2lfe7da8xp" path="res://assets/projectile.png" id="2_ifafc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7k0th"]
-radius = 4.0
+radius = 2.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4xpvc"]
-size = Vector2(8, 245)
+size = Vector2(4, 245)
 
 [node name="Saw" type="CharacterBody2D" groups=["saws"]]
 collision_layer = 4

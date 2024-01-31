@@ -26,12 +26,12 @@ _actor = NodePath("..")
 script = ExtResource("3_mwi1w")
 _actor = NodePath("..")
 _speed = 1000.0
-_max_speed = 100.0
+_max_speed = 4000.0
 
 [node name="JumpComponent" type="Node" parent="." node_paths=PackedStringArray("_actor")]
 script = ExtResource("2_jluf1")
 _actor = NodePath("..")
-_initial_impulse = 8000.0
+_initial_impulse = 4000.0
 _then_jump_impulse = 13000.0
 _continuous_impulse = 1500.0
 _max_impulse = 350.0

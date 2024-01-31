@@ -90,6 +90,28 @@ supplémentaires. Ne pas l'utiliser est encouragé pour plusieurs points.
 - Plus de pièces ?
 - Fin alternative si 1 vie
 
+* Sauts
+
+- Position, velocity
+- Acceleration from gravity
+
+Projectile motion:
+#+BEGIN_SRC latex
+f(t) = 1/2gt^2 + v_0t + p_0$$
+#+END_SRC
+
+En entrée, on choisit h = height et t_h = jump_time
+
+Vélocité initiale :
+#+BEGIN_SRC latex
+v_0 = 2h/t_h
+#+END_SRC
+
+Gravité :
+#+BEGIN_SRC latex
+g = -2h/t_h^2
+#+END_SRC
+
 * Todolist et milestones
 
 ** TODO Milestone 1 : boucle de saut
