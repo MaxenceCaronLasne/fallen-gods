@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b11fn3e44iy06"]
+[gd_scene load_steps=13 format=3 uid="uid://b11fn3e44iy06"]
 
 [ext_resource type="Script" path="res://game_scene.gd" id="1_nhhsk"]
 [ext_resource type="Texture2D" uid="uid://d3kyvdabxtyh6" path="res://assets/background.png" id="2_if8j4"]
@@ -8,17 +8,21 @@
 [ext_resource type="Texture2D" uid="uid://mj3e04vhfnrg" path="res://assets/ruler.png" id="6_y2l7w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wfaqy"]
-size = Vector2(76, 8)
+size = Vector2(72, 23)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_grfdt"]
-a = Vector2(6.99382e-07, 8)
-b = Vector2(-127, 8.00001)
+b = Vector2(-80, -0.000202179)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_73b1e"]
-size = Vector2(80.0031, 3.02319)
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_d7fsd"]
+normal = Vector2(0, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_08cg3"]
-size = Vector2(2.03865, 122.001)
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xxaqp"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5rdls"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tsf32"]
+normal = Vector2(-1, 0)
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_nhhsk")
@@ -29,12 +33,6 @@ position = Vector2(17, 24)
 texture = ExtResource("2_if8j4")
 centered = false
 
-[node name="SawSpawner" parent="." instance=ExtResource("3_mrat1")]
-position = Vector2(64, 18)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SawSpawner"]
-shape = SubResource("RectangleShape2D_wfaqy")
-
 [node name="Player" parent="." instance=ExtResource("2_w52sr")]
 position = Vector2(65, 108)
 
@@ -42,45 +40,38 @@ position = Vector2(65, 108)
 texture = ExtResource("3_e2ut4")
 centered = false
 
-[node name="Boundary" type="StaticBody2D" parent="."]
-position = Vector2(0, 23)
+[node name="SawSpawner" parent="." instance=ExtResource("3_mrat1")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SawSpawner"]
+position = Vector2(64, 23)
+shape = SubResource("RectangleShape2D_wfaqy")
+debug_color = Color(0, 0.647059, 0.207843, 0.419608)
+
+[node name="Boundaries" type="StaticBody2D" parent="."]
+position = Vector2(24, 24)
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary"]
-position = Vector2(0, 9)
+[node name="OneWayFence" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(0, 13)
 rotation = 3.14159
 shape = SubResource("SegmentShape2D_grfdt")
 one_way_collision = true
 
-[node name="Boundary2" type="StaticBody2D" parent="."]
-position = Vector2(127, 126)
-rotation = 3.14082
-collision_mask = 0
+[node name="UpLimit" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(40, -16)
+shape = SubResource("WorldBoundaryShape2D_d7fsd")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary2"]
-position = Vector2(63.0046, 0.560127)
-rotation = 3.14159
-shape = SubResource("RectangleShape2D_73b1e")
+[node name="DownLimit" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(40, 100)
+shape = SubResource("WorldBoundaryShape2D_xxaqp")
 
-[node name="Boundary3" type="StaticBody2D" parent="."]
-position = Vector2(127, 126)
-rotation = 3.14082
-collision_mask = 0
+[node name="LeftLimit" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(1, 40)
+shape = SubResource("WorldBoundaryShape2D_5rdls")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary3"]
-position = Vector2(102.941, 63.0793)
-rotation = 3.14159
-shape = SubResource("RectangleShape2D_08cg3")
-
-[node name="Boundary4" type="StaticBody2D" parent="."]
-position = Vector2(127, 126)
-rotation = 3.14082
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary4"]
-position = Vector2(22.9414, 51.517)
-rotation = 3.14159
-shape = SubResource("RectangleShape2D_08cg3")
+[node name="RightLimit" type="CollisionShape2D" parent="Boundaries"]
+position = Vector2(79, 40)
+shape = SubResource("WorldBoundaryShape2D_tsf32")
 
 [node name="RulerSprite2D" type="Sprite2D" parent="."]
 position = Vector2(92, 78)

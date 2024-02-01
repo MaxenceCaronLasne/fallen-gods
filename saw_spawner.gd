@@ -9,12 +9,22 @@ var SAW_PRELOAD := preload("res://saw.tscn")
 func spawn() -> void:
 	if not Toggles.spawn_saws:
 		return
+
 	var saw := SAW_PRELOAD.instantiate() as Saw
+	var zone := _get_spawn_zone()
 	saw.position = Vector2(
-		randf_range(_collision_shape.position.x, _collision_shape.shape.get_rect().size.x - 1),
-		randf_range(_collision_shape.position.y, _collision_shape.shape.get_rect().size.y - 1))
+		randf_range(zone.position.x, zone.size.x),
+		randf_range(zone.position.y, zone.size.y)
+	)
 	saw.initial_direction = _get_initial_direction()
 	add_child(saw)
+
+func _get_spawn_zone() -> Rect2:
+	var res := Rect2(
+		position + _collision_shape.position + _collision_shape.shape.get_rect().position, 
+		_collision_shape.shape.get_rect().size)
+
+	return res
 
 func _get_initial_direction() -> Vector2:
 	var res := Vector2.DOWN
