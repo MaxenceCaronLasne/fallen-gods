@@ -6,6 +6,7 @@ enum JumpType {NONE, FROM_GROUND, FROM_AIR}
 @export var _actor: CharacterBody2D
 @export var _input_jump: String = "jump"
 @export var _jump_settings: JumpSettings = null
+@export var _lateral_speed: float = 0.0
 
 var _current_jump_type: JumpType = JumpType.NONE
 
@@ -20,6 +21,14 @@ func _is_falling() -> bool:
 func _process_gravity(delta: float) -> void:
 	var gravity := _jump_settings.get_gravity(_is_falling()) * delta
 	_actor.velocity.y += gravity # Velocity in pixel per second
+
+func _process_lateral_move() -> void:
+	if _actor.is_on_floor():
+		return
+	
+	var direction := Input.get_axis("left", "right")
+	
+	_actor.velocity.x = direction * _lateral_speed
 
 func _process_jump(_delta: float) -> void:
 	if Input.is_action_just_pressed(_input_jump) and _current_jump_type == JumpType.NONE:
@@ -36,6 +45,7 @@ func _process_jump(_delta: float) -> void:
 func _physics_process(delta: float):
 	_process_gravity(delta)
 	_process_jump(delta)
+	_process_lateral_move()
 
 func _on_touched_floor() -> void:
 	_current_jump_type = JumpType.NONE

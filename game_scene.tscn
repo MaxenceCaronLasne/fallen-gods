@@ -33,19 +33,19 @@ position = Vector2(17, 24)
 texture = ExtResource("2_if8j4")
 centered = false
 
-[node name="Player" parent="." instance=ExtResource("2_w52sr")]
-position = Vector2(65, 108)
-
-[node name="UiSprite" type="Sprite2D" parent="."]
-texture = ExtResource("3_e2ut4")
-centered = false
-
 [node name="SawSpawner" parent="." instance=ExtResource("3_mrat1")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SawSpawner"]
 position = Vector2(64, 23)
 shape = SubResource("RectangleShape2D_wfaqy")
 debug_color = Color(0, 0.647059, 0.207843, 0.419608)
+
+[node name="Player" parent="." instance=ExtResource("2_w52sr")]
+position = Vector2(65, 108)
+
+[node name="UiSprite" type="Sprite2D" parent="."]
+texture = ExtResource("3_e2ut4")
+centered = false
 
 [node name="Boundaries" type="StaticBody2D" parent="."]
 position = Vector2(24, 24)
@@ -74,6 +74,7 @@ position = Vector2(79, 40)
 shape = SubResource("WorldBoundaryShape2D_tsf32")
 
 [node name="RulerSprite2D" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(92, 78)
 texture = ExtResource("6_y2l7w")
 

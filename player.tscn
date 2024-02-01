@@ -36,6 +36,7 @@ _max_speed = 4000.0
 script = ExtResource("2_jluf1")
 _actor = NodePath("..")
 _jump_settings = SubResource("Resource_43prj")
+_lateral_speed = 90.0
 
 [node name="OnFloorNotifier" type="Node" parent="." node_paths=PackedStringArray("_actor")]
 script = ExtResource("4_a2idf")

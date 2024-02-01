@@ -24,6 +24,9 @@ func _get_slippy_velocity(direction: float, initial_velocity: float, delta: floa
 	return res
 
 func _process(delta: float):
+	if not _actor.is_on_floor():
+		return
+
 	var direction := Input.get_axis("left", "right")
 	
 	match _move_type:
