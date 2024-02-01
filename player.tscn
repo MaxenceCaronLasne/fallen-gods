@@ -9,7 +9,7 @@
 
 [sub_resource type="Resource" id="Resource_43prj"]
 script = ExtResource("4_v8uii")
-_max_height = 40.0
+_max_height = 30.0
 _min_height = 1.0
 _peak_duration = 0.3
 _fall_duration = 0.2
