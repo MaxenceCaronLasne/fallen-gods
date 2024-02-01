@@ -1,11 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://b11fn3e44iy06"]
+[gd_scene load_steps=19 format=3 uid="uid://b11fn3e44iy06"]
 
 [ext_resource type="Script" path="res://game_scene.gd" id="1_nhhsk"]
 [ext_resource type="Texture2D" uid="uid://d3kyvdabxtyh6" path="res://assets/background.png" id="2_if8j4"]
 [ext_resource type="PackedScene" uid="uid://bdlafp6fbnvn6" path="res://player.tscn" id="2_w52sr"]
 [ext_resource type="Texture2D" uid="uid://bqjx6tqw6pgf6" path="res://assets/ui.png" id="3_e2ut4"]
 [ext_resource type="PackedScene" uid="uid://cit65nmayb275" path="res://saw_spawner.tscn" id="3_mrat1"]
+[ext_resource type="Texture2D" uid="uid://bareggfrtnrjx" path="res://assets/black_background.png" id="5_amm0m"]
 [ext_resource type="Texture2D" uid="uid://mj3e04vhfnrg" path="res://assets/ruler.png" id="6_y2l7w"]
+[ext_resource type="Script" path="res://shake_component.gd" id="8_5kue6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wfaqy"]
 size = Vector2(72, 23)
@@ -23,6 +25,60 @@ normal = Vector2(1, 0)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tsf32"]
 normal = Vector2(-1, 0)
+
+[sub_resource type="Animation" id="Animation_7a4pl"]
+resource_name = "open_door"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LevelDoorSprite:offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(7.21, 1.7411),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -102)]
+}
+
+[sub_resource type="Animation" id="Animation_xv5ae"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LevelDoorSprite:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_m7kaw"]
+resource_name = "close_door"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LevelDoorSprite:offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 27.8576),
+"update": 0,
+"values": [Vector2(0, -102), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5okav"]
+_data = {
+"RESET": SubResource("Animation_xv5ae"),
+"close_door": SubResource("Animation_m7kaw"),
+"open_door": SubResource("Animation_7a4pl")
+}
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_nhhsk")
@@ -42,6 +98,11 @@ debug_color = Color(0, 0.647059, 0.207843, 0.419608)
 
 [node name="Player" parent="." instance=ExtResource("2_w52sr")]
 position = Vector2(65, 108)
+
+[node name="LevelDoorSprite" type="Sprite2D" parent="."]
+scale = Vector2(1.01587, 1.01587)
+texture = ExtResource("5_amm0m")
+centered = false
 
 [node name="UiSprite" type="Sprite2D" parent="."]
 texture = ExtResource("3_e2ut4")
@@ -78,4 +139,15 @@ visible = false
 position = Vector2(92, 78)
 texture = ExtResource("6_y2l7w")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5okav")
+}
+
+[node name="ShakeComponent" type="Node" parent="." node_paths=PackedStringArray("_actor")]
+script = ExtResource("8_5kue6")
+_actor = NodePath("..")
+
 [connection signal="just_died" from="Player" to="." method="_on_player_just_died"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="ended_shaking" from="ShakeComponent" to="." method="_on_shake_component_ended_shaking"]
