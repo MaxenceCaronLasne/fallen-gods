@@ -117,8 +117,8 @@ g = -2h/t_h^2
 ** TODO Milestone 1 : boucle de saut
 
 *** TODO Personnage
-**** TODO Déplacement (input) :PROG:
-**** TODO Saut (input) :PROG:
+**** DONE Déplacement (input) :PROG:
+**** DONE Saut (input) :PROG:
 **** TODO Sprite :ASSET:
 ***** TODO Animation Idle :ASSET:
 ***** TODO Animation Course :ASSET:
@@ -130,31 +130,32 @@ g = -2h/t_h^2
 ***** TODO Implementation SFX :PROG:
 
 *** TODO Projectiles
-**** TODO Déplacement :PROG:
-**** TODO Rebond :PROG:
-**** TODO Apparition/Destruction :PROG:
-**** TODO Sprite :ASSET:
+**** DONE Déplacement :PROG:
+**** DONE Rebond :PROG:
+**** DONE Apparition/Destruction :PROG:
+**** DONE Sprite :ASSET:
 **** TODO Animation :PROG:
 ***** TODO Transformations/modifications dynamiques :PROG:
 ***** TODO Pulsation :PROG:
 ***** TODO Destruction (particules ?) :PROG:
 ***** TODO SFX implementation :PROG:
 **** TODO SFX :ASSET:
-**** TODO Patterns de spawn simple :PROG:
+**** DONE Patterns de spawn simple :PROG:
 
 *** TODO Interaction personnage-projectile
 **** TODO Toucher un projectile
 ***** TODO Animation Game Over
 ****** TODO Personnage Destruction :ASSET:PROG:
-****** TODO Reset du level :PROG:
-***** TODO Implementation :PROG:
+****** TODO Animation reset level :ASSET:PROG:
+****** DONE Reset du level :PROG:
+***** DONE Implementation :PROG:
 **** TODO Sauter au-dessus d'un projectile
-***** TODO Animation Saut :ASSET:PROG:
+***** TODO Animation Validation Saut :ASSET:PROG:
 ***** TODO SFX :ASSET:
 ***** TODO Compteur :ASSET:PROG:
 
 *** TODO Interface
-**** TODO Background :ASSET:
+**** DONE Background :ASSET:
 **** TODO Reset du niveau :PROG:
 
 ** TODO Milestone 2 : boucle de la partie
