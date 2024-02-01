@@ -22,20 +22,21 @@ size = Vector2(2.03865, 122.001)
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_nhhsk")
+metadata/_edit_vertical_guides_ = [-37.0]
 
 [node name="BackgroundSprite" type="Sprite2D" parent="."]
 position = Vector2(17, 24)
 texture = ExtResource("2_if8j4")
 centered = false
 
-[node name="Player" parent="." instance=ExtResource("2_w52sr")]
-position = Vector2(65, 108)
-
 [node name="SawSpawner" parent="." instance=ExtResource("3_mrat1")]
 position = Vector2(64, 18)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SawSpawner"]
 shape = SubResource("RectangleShape2D_wfaqy")
+
+[node name="Player" parent="." instance=ExtResource("2_w52sr")]
+position = Vector2(65, 108)
 
 [node name="UiSprite" type="Sprite2D" parent="."]
 texture = ExtResource("3_e2ut4")

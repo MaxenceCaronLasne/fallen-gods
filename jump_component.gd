@@ -14,15 +14,24 @@ var _touched_floor_last_frame: bool = false
 func touch_floor() -> void:
 	_on_touched_floor()
 
+func _is_falling() -> bool:
+	return _actor.velocity.y > 0
+
 func _process_gravity(delta: float) -> void:
-	var is_falling := _actor.velocity.y > 0
-	var gravity := _jump_settings.get_gravity(is_falling) * delta
+	var gravity := _jump_settings.get_gravity(_is_falling()) * delta
 	_actor.velocity.y += gravity # Velocity in pixel per second
 
 func _process_jump(_delta: float) -> void:
 	if Input.is_action_just_pressed(_input_jump) and _current_jump_type == JumpType.NONE:
 		_actor.velocity.y = _jump_settings.get_velocity()
 		_current_jump_type = JumpType.FROM_GROUND
+	elif Input.is_action_just_pressed(_input_jump) and _current_jump_type == JumpType.FROM_GROUND:
+		var is_double_jump := true
+		_actor.velocity.y = _jump_settings.get_velocity(is_double_jump)
+		_current_jump_type = JumpType.FROM_AIR
+	
+	if Input.is_action_just_released(_input_jump) and (_current_jump_type == JumpType.FROM_GROUND or _current_jump_type == JumpType.FROM_AIR) and not _is_falling():
+		_actor.velocity.y *= _jump_settings.get_jump_brake()
 
 func _physics_process(delta: float):
 	_process_gravity(delta)

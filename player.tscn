@@ -9,10 +9,11 @@
 
 [sub_resource type="Resource" id="Resource_43prj"]
 script = ExtResource("4_v8uii")
-_max_height = 30.0
-_min_height = 1.0
+_jump_brake = 0.3
+_max_height = 40.0
 _peak_duration = 0.3
 _fall_duration = 0.2
+_double_jump_max_height = 30.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ry6et"]
 size = Vector2(12, 1)
