@@ -15,11 +15,12 @@ func touch_floor() -> void:
 	_on_touched_floor()
 
 func _process_gravity(delta: float) -> void:
-	var gravity := _jump_settings.get_gravity() * delta
+	var is_falling := _actor.velocity.y > 0
+	var gravity := _jump_settings.get_gravity(is_falling) * delta
 	_actor.velocity.y += gravity # Velocity in pixel per second
 
 func _process_jump(_delta: float) -> void:
-	if Input.is_action_just_pressed(_input_jump):
+	if Input.is_action_just_pressed(_input_jump) and _current_jump_type == JumpType.NONE:
 		_actor.velocity.y = _jump_settings.get_velocity()
 		_current_jump_type = JumpType.FROM_GROUND
 
