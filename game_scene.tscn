@@ -144,10 +144,14 @@ libraries = {
 "": SubResource("AnimationLibrary_5okav")
 }
 
-[node name="ShakeComponent" type="Node" parent="." node_paths=PackedStringArray("_actor")]
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="ShakeComponent" type="Node" parent="Camera2D" node_paths=PackedStringArray("_actor")]
+unique_name_in_owner = true
 script = ExtResource("8_5kue6")
 _actor = NodePath("..")
 
 [connection signal="just_died" from="Player" to="." method="_on_player_just_died"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="ended_shaking" from="ShakeComponent" to="." method="_on_shake_component_ended_shaking"]
+[connection signal="ended_shaking" from="Camera2D/ShakeComponent" to="." method="_on_shake_component_ended_shaking"]
