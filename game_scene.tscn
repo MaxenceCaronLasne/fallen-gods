@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://b11fn3e44iy06"]
+[gd_scene load_steps=11 format=3 uid="uid://b11fn3e44iy06"]
 
 [ext_resource type="Script" path="res://game_scene.gd" id="1_nhhsk"]
 [ext_resource type="Texture2D" uid="uid://d3kyvdabxtyh6" path="res://assets/background.png" id="2_if8j4"]
 [ext_resource type="PackedScene" uid="uid://bdlafp6fbnvn6" path="res://player.tscn" id="2_w52sr"]
 [ext_resource type="Texture2D" uid="uid://bqjx6tqw6pgf6" path="res://assets/ui.png" id="3_e2ut4"]
 [ext_resource type="PackedScene" uid="uid://cit65nmayb275" path="res://saw_spawner.tscn" id="3_mrat1"]
+[ext_resource type="Texture2D" uid="uid://mj3e04vhfnrg" path="res://assets/ruler.png" id="6_y2l7w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wfaqy"]
 size = Vector2(76, 8)
@@ -79,5 +80,9 @@ collision_mask = 0
 position = Vector2(22.9414, 51.517)
 rotation = 3.14159
 shape = SubResource("RectangleShape2D_08cg3")
+
+[node name="RulerSprite2D" type="Sprite2D" parent="."]
+position = Vector2(92, 78)
+texture = ExtResource("6_y2l7w")
 
 [connection signal="just_died" from="Player" to="." method="_on_player_just_died"]

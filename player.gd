@@ -5,6 +5,7 @@ signal just_died
 
 @onready var _hitbox := $HitBox as Area2D
 @onready var _on_floor_notifier := $OnFloorNotifier as OnFloorNotifier
+@onready var _jump_component := $JumpComponent as JumpComponent
 
 func _ready() -> void:
 	_hitbox.body_entered.connect(_on_hit_box_body_entered)
@@ -20,4 +21,5 @@ func _on_hit_box_body_entered(_body):
 
 func _on_floor_notifier_just_touched_floor():
 	get_tree().call_group("saws", "maybe_destroy")
+	_jump_component.touch_floor()
 	just_touched_floor.emit()
