@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bdlafp6fbnvn6"]
+[gd_scene load_steps=13 format=3 uid="uid://bdlafp6fbnvn6"]
 
 [ext_resource type="Texture2D" uid="uid://lidrjc7f8inu" path="res://assets/player.png" id="1_sh734"]
 [ext_resource type="Script" path="res://player.gd" id="1_sjyse"]
@@ -21,6 +21,43 @@ size = Vector2(12, 1)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ajxl5"]
 radius = 4.0
 height = 10.0
+
+[sub_resource type="Animation" id="Animation_c7gy7"]
+resource_name = "die"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_eaa6c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3hpxt"]
+_data = {
+"RESET": SubResource("Animation_eaa6c"),
+"die": SubResource("Animation_c7gy7")
+}
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -58,3 +95,8 @@ collision_mask = 4
 position = Vector2(0, -2)
 shape = SubResource("CapsuleShape2D_ajxl5")
 debug_color = Color(0, 0.65098, 0.113725, 0.419608)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3hpxt")
+}

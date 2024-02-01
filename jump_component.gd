@@ -9,8 +9,13 @@ enum JumpType {NONE, FROM_GROUND, FROM_AIR}
 @export var _lateral_speed: float = 0.0
 
 var _current_jump_type: JumpType = JumpType.NONE
+var _is_accepting_input: bool = false
 
-var _touched_floor_last_frame: bool = false
+func accept_input() -> void:
+	_is_accepting_input = true
+
+func reject_input() -> void:
+	_is_accepting_input = false
 
 func touch_floor() -> void:
 	_on_touched_floor()
@@ -26,20 +31,23 @@ func _process_lateral_move() -> void:
 	if _actor.is_on_floor():
 		return
 	
+	if not _is_accepting_input:
+		return
+	
 	var direction := Input.get_axis("left", "right")
 	
 	_actor.velocity.x = direction * _lateral_speed
 
 func _process_jump(_delta: float) -> void:
-	if Input.is_action_just_pressed(_input_jump) and _current_jump_type == JumpType.NONE:
+	if Input.is_action_just_pressed(_input_jump) and _current_jump_type == JumpType.NONE and _is_accepting_input:
 		_actor.velocity.y = _jump_settings.get_velocity()
 		_current_jump_type = JumpType.FROM_GROUND
-	elif Input.is_action_just_pressed(_input_jump) and _current_jump_type == JumpType.FROM_GROUND:
+	elif Input.is_action_just_pressed(_input_jump) and _current_jump_type == JumpType.FROM_GROUND and _is_accepting_input:
 		var is_double_jump := true
 		_actor.velocity.y = _jump_settings.get_velocity(is_double_jump)
 		_current_jump_type = JumpType.FROM_AIR
 	
-	if Input.is_action_just_released(_input_jump) and (_current_jump_type == JumpType.FROM_GROUND or _current_jump_type == JumpType.FROM_AIR) and not _is_falling():
+	if Input.is_action_just_released(_input_jump) and (_current_jump_type == JumpType.FROM_GROUND or _current_jump_type == JumpType.FROM_AIR) and not _is_falling() and _is_accepting_input:
 		_actor.velocity.y *= _jump_settings.get_jump_brake()
 
 func _physics_process(delta: float):
