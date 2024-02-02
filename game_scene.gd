@@ -1,8 +1,6 @@
 extends Node2D
 
 @onready var _animation_player := $AnimationPlayer as AnimationPlayer
-@onready var _shake_component := %ShakeComponent as ShakeComponent
-@onready var _player := $Player as CharacterBody2D
 
 var _is_reseting: bool = false
 

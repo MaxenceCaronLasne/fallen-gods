@@ -23,6 +23,9 @@ func _physics_process(_delta: float):
 	move_and_slide()
 
 func _on_hit_box_body_entered(_body):
+	if _is_dead:
+		return
+
 	_is_dead = true
 	just_died.emit()
 	_animation_player.play("die")
