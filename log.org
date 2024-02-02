@@ -1,0 +1,18 @@
+#+title: Log
+
+* <2024-02-02 Fri>
+** Scheduling
+
+Aujourd'hui c'est de l'animation de sprites. Je vais le faire sur ma tablette. Je devrai aller au Starbucks pour bosser, c'est un travail qui peut etre nomade.
+
+*** PROJ Animation Idle :ASSET:
+*** PROJ Animation Course :ASSET:
+*** PROJ Animation Saut :ASSET:
+*** PROJ Animation Double-Saut :ASSET:
+*** PROJ Animation Mort :ASSET:
+*** PROJ Implementation Animation :PROG:
+*** PROJ Anim dynamique :PROG:
+
+** Bilan de la journée
+
+TODO
