@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://hkyoltpvyp03"]
+[gd_scene load_steps=16 format=3 uid="uid://hkyoltpvyp03"]
 
 [ext_resource type="Script" path="res://saw.gd" id="1_w563r"]
 [ext_resource type="Texture2D" uid="uid://wp2lfe7da8xp" path="res://assets/projectile.png" id="2_ifafc"]
@@ -9,12 +9,167 @@ radius = 2.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4xpvc"]
 size = Vector2(4, 245)
 
+[sub_resource type="Animation" id="Animation_l0bwn"]
+resource_name = "idle"
+length = 1.5
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8hjwu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cnygy"]
+resource_name = "bounce"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.4), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fe1w3"]
+resource_name = "destory"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m2shn"]
+_data = {
+"RESET": SubResource("Animation_8hjwu"),
+"bounce": SubResource("Animation_cnygy"),
+"destory": SubResource("Animation_fe1w3"),
+"idle": SubResource("Animation_l0bwn")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_evaxd"]
+animation = &"destory"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1lojc"]
+animation = &"bounce"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mg5xq"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_7iv1i"]
+filter_enabled = true
+filters = [".:scale"]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_2ky8x"]
+filter_enabled = true
+filters = [".", ".:scale", "Sprite2D:scale"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_l72wf"]
+graph_offset = Vector2(-438.44, -8.14263)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_evaxd")
+nodes/Animation/position = Vector2(80, 260)
+nodes/Bounce/node = SubResource("AnimationNodeAnimation_1lojc")
+nodes/Bounce/position = Vector2(-200, 140)
+nodes/Idle/node = SubResource("AnimationNodeAnimation_mg5xq")
+nodes/Idle/position = Vector2(-200, 0)
+nodes/ShotBounce/node = SubResource("AnimationNodeOneShot_7iv1i")
+nodes/ShotBounce/position = Vector2(60, 20)
+nodes/ShotDie/node = SubResource("AnimationNodeOneShot_2ky8x")
+nodes/ShotDie/position = Vector2(340, 20)
+nodes/output/position = Vector2(600, 0)
+node_connections = [&"ShotBounce", 0, &"Idle", &"ShotBounce", 1, &"Bounce", &"ShotDie", 0, &"ShotBounce", &"ShotDie", 1, &"Animation", &"output", 0, &"ShotDie"]
+
 [node name="Saw" type="CharacterBody2D" groups=["saws"]]
 collision_layer = 4
 script = ExtResource("1_w563r")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(1.2, 1.2)
 texture = ExtResource("2_ifafc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -28,5 +183,24 @@ collision_mask = 2
 position = Vector2(0, -122.5)
 shape = SubResource("RectangleShape2D_4xpvc")
 debug_color = Color(0.262745, 0.623529, 0.317647, 0.419608)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_m2shn")
+}
+autoplay = "idle"
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_m2shn")
+}
+tree_root = SubResource("AnimationNodeBlendTree_l72wf")
+anim_player = NodePath("../AnimationPlayer")
+parameters/ShotBounce/active = false
+parameters/ShotBounce/internal_active = false
+parameters/ShotBounce/request = 0
+parameters/ShotDie/active = false
+parameters/ShotDie/internal_active = false
+parameters/ShotDie/request = 0
 
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
