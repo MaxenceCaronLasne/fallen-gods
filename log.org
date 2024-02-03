@@ -1,9 +1,11 @@
 #+title: Log
 
 * <2024-02-02 Fri>
+
 ** Scheduling
 
-Aujourd'hui c'est de l'animation de sprites. Je vais le faire sur ma tablette. Je devrai aller au Starbucks pour bosser, c'est un travail qui peut etre nomade.
+Aujourd'hui c'est de l'animation de sprites. Je vais le faire sur ma tablette.
+Je devrai aller au Starbucks pour bosser, c'est un travail qui peut etre nomade.
 
 *** PROJ Animation Idle :ASSET:
 *** PROJ Animation Course :ASSET:
@@ -15,4 +17,17 @@ Aujourd'hui c'est de l'animation de sprites. Je vais le faire sur ma tablette. J
 
 ** Bilan de la journée
 
-TODO
+Je suis bloqué sur l'animation, objectifs non-accomplis. Je vais faire ca
+plus tard je pense.
+
+* <2024-02-03 Sat>
+
+** Scheduling
+
+On essaye de reprendre le process d'animation, mais sur PC cette fois. Animation
+procédurale des projectiles.
+
+*** TODO Transformations/modifications dynamiques :PROG:
+*** TODO Réaction saut au-dessus
+*** DONE Pulsation :PROG:
+*** DONE Destruction (particules ?) :PROG:

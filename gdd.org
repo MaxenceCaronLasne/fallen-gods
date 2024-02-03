@@ -120,13 +120,13 @@ g = -2h/t_h^2
 **** DONE Déplacement (input) :PROG:
 **** DONE Saut (input) :PROG:
 **** TODO Sprite :ASSET:
-***** PROJ Animation Idle :ASSET:
-***** PROJ Animation Course :ASSET:
-***** PROJ Animation Saut :ASSET:
-***** PROJ Animation Double-Saut :ASSET:
-***** PROJ Animation Mort :ASSET:
-***** PROJ Implementation Animation :PROG:
-***** PROJ Anim dynamique :PROG:
+***** TODO Animation Idle :ASSET:
+***** TODO Animation Course :ASSET:
+***** TODO Animation Saut :ASSET:
+***** TODO Animation Double-Saut :ASSET:
+***** TODO Animation Mort :ASSET:
+***** TODO Implementation Animation :PROG:
+***** TODO Anim dynamique :PROG:
 **** TODO SFX :ASSET:
 ***** TODO Implementation SFX :PROG:
 
@@ -136,9 +136,10 @@ g = -2h/t_h^2
 **** DONE Apparition/Destruction :PROG:
 **** DONE Sprite :ASSET:
 **** TODO Animation :PROG:
-***** TODO Transformations/modifications dynamiques :PROG:
-***** TODO Pulsation :PROG:
-***** TODO Destruction (particules ?) :PROG:
+***** PROJ Transformations/modifications dynamiques :PROG:
+***** PROJ Pulsation :PROG:
+***** PROJ Destruction (particules ?) :PROG:
+****** PROJ Screen shake :PROG:
 ***** TODO SFX implementation :PROG:
 **** TODO SFX :ASSET:
 **** DONE Patterns de spawn simple :PROG:
