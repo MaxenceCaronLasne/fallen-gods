@@ -135,13 +135,12 @@ g = -2h/t_h^2
 **** DONE Rebond :PROG:
 **** DONE Apparition/Destruction :PROG:
 **** DONE Sprite :ASSET:
-**** TODO Animation :PROG:
-***** PROJ Transformations/modifications dynamiques :PROG:
-***** PROJ Pulsation :PROG:
-***** PROJ Destruction (particules ?) :PROG:
-****** PROJ Screen shake :PROG:
-***** TODO SFX implementation :PROG:
-**** TODO SFX :ASSET:
+**** DONE Animation :PROG:
+***** DONE Transformations/modifications dynamiques :PROG:
+***** DONE Pulsation :PROG:
+***** DONE Destruction (particules ?) :PROG:
+****** DONE Screen shake :PROG:
+**** TODO SFX :ASSET:PROG:
 **** DONE Patterns de spawn simple :PROG:
 
 *** TODO Interaction personnage-projectile

@@ -24,6 +24,7 @@ func shake(intensity: float) -> void:
 func _ready():
 	assert(_actor)
 	_initial_position = _actor.position
+	EventBus.shake.connect(shake)
 
 func _process(delta: float):
 	if is_zero_approx(_shake_factor):

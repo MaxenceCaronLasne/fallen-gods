@@ -1,7 +1,66 @@
-[gd_scene load_steps=16 format=3 uid="uid://hkyoltpvyp03"]
+[gd_scene load_steps=27 format=3 uid="uid://hkyoltpvyp03"]
 
 [ext_resource type="Script" path="res://saw.gd" id="1_w563r"]
 [ext_resource type="Texture2D" uid="uid://wp2lfe7da8xp" path="res://assets/projectile.png" id="2_ifafc"]
+[ext_resource type="Texture2D" uid="uid://cuv2ymbylqvxk" path="res://assets/pop_gfx.png" id="2_sh8w4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8223"]
+atlas = ExtResource("2_sh8w4")
+region = Rect2(0, 0, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3otpj"]
+atlas = ExtResource("2_sh8w4")
+region = Rect2(14, 0, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfesa"]
+atlas = ExtResource("2_sh8w4")
+region = Rect2(28, 0, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjsgj"]
+atlas = ExtResource("2_sh8w4")
+region = Rect2(42, 0, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2iywy"]
+atlas = ExtResource("2_sh8w4")
+region = Rect2(56, 0, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x545k"]
+atlas = ExtResource("2_sh8w4")
+region = Rect2(70, 0, 14, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f7hbk"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8223")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3otpj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xfesa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjsgj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2iywy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x545k")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"pop",
+"speed": 20.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7k0th"]
 radius = 2.0
@@ -125,22 +184,57 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_2knla"]
+resource_name = "selected"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.4, 1.4), Vector2(1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("PopGfx")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"pop", 1.0, false],
+"method": &"play"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m2shn"]
 _data = {
 "RESET": SubResource("Animation_8hjwu"),
 "bounce": SubResource("Animation_cnygy"),
 "destory": SubResource("Animation_fe1w3"),
-"idle": SubResource("Animation_l0bwn")
+"idle": SubResource("Animation_l0bwn"),
+"selected": SubResource("Animation_2knla")
 }
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_evaxd"]
-animation = &"destory"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1lojc"]
 animation = &"bounce"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_evaxd"]
+animation = &"destory"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mg5xq"]
 animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_apuxp"]
+animation = &"selected"
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_7iv1i"]
 filter_enabled = true
@@ -150,24 +244,37 @@ filters = [".:scale"]
 filter_enabled = true
 filters = [".", ".:scale", "Sprite2D:scale"]
 
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_cp67g"]
+filter_enabled = true
+filters = ["Sprite2D:scale"]
+
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_l72wf"]
-graph_offset = Vector2(-438.44, -8.14263)
-nodes/Animation/node = SubResource("AnimationNodeAnimation_evaxd")
-nodes/Animation/position = Vector2(80, 260)
+graph_offset = Vector2(-418.954, -135.406)
 nodes/Bounce/node = SubResource("AnimationNodeAnimation_1lojc")
 nodes/Bounce/position = Vector2(-200, 140)
+nodes/Destroy/node = SubResource("AnimationNodeAnimation_evaxd")
+nodes/Destroy/position = Vector2(80, 260)
 nodes/Idle/node = SubResource("AnimationNodeAnimation_mg5xq")
 nodes/Idle/position = Vector2(-200, 0)
+nodes/Select/node = SubResource("AnimationNodeAnimation_apuxp")
+nodes/Select/position = Vector2(340, 280)
 nodes/ShotBounce/node = SubResource("AnimationNodeOneShot_7iv1i")
 nodes/ShotBounce/position = Vector2(60, 20)
 nodes/ShotDie/node = SubResource("AnimationNodeOneShot_2ky8x")
 nodes/ShotDie/position = Vector2(340, 20)
-nodes/output/position = Vector2(600, 0)
-node_connections = [&"ShotBounce", 0, &"Idle", &"ShotBounce", 1, &"Bounce", &"ShotDie", 0, &"ShotBounce", &"ShotDie", 1, &"Animation", &"output", 0, &"ShotDie"]
+nodes/ShotSelect/node = SubResource("AnimationNodeOneShot_cp67g")
+nodes/ShotSelect/position = Vector2(560, 20)
+nodes/output/position = Vector2(740, 20)
+node_connections = [&"ShotBounce", 0, &"Idle", &"ShotBounce", 1, &"Bounce", &"ShotDie", 0, &"ShotBounce", &"ShotDie", 1, &"Destroy", &"ShotSelect", 0, &"ShotDie", &"ShotSelect", 1, &"Select", &"output", 0, &"ShotSelect"]
 
 [node name="Saw" type="CharacterBody2D" groups=["saws"]]
 collision_layer = 4
 script = ExtResource("1_w563r")
+
+[node name="PopGfx" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_f7hbk")
+animation = &"pop"
+autoplay = "default"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_ifafc")
@@ -202,5 +309,8 @@ parameters/ShotBounce/request = 0
 parameters/ShotDie/active = false
 parameters/ShotDie/internal_active = false
 parameters/ShotDie/request = 0
+parameters/ShotSelect/active = false
+parameters/ShotSelect/internal_active = false
+parameters/ShotSelect/request = 0
 
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

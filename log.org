@@ -27,7 +27,7 @@ plus tard je pense.
 On essaye de reprendre le process d'animation, mais sur PC cette fois. Animation
 procédurale des projectiles.
 
-*** TODO Transformations/modifications dynamiques :PROG:
-*** TODO Réaction saut au-dessus
+*** DONE Transformations/modifications dynamiques :PROG:
+*** DONE Réaction saut au-dessus a l'atterrissage :PROG:
 *** DONE Pulsation :PROG:
 *** DONE Destruction (particules ?) :PROG:
