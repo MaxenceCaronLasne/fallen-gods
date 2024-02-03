@@ -31,3 +31,10 @@ procédurale des projectiles.
 *** DONE Réaction saut au-dessus a l'atterrissage :PROG:
 *** DONE Pulsation :PROG:
 *** DONE Destruction (particules ?) :PROG:
+
+** Bilan de la journée
+
+J'ai bien avancé sur l'animation procédurale. J'ai découvert les AnimationTree,
+très pratique pour orchestrer des AnimationPlayer et des animations.
+Le jeu commence à être relativement juicy. Il manque peut-être quelques
+particules/gfx, et bien sur des sfx.

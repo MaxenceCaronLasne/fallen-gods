@@ -144,14 +144,14 @@ g = -2h/t_h^2
 **** DONE Patterns de spawn simple :PROG:
 
 *** TODO Interaction personnage-projectile
-**** TODO Toucher un projectile
-***** TODO Animation Game Over
-****** TODO Personnage Destruction :ASSET:PROG:
-****** TODO Animation reset level :ASSET:PROG:
+**** DONE Toucher un projectile
+***** DONE Animation Game Over
+****** KILL Personnage Destruction (doublon) :ASSET:PROG:
+****** DONE Animation reset level :ASSET:PROG:
 ****** DONE Reset du level :PROG:
 ***** DONE Implementation :PROG:
 **** TODO Sauter au-dessus d'un projectile
-***** TODO Animation Validation Saut :ASSET:PROG:
+***** DONE Animation Validation Saut :ASSET:PROG:
 ***** TODO SFX :ASSET:
 ***** TODO Compteur :ASSET:PROG:
 
