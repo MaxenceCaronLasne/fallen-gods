@@ -49,3 +49,11 @@ du boss.
 - sfx
 - musique
 - détails
+
+* <2024-02-04 Sun>
+
+** Scheduling
+
+Petite journée, j'ajoute des détails.
+
+*** TODO Clignotement du boss

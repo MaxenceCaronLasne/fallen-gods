@@ -153,9 +153,8 @@ g = -2h/t_h^2
 **** TODO Sauter au-dessus d'un projectile
 ***** DONE Animation Validation Saut :ASSET:PROG:
 ***** TODO SFX :ASSET:
-***** TODO Compteur :ASSET:PROG:
 
-*** TODO Interface
+*** DONE Interface
 **** DONE Background :ASSET:
 **** DONE Reset du niveau :PROG:
 
@@ -166,6 +165,8 @@ g = -2h/t_h^2
 ***** TODO Interface dynamique :PROG:ASSET:
 **** TODO Prise de dégat :PROG:ASSET:
 ***** TODO Animation dynamique :PROG:
+***** TODO Portrait damaged :ASSET:
+***** DONE Clignotement :ASSET:PROG:
 ***** TODO SFX :ASSET:
 **** TODO Paliers de barre de vie :PROG:ASSET:
 ***** TODO Patterns selon le palier de barre de vie :PROG:
