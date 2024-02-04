@@ -1,13 +1,33 @@
-[gd_scene load_steps=19 format=3 uid="uid://b11fn3e44iy06"]
+[gd_scene load_steps=21 format=3 uid="uid://b11fn3e44iy06"]
 
 [ext_resource type="Script" path="res://game_scene.gd" id="1_nhhsk"]
 [ext_resource type="Texture2D" uid="uid://d3kyvdabxtyh6" path="res://assets/background.png" id="2_if8j4"]
 [ext_resource type="PackedScene" uid="uid://bdlafp6fbnvn6" path="res://player.tscn" id="2_w52sr"]
 [ext_resource type="Texture2D" uid="uid://bqjx6tqw6pgf6" path="res://assets/ui.png" id="3_e2ut4"]
 [ext_resource type="PackedScene" uid="uid://cit65nmayb275" path="res://saw_spawner.tscn" id="3_mrat1"]
+[ext_resource type="Texture2D" uid="uid://s578ggmrusp3" path="res://assets/background_hit.png" id="3_t31g5"]
 [ext_resource type="Texture2D" uid="uid://bareggfrtnrjx" path="res://assets/black_background.png" id="5_amm0m"]
 [ext_resource type="Texture2D" uid="uid://mj3e04vhfnrg" path="res://assets/ruler.png" id="6_y2l7w"]
 [ext_resource type="Script" path="res://shake_component.gd" id="8_5kue6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7i34f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_if8j4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_t31g5")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 15.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wfaqy"]
 size = Vector2(72, 23)
@@ -99,9 +119,10 @@ _data = {
 script = ExtResource("1_nhhsk")
 metadata/_edit_vertical_guides_ = [-37.0]
 
-[node name="BackgroundSprite" type="Sprite2D" parent="."]
+[node name="BackgroundSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(17, 24)
-texture = ExtResource("2_if8j4")
+sprite_frames = SubResource("SpriteFrames_7i34f")
+autoplay = "default"
 centered = false
 
 [node name="SawSpawner" parent="." instance=ExtResource("3_mrat1")]
@@ -115,6 +136,7 @@ debug_color = Color(0, 0.647059, 0.207843, 0.419608)
 position = Vector2(65, 108)
 
 [node name="LevelDoorSprite" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(1.01587, 1.01587)
 texture = ExtResource("5_amm0m")
 centered = false

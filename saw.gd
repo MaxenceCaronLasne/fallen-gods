@@ -26,7 +26,7 @@ func maybe_destroy() -> bool:
 	_is_dead = true
 	_collision_shape.disabled = true
 	EventBus.shake.emit(1.0)
-	
+	EventBus.saw_destroyed.emit()
 	return true
 
 func _has_just_touched_floor(collision: KinematicCollision2D) -> bool:

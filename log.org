@@ -38,3 +38,14 @@ J'ai bien avancé sur l'animation procédurale. J'ai découvert les AnimationTre
 très pratique pour orchestrer des AnimationPlayer et des animations.
 Le jeu commence à être relativement juicy. Il manque peut-être quelques
 particules/gfx, et bien sur des sfx.
+
+** Pour la prochaine session ?
+
+Les deux gros derniers morceaux de la milestone, c'est l'animation du perso, et
+le son (sfx + musique). Il reste également quelques détails, comme le clignotement
+du boss.
+
+- animation perso
+- sfx
+- musique
+- détails

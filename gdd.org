@@ -157,7 +157,7 @@ g = -2h/t_h^2
 
 *** TODO Interface
 **** DONE Background :ASSET:
-**** TODO Reset du niveau :PROG:
+**** DONE Reset du niveau :PROG:
 
 ** TODO Milestone 2 : boucle de la partie
 
