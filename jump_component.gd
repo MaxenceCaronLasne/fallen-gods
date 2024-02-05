@@ -29,12 +29,12 @@ func is_falling() -> bool:
 	return _actor.velocity.y > 0
 
 func _process_apogea() -> void:
-	var is_falling := is_falling()
+	var i_f := is_falling()
 
-	if is_falling and not _was_falling_last_frame:
+	if i_f and not _was_falling_last_frame:
 		reached_apogea.emit()
 
-	_was_falling_last_frame = is_falling
+	_was_falling_last_frame = i_f
 
 func _process_gravity(delta: float) -> void:
 	var gravity := _jump_settings.get_gravity(is_falling()) * delta

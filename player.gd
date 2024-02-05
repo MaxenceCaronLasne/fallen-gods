@@ -8,7 +8,6 @@ signal finished_dying
 @onready var _on_floor_notifier := $OnFloorNotifier as OnFloorNotifier
 @onready var _jump_component := $JumpComponent as JumpComponent
 @onready var _move_component := $MoveComponent as MoveComponent
-@onready var _animation_player := $AnimationPlayer as AnimationPlayer
 @onready var _animated_sprite := $Sprite2D as AnimatedSprite2D
 
 var _is_dead: bool = false
@@ -20,9 +19,6 @@ func _ready() -> void:
 		_on_floor_notifier_just_touched_floor)
 	_jump_component.accept_input()
 	_move_component.accept_input()
-
-func _process(delta: float) -> void:
-	pass
 
 func _physics_process(_delta: float):
 	if _is_dead:
