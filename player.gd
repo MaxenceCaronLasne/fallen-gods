@@ -9,8 +9,10 @@ signal finished_dying
 @onready var _jump_component := $JumpComponent as JumpComponent
 @onready var _move_component := $MoveComponent as MoveComponent
 @onready var _animation_player := $AnimationPlayer as AnimationPlayer
+@onready var _animated_sprite := $Sprite2D as AnimatedSprite2D
 
 var _is_dead: bool = false
+var _has_reach_apogea: bool = false
 
 func _ready() -> void:
 	_hitbox.body_entered.connect(_on_hit_box_body_entered)
@@ -36,4 +38,21 @@ func _on_floor_notifier_just_touched_floor():
 	get_tree().call_group("saws", "maybe_destroy")
 	_jump_component.touch_floor()
 	_move_component.touch_floor()
+
+	_has_reach_apogea = false
+
+	_animated_sprite.play("land")
+	await _animated_sprite.animation_finished
+	_animated_sprite.play("idle")
+
 	just_touched_floor.emit()
+
+func _on_jump_component_jump_from_ground() -> void:
+	_animated_sprite.play("up")
+
+func _on_jump_component_reached_apogea() -> void:
+	if not _has_reach_apogea:
+		return
+
+	_animated_sprite.play("down")
+	_has_reach_apogea = true

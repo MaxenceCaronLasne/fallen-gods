@@ -1,6 +1,10 @@
 extends Node
 class_name JumpComponent
 
+signal jump_from_ground
+signal jump_from_air
+signal reached_apogea
+
 enum JumpType {NONE, FROM_GROUND, FROM_AIR}
 
 @export var _actor: CharacterBody2D
@@ -10,6 +14,7 @@ enum JumpType {NONE, FROM_GROUND, FROM_AIR}
 
 var _current_jump_type: JumpType = JumpType.NONE
 var _is_accepting_input: bool = false
+var _was_falling_last_frame: bool = false
 
 func accept_input() -> void:
 	_is_accepting_input = true
@@ -23,6 +28,15 @@ func touch_floor() -> void:
 func _is_falling() -> bool:
 	return _actor.velocity.y > 0
 
+func _process_apogea() -> void:
+	var is_falling := _is_falling()
+
+	if is_falling and not _was_falling_last_frame:
+		reached_apogea.emit()
+		print_debug("falling")
+
+	_was_falling_last_frame = is_falling
+
 func _process_gravity(delta: float) -> void:
 	var gravity := _jump_settings.get_gravity(_is_falling()) * delta
 	_actor.velocity.y += gravity # Velocity in pixel per second
@@ -30,23 +44,25 @@ func _process_gravity(delta: float) -> void:
 func _process_lateral_move() -> void:
 	if _actor.is_on_floor():
 		return
-	
+
 	if not _is_accepting_input:
 		return
-	
+
 	var direction := Input.get_axis("left", "right")
-	
+
 	_actor.velocity.x = direction * _lateral_speed
 
 func _process_jump(_delta: float) -> void:
 	if Input.is_action_just_pressed(_input_jump) and _current_jump_type == JumpType.NONE and _is_accepting_input:
 		_actor.velocity.y = _jump_settings.get_velocity()
 		_current_jump_type = JumpType.FROM_GROUND
+		jump_from_ground.emit()
 	elif Input.is_action_just_pressed(_input_jump) and _current_jump_type == JumpType.FROM_GROUND and _is_accepting_input:
 		var is_double_jump := true
 		_actor.velocity.y = _jump_settings.get_velocity(is_double_jump)
 		_current_jump_type = JumpType.FROM_AIR
-	
+		jump_from_air.emit()
+
 	if Input.is_action_just_released(_input_jump) and (_current_jump_type == JumpType.FROM_GROUND or _current_jump_type == JumpType.FROM_AIR) and not _is_falling() and _is_accepting_input:
 		_actor.velocity.y *= _jump_settings.get_jump_brake()
 
@@ -54,6 +70,7 @@ func _physics_process(delta: float):
 	_process_gravity(delta)
 	_process_jump(delta)
 	_process_lateral_move()
+	_process_apogea()
 
 func _on_touched_floor() -> void:
 	_current_jump_type = JumpType.NONE
