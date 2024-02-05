@@ -18,10 +18,10 @@ var _is_dead: bool = false
 func maybe_destroy() -> bool:
 	if not _is_touched:
 		return false
-	
+
 	if _is_dead:
 		return false
-	
+
 	_animation_tree.set("parameters/ShotDie/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 	_is_dead = true
 	_collision_shape.disabled = true
@@ -37,12 +37,12 @@ func _move(delta: float) -> void:
 		return
 
 	var collision := move_and_collide(velocity * delta)
-	
+
 	if collision == null:
 		return
 
 	velocity = velocity.bounce(collision.get_normal())
-	
+
 	if _has_just_touched_floor(collision):
 		_on_just_touched_floor()
 
@@ -61,7 +61,7 @@ func _on_hit_box_body_entered(_body):
 	_is_touched = true
 	_animation_tree.set("parameters/ShotSelect/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 	_pop_gfx.play("pop")
-	
+
 
 func _on_just_touched_floor():
 	if _is_dead:

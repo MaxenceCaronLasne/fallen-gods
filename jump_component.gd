@@ -25,20 +25,19 @@ func reject_input() -> void:
 func touch_floor() -> void:
 	_on_touched_floor()
 
-func _is_falling() -> bool:
+func is_falling() -> bool:
 	return _actor.velocity.y > 0
 
 func _process_apogea() -> void:
-	var is_falling := _is_falling()
+	var is_falling := is_falling()
 
 	if is_falling and not _was_falling_last_frame:
 		reached_apogea.emit()
-		print_debug("falling")
 
 	_was_falling_last_frame = is_falling
 
 func _process_gravity(delta: float) -> void:
-	var gravity := _jump_settings.get_gravity(_is_falling()) * delta
+	var gravity := _jump_settings.get_gravity(is_falling()) * delta
 	_actor.velocity.y += gravity # Velocity in pixel per second
 
 func _process_lateral_move() -> void:
@@ -63,7 +62,7 @@ func _process_jump(_delta: float) -> void:
 		_current_jump_type = JumpType.FROM_AIR
 		jump_from_air.emit()
 
-	if Input.is_action_just_released(_input_jump) and (_current_jump_type == JumpType.FROM_GROUND or _current_jump_type == JumpType.FROM_AIR) and not _is_falling() and _is_accepting_input:
+	if Input.is_action_just_released(_input_jump) and (_current_jump_type == JumpType.FROM_GROUND or _current_jump_type == JumpType.FROM_AIR) and not is_falling() and _is_accepting_input:
 		_actor.velocity.y *= _jump_settings.get_jump_brake()
 
 func _physics_process(delta: float):

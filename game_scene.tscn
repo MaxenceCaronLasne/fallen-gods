@@ -136,7 +136,6 @@ debug_color = Color(0, 0.647059, 0.207843, 0.419608)
 position = Vector2(65, 108)
 
 [node name="LevelDoorSprite" type="Sprite2D" parent="."]
-visible = false
 scale = Vector2(1.01587, 1.01587)
 texture = ExtResource("5_amm0m")
 centered = false
@@ -189,6 +188,7 @@ unique_name_in_owner = true
 script = ExtResource("8_5kue6")
 _actor = NodePath("..")
 
+[connection signal="finished_dying" from="Player" to="." method="_on_player_finished_dying"]
 [connection signal="just_died" from="Player" to="." method="_on_player_just_died"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="ended_shaking" from="Camera2D/ShakeComponent" to="." method="_on_shake_component_ended_shaking"]

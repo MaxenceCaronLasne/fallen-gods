@@ -120,13 +120,13 @@ g = -2h/t_h^2
 **** DONE Déplacement (input) :PROG:
 **** DONE Saut (input) :PROG:
 **** TODO Sprite :ASSET:
-***** TODO Animation Idle :ASSET:
-***** TODO Animation Course :ASSET:
-***** TODO Animation Saut :ASSET:
-***** TODO Animation Double-Saut :ASSET:
-***** TODO Animation Mort :ASSET:
-***** TODO Implementation Animation :PROG:
-***** TODO Anim dynamique :PROG:
+***** DONE Animation Idle :ASSET:
+***** DONE Animation Course :ASSET:
+***** DONE Animation Saut :ASSET:
+***** DONE Animation Double-Saut :ASSET:
+***** DONE Animation Mort :ASSET:
+***** DONE Implementation Animation :PROG:
+***** DONE Anim dynamique :PROG:
 **** TODO SFX :ASSET:
 ***** TODO Implementation SFX :PROG:
 

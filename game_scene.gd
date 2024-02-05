@@ -13,7 +13,8 @@ func _process(_delta):
 	pass
 
 func _on_player_just_died():
-	_animation_player.play("close_door")
+	get_tree().call_group("saws", "queue_free")
+
 
 func _on_animation_player_animation_finished(anim_name: StringName):
 	if anim_name == "close_door":
@@ -27,3 +28,8 @@ func _on_saw_destroyed() -> void:
 	_background_sprite.play("hit")
 	await _background_sprite.animation_finished
 	_background_sprite.play("default")
+
+
+func _on_player_finished_dying() -> void:
+	await get_tree().create_timer(1.0).timeout
+	_animation_player.play("close_door")

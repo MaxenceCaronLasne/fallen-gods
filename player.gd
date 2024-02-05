@@ -21,7 +21,12 @@ func _ready() -> void:
 	_jump_component.accept_input()
 	_move_component.accept_input()
 
+func _process(delta: float) -> void:
+	pass
+
 func _physics_process(_delta: float):
+	if _is_dead:
+		velocity = velocity / Vector2(1.2, 1.5)
 	move_and_slide()
 
 func _on_hit_box_body_entered(_body):
@@ -30,9 +35,20 @@ func _on_hit_box_body_entered(_body):
 
 	_is_dead = true
 	just_died.emit()
-	_animation_player.play("die")
+	EventBus.shake.emit(2.0)
+	#_animation_player.play("die")
+	_animated_sprite.play("fall")
 	_jump_component.reject_input()
 	_move_component.reject_input()
+
+	if is_on_floor():
+		await _animated_sprite.animation_finished
+		_crash()
+
+func _crash() -> void:
+	EventBus.shake.emit(2.0)
+	_animated_sprite.play("crash")
+	finished_dying.emit()
 
 func _on_floor_notifier_just_touched_floor():
 	get_tree().call_group("saws", "maybe_destroy")
@@ -41,9 +57,12 @@ func _on_floor_notifier_just_touched_floor():
 
 	_has_reach_apogea = false
 
-	_animated_sprite.play("land")
-	await _animated_sprite.animation_finished
-	_animated_sprite.play("idle")
+	if not _is_dead:
+		_animated_sprite.play("land")
+		await _animated_sprite.animation_finished
+		_animated_sprite.play("idle")
+	else:
+		_crash()
 
 	just_touched_floor.emit()
 
@@ -56,3 +75,15 @@ func _on_jump_component_reached_apogea() -> void:
 
 	_animated_sprite.play("down")
 	_has_reach_apogea = true
+
+func _on_move_component_started_walking() -> void:
+	print_debug("started_walking: ", _animated_sprite.animation)
+	if not _animated_sprite.animation == "idle":
+		await _animated_sprite.animation_finished
+	_animated_sprite.play("walk")
+
+
+func _on_move_component_stopped_walking() -> void:
+	print_debug("stopped_walking")
+	if is_on_floor():
+		_animated_sprite.play("idle")

@@ -57,3 +57,15 @@ du boss.
 Petite journée, j'ajoute des détails.
 
 *** TODO Clignotement du boss
+
+* <2024-02-05 Mon>
+
+On reprend l'animation de sprites, mais sur desktop cette fois. Ça serait cool
+de finir cette étape aujourd'hui, et peut-être de commencer la partie SFX.
+
+** DONE Animation Idle :ASSET:
+** DONE Animation Course :ASSET:
+** DONE Animation Saut :ASSET:
+** DONE Animation Double-Saut :ASSET:
+** DONE Animation Mort :ASSET:
+** DONE Implementation Animation :PROG:
