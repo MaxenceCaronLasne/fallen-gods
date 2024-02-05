@@ -69,3 +69,10 @@ de finir cette étape aujourd'hui, et peut-être de commencer la partie SFX.
 ** DONE Animation Double-Saut :ASSET:
 ** DONE Animation Mort :ASSET:
 ** DONE Implementation Animation :PROG:
+
+** Bilan de la journée
+
+Je suis content du résultat des animations, mais le système d'animation est
+bordelique maintenant. C'est bon pour la première milestone, mais ça va demander
+un refactoring. C'est pas juste pour de la branlette ingérieur, je pense que
+c'est essentiel pour éviter les bugs en tout cas pour le player.

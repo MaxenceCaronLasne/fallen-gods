@@ -160,8 +160,10 @@ g = -2h/t_h^2
 
 ** TODO Milestone 2 : boucle de la partie
 
-*** TODO Interface
-**** TODO Modules décoratifs
+*** TODO Refactoring player :PROG:
+*** TODO Interface :ASSET:PROG:
+**** TODO Modules décoratifs :ASSET:
+**** TODO Implem :PROG:
 
 *** TODO Boss
 **** TODO Barre de vie :PROG:ASSET:
