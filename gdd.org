@@ -160,6 +160,9 @@ g = -2h/t_h^2
 
 ** TODO Milestone 2 : boucle de la partie
 
+*** TODO Interface
+**** TODO Modules décoratifs
+
 *** TODO Boss
 **** TODO Barre de vie :PROG:ASSET:
 ***** TODO Interface dynamique :PROG:ASSET:
