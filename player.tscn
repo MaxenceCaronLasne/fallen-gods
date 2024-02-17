@@ -177,7 +177,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"fall",
-"speed": 10.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -309,7 +309,7 @@ _actor = NodePath("..")
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_8s4xu")
-animation = &"walk"
+animation = &"fall"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -332,5 +332,6 @@ libraries = {
 
 [connection signal="started_walking" from="MoveComponent" to="." method="_on_move_component_started_walking"]
 [connection signal="stopped_walking" from="MoveComponent" to="." method="_on_move_component_stopped_walking"]
+[connection signal="jump_from_air" from="JumpComponent" to="." method="_on_jump_component_jump_from_air"]
 [connection signal="jump_from_ground" from="JumpComponent" to="." method="_on_jump_component_jump_from_ground"]
 [connection signal="reached_apogea" from="JumpComponent" to="." method="_on_jump_component_reached_apogea"]
