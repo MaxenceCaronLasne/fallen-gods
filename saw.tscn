@@ -68,36 +68,6 @@ radius = 2.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4xpvc"]
 size = Vector2(4, 245)
 
-[sub_resource type="Animation" id="Animation_l0bwn"]
-resource_name = "idle"
-length = 1.5
-loop_mode = 1
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 6.28319]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:scale")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.75, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_8hjwu"]
 length = 0.001
 tracks/0/type = "value"
@@ -184,6 +154,36 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_l0bwn"]
+resource_name = "idle"
+length = 1.5
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_2knla"]
 resource_name = "selected"
 length = 0.3
@@ -249,7 +249,7 @@ filter_enabled = true
 filters = ["Sprite2D:scale"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_l72wf"]
-graph_offset = Vector2(-418.954, -135.406)
+graph_offset = Vector2(-86.9505, -22.3885)
 nodes/Bounce/node = SubResource("AnimationNodeAnimation_1lojc")
 nodes/Bounce/position = Vector2(-200, 140)
 nodes/Destroy/node = SubResource("AnimationNodeAnimation_evaxd")
