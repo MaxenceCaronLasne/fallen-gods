@@ -21,7 +21,11 @@ signal finished_dying
 @onready var _move_component := $MoveComponent as MoveComponent
 @onready var _animated_sprite := $Sprite2D as AnimatedSprite2D
 
-var _state: State = State.Idle
+var _state: State = State.Idle :
+	set(value):
+		#print_debug(State.keys()[_state], " -> ", State.keys()[value])
+		#print_stack()
+		_state = value
 
 func _enter_idle() -> void:
 	_state = State.Idle
@@ -48,7 +52,8 @@ func _enter_land() -> void:
 	_move_component.touch_floor()
 	_animated_sprite.play("land")
 	await _animated_sprite.animation_finished
-	_enter_idle()
+	if _state == State.Land:
+		_enter_idle()
 
 func _enter_pause() -> void:
 	_state = State.Pause
