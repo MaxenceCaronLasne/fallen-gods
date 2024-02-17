@@ -160,7 +160,7 @@ g = -2h/t_h^2
 
 ** TODO Milestone 2 : boucle de la partie
 
-*** TODO Refactoring player :PROG:
+*** DONE Refactoring player :PROG:
 *** TODO Interface :ASSET:PROG:
 **** TODO Modules décoratifs :ASSET:
 **** TODO Implem :PROG:
