@@ -14,6 +14,7 @@ enum State {
 @onready var _animation_player := $AnimationPlayer as AnimationPlayer
 @onready var _background_sprite := $BackgroundSprite as AnimatedSprite2D
 @onready var _saw_spawner := $SawSpawner as SawSpawner
+@onready var _ui := $Ui as Ui
 
 var _state: State = State.Playing
 
@@ -67,6 +68,7 @@ func _on_player_finished_dying() -> void:
 
 func _on_player_just_hit():
 	_player_stats.hit()
+	_ui.hit_player()
 
 func _on_player_stats_died():
 	_player.die()

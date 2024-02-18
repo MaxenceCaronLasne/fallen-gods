@@ -161,6 +161,7 @@ g = -2h/t_h^2
 ** TODO Milestone 2 : boucle de la partie
 
 *** DONE Refactoring player :PROG:
+
 *** TODO Interface :ASSET:PROG:
 **** TODO Modules décoratifs :ASSET:
 **** TODO Implem :PROG:
@@ -173,6 +174,7 @@ g = -2h/t_h^2
 ***** TODO Portrait damaged :ASSET:
 ***** DONE Clignotement :ASSET:PROG:
 ***** TODO SFX :ASSET:
+***** DONE Implem :PROG:
 **** TODO Paliers de barre de vie :PROG:ASSET:
 ***** TODO Patterns selon le palier de barre de vie :PROG:
 ***** TODO Juice a la fin d'un palier :PROG:
@@ -200,10 +202,11 @@ g = -2h/t_h^2
 ***** TODO Interface :ASSET:PROG:
 
 *** TODO Vies du personnage
-**** TODO Game over :PROG:
+**** DONE Game over :PROG:
 **** TODO Prise de dégats :PROG:
 ***** TODO Juice :ASSET:PROG:
-**** TODO Interface :ASSET:PROG:
+***** DONE Implem :PROG:
+**** DONE Interface :ASSET:PROG:
 
 *** TODO Patterns de projectiles
 **** TODO Abstraction sur les patterns :PROG:
