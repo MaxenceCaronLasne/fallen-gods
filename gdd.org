@@ -116,7 +116,7 @@ g = -2h/t_h^2
 
 ** TODO Milestone 1 : boucle de saut
 
-*** TODO Personnage
+*** TODO [#A] Personnage
 **** DONE Déplacement (input) :PROG:
 **** DONE Saut (input) :PROG:
 **** DONE Sprite :ASSET:
@@ -127,10 +127,10 @@ g = -2h/t_h^2
 ***** DONE Animation Mort :ASSET:
 ***** DONE Implementation Animation :PROG:
 ***** DONE Anim dynamique :PROG:
-**** TODO SFX :ASSET:
-***** TODO Implementation SFX :PROG:
+**** TODO [#A] SFX :ASSET:
+***** TODO [#A] Implementation SFX :PROG:
 
-*** TODO Projectiles
+*** TODO [#A] Projectiles
 **** DONE Déplacement :PROG:
 **** DONE Rebond :PROG:
 **** DONE Apparition/Destruction :PROG:
@@ -140,19 +140,19 @@ g = -2h/t_h^2
 ***** DONE Pulsation :PROG:
 ***** DONE Destruction (particules ?) :PROG:
 ****** DONE Screen shake :PROG:
-**** TODO SFX :ASSET:PROG:
+**** TODO [#A] SFX :ASSET:PROG:
 **** DONE Patterns de spawn simple :PROG:
 
-*** TODO Interaction personnage-projectile
+*** TODO [#A] Interaction personnage-projectile
 **** DONE Toucher un projectile
 ***** DONE Animation Game Over
 ****** KILL Personnage Destruction (doublon) :ASSET:PROG:
 ****** DONE Animation reset level :ASSET:PROG:
 ****** DONE Reset du level :PROG:
 ***** DONE Implementation :PROG:
-**** TODO Sauter au-dessus d'un projectile
+**** TODO [#A] Sauter au-dessus d'un projectile
 ***** DONE Animation Validation Saut :ASSET:PROG:
-***** TODO SFX :ASSET:
+***** TODO [#A] SFX :ASSET:
 
 *** DONE Interface
 **** DONE Background :ASSET:
@@ -163,61 +163,62 @@ g = -2h/t_h^2
 
 *** DONE Refactoring player :PROG:
 
-*** TODO Interface :ASSET:PROG:
-**** TODO Modules décoratifs :ASSET:
-**** TODO Implem :PROG:
+*** TODO [#C] Interface :ASSET:PROG:
+**** TODO [#C] Modules décoratifs :ASSET:
+**** TODO [#C] Implem :PROG:
 
-*** TODO Boss
+*** TODO [#A] Boss
 **** DONE Barre de vie :PROG:ASSET:
 ***** DONE Interface dynamique :PROG:ASSET:
-**** TODO Prise de dégat :PROG:ASSET:
-***** TODO Animation dynamique :PROG:
-***** TODO Portrait damaged :ASSET:
-***** TODO SFX :ASSET:
+**** TODO [#A] Prise de dégat :PROG:ASSET:
+***** TODO [#C] Animation dynamique :PROG:
+***** TODO [#C] Portrait damaged :ASSET:
+***** TODO [#A] SFX :ASSET:
 ***** DONE Clignotement :ASSET:PROG:
 ***** DONE Implem :PROG:
-**** TODO Paliers de barre de vie :PROG:ASSET:
-***** TODO Patterns selon le palier de barre de vie :PROG:
-***** TODO Juice a la fin d'un palier :PROG:
-**** TODO Boss battu
-***** TODO Animation dynamique :PROG:
-***** TODO Interface game over :ASSET:PROG:
-***** TODO Cinématique de fin ? :ASSET:PROG:
+**** TODO [#B] Paliers de barre de vie :PROG:ASSET:
+***** TODO [#B] Patterns selon le palier de barre de vie :PROG:
+***** TODO [#C] Juice a la fin d'un palier :PROG:
+**** TODO [#A] Boss battu
+***** TODO [#A] Animation dynamique :PROG:
+***** TODO [#A] Interface game over :ASSET:PROG:
+***** TODO [#C] Cinématique de fin ? :ASSET:PROG:
 
-*** TODO Combo multiplicateur
-**** TODO Compteur :PROG:
-**** TODO Augmentation lors des destructions multiples :PROG:
-**** TODO Cassage de combo :PROG:
-**** TODO Interface :ASSET:PROG:
-***** TODO Sprite :ASSET:
-***** TODO Animation dynamique :PROG:
+*** TODO [#C] Combo multiplicateur
+**** TODO [#C] Compteur :PROG:
+**** TODO [#C] Augmentation lors des destructions multiples :PROG:
+**** TODO [#C] Cassage de combo :PROG:
+**** TODO [#C] Interface :ASSET:PROG:
+***** TODO [#C] Sprite :ASSET:
+***** TODO [#C] Animation dynamique :PROG:
 
-*** TODO Pièces/collectables
-**** TODO Gravité, déplacement :PROG:
-**** TODO Génération par les projectiles :PROG:
-***** TODO Calcul du nombre de pièces générées :PROG:
-***** TODO Juice :ASSET:PROG:
-**** TODO Ramassage :PROG:
-***** TODO Juice :ASSET:PROG:
-**** TODO Tracker global :PROG:
-***** TODO Interface :ASSET:PROG:
+*** TODO [#B] Pièces/collectables
+**** TODO [#B] Gravité, déplacement :PROG:
+**** TODO [#B] Génération par les projectiles :PROG:
+***** TODO [#B] Calcul du nombre de pièces générées :PROG:
+***** TODO [#C] Juice :ASSET:PROG:
+**** TODO [#B] Ramassage :PROG:
+***** TODO [#C] Juice :ASSET:PROG:
+**** TODO [#B] Tracker global :PROG:
+***** TODO [#B] Interface :ASSET:PROG:
 
-*** TODO Vies du personnage
+*** TODO [#A] Vies du personnage
 **** DONE Player invuln :PROG:
 **** DONE Game over :PROG:
-**** TODO Prise de dégats :PROG:
-***** TODO Juice :ASSET:PROG:
+**** TODO [#A] Prise de dégats :PROG:
+***** DONE Juice :ASSET:PROG:
+***** TODO [#A] SFX :ASSET:PROG:
 ***** DONE Implem :PROG:
 **** DONE Interface :ASSET:PROG:
 
 
-*** TODO Patterns de projectiles
-**** TODO Abstraction sur les patterns :PROG:
-***** TODO Génération roguelikesque :PROG:
+*** TODO [#B] Patterns de projectiles
+**** TODO [#B] Abstraction sur les patterns :PROG:
+***** TODO [#B] Génération roguelikesque :PROG:
 Comme un donjon de roguelike, des pièces préfabriquées assemblées procéduralement.
-**** TODO Augmentation de la difficulté :LEVEL:
-***** TODO Patterns a difficulté variable :PROG:LEVEL:
-***** TODO Vitesse variable :PROG:
+**** TODO [#B] Augmentation de la difficulté :LEVEL:
+***** TODO [#B] Patterns a difficulté variable :PROG:LEVEL:
+***** TODO [#B] Vitesse variable :PROG:
 
 ** TODO Milestone 3 : la progression roguelike
 
