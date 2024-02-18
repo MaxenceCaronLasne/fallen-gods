@@ -69,6 +69,7 @@ func _on_player_finished_dying() -> void:
 
 func _on_player_just_hit():
 	_player_stats.hit()
+	EventBus.shake.emit(2.0)
 	_ui.hit_player()
 
 func _on_player_stats_died():

@@ -22,12 +22,27 @@ signal finished_dying
 @onready var _move_component := $MoveComponent as MoveComponent
 @onready var _animated_sprite := $Sprite2D as AnimatedSprite2D
 
+var _is_invuln: bool = false
+
 var _state: State = State.Idle :
 	set(value):
 		_state = value
 
 func die() -> void:
 	_enter_pause()
+
+func _hit() -> void:
+	if _state == State.Pause or _state == State.Fall or _state == State.Crash:
+		return
+
+	_animated_sprite.modulate.a = 0.5
+	_is_invuln = true
+	just_hit.emit()
+
+	await get_tree().create_timer(1.0).timeout
+
+	_is_invuln = false
+	_animated_sprite.modulate.a = 1.0
 
 func _enter_idle() -> void:
 	_state = State.Idle
@@ -59,6 +74,7 @@ func _enter_land() -> void:
 
 func _enter_pause() -> void:
 	_state = State.Pause
+	_animated_sprite.modulate.a = 1.0
 	_animated_sprite.pause()
 	_jump_component.process_mode = Node.PROCESS_MODE_DISABLED
 	_move_component.process_mode = Node.PROCESS_MODE_DISABLED
@@ -99,13 +115,16 @@ func _physics_process(delta: float):
 		_: move_and_slide()
 
 func _on_hit_box_body_entered(body: Saw):
+	if _is_invuln:
+		return
+
 	match _state:
 		State.Pause: return
 		State.Fall: return
 		State.Crash: return
 		_: 
-			just_hit.emit()
 			body.destroy()
+			_hit()
 
 func _on_floor_notifier_just_touched_floor():
 	match _state:

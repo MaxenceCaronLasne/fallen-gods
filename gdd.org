@@ -119,7 +119,7 @@ g = -2h/t_h^2
 *** TODO Personnage
 **** DONE Déplacement (input) :PROG:
 **** DONE Saut (input) :PROG:
-**** TODO Sprite :ASSET:
+**** DONE Sprite :ASSET:
 ***** DONE Animation Idle :ASSET:
 ***** DONE Animation Course :ASSET:
 ***** DONE Animation Saut :ASSET:
@@ -158,6 +158,7 @@ g = -2h/t_h^2
 **** DONE Background :ASSET:
 **** DONE Reset du niveau :PROG:
 
+
 ** TODO Milestone 2 : boucle de la partie
 
 *** DONE Refactoring player :PROG:
@@ -172,8 +173,8 @@ g = -2h/t_h^2
 **** TODO Prise de dégat :PROG:ASSET:
 ***** TODO Animation dynamique :PROG:
 ***** TODO Portrait damaged :ASSET:
-***** DONE Clignotement :ASSET:PROG:
 ***** TODO SFX :ASSET:
+***** DONE Clignotement :ASSET:PROG:
 ***** DONE Implem :PROG:
 **** TODO Paliers de barre de vie :PROG:ASSET:
 ***** TODO Patterns selon le palier de barre de vie :PROG:
@@ -202,11 +203,13 @@ g = -2h/t_h^2
 ***** TODO Interface :ASSET:PROG:
 
 *** TODO Vies du personnage
+**** DONE Player invuln :PROG:
 **** DONE Game over :PROG:
 **** TODO Prise de dégats :PROG:
 ***** TODO Juice :ASSET:PROG:
 ***** DONE Implem :PROG:
 **** DONE Interface :ASSET:PROG:
+
 
 *** TODO Patterns de projectiles
 **** TODO Abstraction sur les patterns :PROG:
