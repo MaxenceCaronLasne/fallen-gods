@@ -49,7 +49,7 @@ func _enter_down() -> void:
 
 func _enter_land() -> void:
 	_state = State.Land
-	get_tree().call_group("saws", "maybe_destroy")
+	just_touched_floor.emit()
 	_jump_component.touch_floor()
 	_move_component.touch_floor()
 	_animated_sprite.play("land")

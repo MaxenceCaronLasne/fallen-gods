@@ -27,6 +27,19 @@ func _ready():
 func _process(_delta):
 	pass
 
+func _destroy_saws() -> void:
+	var saws := get_tree().get_nodes_in_group("saws")
+	var nb_of_destroyed_saws := 0
+	
+	for s in saws:
+		var saw := s as Saw
+		var is_destroyed := saw.maybe_destroy()
+		if is_destroyed:
+			nb_of_destroyed_saws += 1
+
+	if nb_of_destroyed_saws > 0:
+		_boss_stats.hit(nb_of_destroyed_saws)
+
 func _stop_saws() -> void:
 	get_tree().call_group("saws", "queue_free")
 	_saw_spawner.stop()
@@ -58,3 +71,6 @@ func _on_player_just_hit():
 func _on_player_stats_died():
 	_player.die()
 	_stop_saws()
+
+func _on_player_just_touched_floor():
+	_destroy_saws()
