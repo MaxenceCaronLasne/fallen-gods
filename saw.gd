@@ -9,11 +9,19 @@ var initial_direction: Vector2 = Vector2.DOWN + Vector2.LEFT
 
 @onready var _animation_tree := $AnimationTree as AnimationTree
 @onready var _spirte := $Sprite2D as Sprite2D
-@onready var _collision_shape := $CollisionShape2D as CollisionShape2D
 @onready var _pop_gfx := $PopGfx as AnimatedSprite2D
 
 var _is_touched: bool = false
 var _is_dead: bool = false
+
+func destroy() -> void:
+	_animation_tree.set(
+		"parameters/ShotDie/request",
+		AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+	_is_dead = true
+	collision_layer = 0
+	EventBus.shake.emit(1.0)
+	_pop_gfx.visible = false
 
 func maybe_destroy() -> bool:
 	if not _is_touched:
@@ -22,11 +30,9 @@ func maybe_destroy() -> bool:
 	if _is_dead:
 		return false
 
-	_animation_tree.set("parameters/ShotDie/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-	_is_dead = true
-	_collision_shape.disabled = true
-	EventBus.shake.emit(1.0)
+	destroy()
 	EventBus.saw_destroyed.emit()
+
 	return true
 
 func _has_just_touched_floor(collision: KinematicCollision2D) -> bool:

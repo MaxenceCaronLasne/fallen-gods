@@ -7,6 +7,10 @@ enum State {
 	Resetting,
 }
 
+@export var _player_stats: PlayerStats
+@export var _boss_stats: BossStats
+
+@onready var _player := $Player as Player
 @onready var _animation_player := $AnimationPlayer as AnimationPlayer
 @onready var _background_sprite := $BackgroundSprite as AnimatedSprite2D
 @onready var _saw_spawner := $SawSpawner as SawSpawner
@@ -16,6 +20,9 @@ var _state: State = State.Playing
 func _ready():
 	_animation_player.play("open_door")
 	EventBus.saw_destroyed.connect(_on_saw_destroyed)
+	_player_stats.died.connect(_on_player_stats_died)
+	_player_stats._init()
+	_boss_stats._init()
 
 func _process(_delta):
 	pass
@@ -23,9 +30,6 @@ func _process(_delta):
 func _stop_saws() -> void:
 	get_tree().call_group("saws", "queue_free")
 	_saw_spawner.stop()
-
-func _on_player_just_died():
-	_stop_saws()
 
 func _on_shake_component_ended_shaking():
 	match _state:
@@ -47,3 +51,10 @@ func _on_player_finished_dying() -> void:
 	_animation_player.play("close_door")
 	await _animation_player.animation_finished
 	_state = State.Resetting
+
+func _on_player_just_hit():
+	_player_stats.hit()
+
+func _on_player_stats_died():
+	_player.die()
+	_stop_saws()

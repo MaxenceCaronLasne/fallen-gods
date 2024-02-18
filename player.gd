@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 enum State {
 	Idle,
@@ -12,7 +13,7 @@ enum State {
 }
 
 signal just_touched_floor
-signal just_died
+signal just_hit
 signal finished_dying
 
 @onready var _hitbox := $HitBox as Area2D
@@ -23,9 +24,10 @@ signal finished_dying
 
 var _state: State = State.Idle :
 	set(value):
-		#print_debug(State.keys()[_state], " -> ", State.keys()[value])
-		#print_stack()
 		_state = value
+
+func die() -> void:
+	_enter_pause()
 
 func _enter_idle() -> void:
 	_state = State.Idle
@@ -62,7 +64,6 @@ func _enter_pause() -> void:
 	_move_component.process_mode = Node.PROCESS_MODE_DISABLED
 
 	velocity = Vector2.ZERO
-	just_died.emit()
 	EventBus.shake.emit(2.0)
 	await get_tree().create_timer(0.3).timeout
 	_enter_fall()
@@ -97,12 +98,14 @@ func _physics_process(delta: float):
 		State.Crash: _physics_process_dying(delta)
 		_: move_and_slide()
 
-func _on_hit_box_body_entered(_body):
+func _on_hit_box_body_entered(body: Saw):
 	match _state:
 		State.Pause: return
 		State.Fall: return
 		State.Crash: return
-		_: _enter_pause()
+		_: 
+			just_hit.emit()
+			body.destroy()
 
 func _on_floor_notifier_just_touched_floor():
 	match _state:
