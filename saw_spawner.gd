@@ -1,16 +1,25 @@
 extends Area2D
 class_name SawSpawner
 
-var SAW_PRELOAD := preload("res://saw.tscn")
+enum State {
+	Running,
+	Stopped,
+}
+
+var _SAW_PRELOAD := preload("res://saw.tscn")
 
 @onready var _collision_shape := $CollisionShape2D as CollisionShape2D
-@onready var _timer := $Timer as Timer
 
-func spawn() -> void:
+var _state = State.Running
+
+func stop() -> void:
+	_state = State.Stopped
+
+func _spawn() -> void:
 	if not Toggles.spawn_saws:
 		return
 
-	var saw := SAW_PRELOAD.instantiate() as Saw
+	var saw := _SAW_PRELOAD.instantiate() as Saw
 	var zone := _get_spawn_zone()
 	saw.position = Vector2(
 		randf_range(zone.position.x, zone.size.x),
@@ -35,7 +44,11 @@ func _get_initial_direction() -> Vector2:
 	return res
 
 func _ready():
-	_timer.timeout.connect(spawn)
+	pass
 
 func _process(_delta):
 	pass
+
+func _on_timer_timeout():
+	if _state == State.Running:
+		_spawn()
