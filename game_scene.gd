@@ -22,6 +22,7 @@ func _ready():
 	_animation_player.play("open_door")
 	EventBus.saw_destroyed.connect(_on_saw_destroyed)
 	_player_stats.died.connect(_on_player_stats_died)
+	_boss_stats.updated.connect(_on_boss_updated)
 	_player_stats._init()
 	_boss_stats._init()
 
@@ -76,3 +77,6 @@ func _on_player_stats_died():
 
 func _on_player_just_touched_floor():
 	_destroy_saws()
+
+func _on_boss_updated(value: float) -> void:
+	_ui.update_boss_health(value)

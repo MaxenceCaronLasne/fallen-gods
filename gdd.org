@@ -167,8 +167,8 @@ g = -2h/t_h^2
 **** TODO Implem :PROG:
 
 *** TODO Boss
-**** TODO Barre de vie :PROG:ASSET:
-***** TODO Interface dynamique :PROG:ASSET:
+**** DONE Barre de vie :PROG:ASSET:
+***** DONE Interface dynamique :PROG:ASSET:
 **** TODO Prise de dégat :PROG:ASSET:
 ***** TODO Animation dynamique :PROG:
 ***** TODO Portrait damaged :ASSET:
