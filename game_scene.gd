@@ -1,5 +1,7 @@
 extends Node2D
 
+var _MULT_PRELOAD := preload("res://mult_sprite.tscn")
+
 enum State {
 	Playing,
 	WaitingToClose,
@@ -17,6 +19,12 @@ enum State {
 @onready var _ui := $Ui as Ui
 
 var _state: State = State.Playing
+
+func _gen_mult(mult: int) -> void:
+	var m := _MULT_PRELOAD.instantiate() as MultSprite
+	m.mult = mult
+	m.global_position = _player.global_position
+	add_child(m)
 
 func _ready():
 	_animation_player.play("open_door")
@@ -41,6 +49,9 @@ func _destroy_saws() -> void:
 
 	if nb_of_destroyed_saws > 0:
 		_boss_stats.hit(nb_of_destroyed_saws)
+	
+	if nb_of_destroyed_saws >= 2:
+		_gen_mult(nb_of_destroyed_saws)
 
 func _stop_saws() -> void:
 	get_tree().call_group("saws", "queue_free")
