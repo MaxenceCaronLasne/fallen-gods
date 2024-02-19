@@ -180,9 +180,9 @@ g = -2h/t_h^2
 ***** TODO [#B] Patterns selon le palier de barre de vie :PROG:
 ***** TODO [#C] Juice a la fin d'un palier :PROG:
 **** TODO [#A] Boss battu
-***** TODO [#A] Animation dynamique :PROG:
 ***** TODO [#A] Interface game over :ASSET:PROG:
 ***** TODO [#C] Cinématique de fin ? :ASSET:PROG:
+***** DONE [#A] Animation dynamique :PROG:
 
 *** TODO [#C] Combo multiplicateur
 **** TODO [#C] Compteur :PROG:

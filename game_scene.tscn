@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b11fn3e44iy06"]
+[gd_scene load_steps=27 format=3 uid="uid://b11fn3e44iy06"]
 
 [ext_resource type="Script" path="res://game_scene.gd" id="1_nhhsk"]
 [ext_resource type="Script" path="res://player_stats.gd" id="2_4qeua"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://boss_stats.gd" id="3_8js3f"]
 [ext_resource type="PackedScene" uid="uid://cit65nmayb275" path="res://saw_spawner.tscn" id="3_mrat1"]
 [ext_resource type="Texture2D" uid="uid://s578ggmrusp3" path="res://assets/background_hit.png" id="3_t31g5"]
+[ext_resource type="PackedScene" uid="uid://c7qqjvoo6ygc6" path="res://background.tscn" id="4_tjflg"]
 [ext_resource type="Texture2D" uid="uid://bareggfrtnrjx" path="res://assets/black_background.png" id="5_amm0m"]
 [ext_resource type="Texture2D" uid="uid://mj3e04vhfnrg" path="res://assets/ruler.png" id="6_y2l7w"]
 [ext_resource type="Script" path="res://shake_component.gd" id="8_5kue6"]
@@ -28,6 +29,17 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_if8j4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_t31g5")
+}],
+"loop": true,
+"name": &"die",
 "speed": 5.0
 }, {
 "frames": [{
@@ -118,9 +130,72 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(0, -102)]
 }
 
+[sub_resource type="Animation" id="Animation_wt2tq"]
+resource_name = "boss_die"
+length = 5.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D/ShakeComponent")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [2.0],
+"method": &"shake"
+}, {
+"args": [2.0],
+"method": &"shake"
+}, {
+"args": [2.0],
+"method": &"shake"
+}, {
+"args": [2.0],
+"method": &"shake"
+}, {
+"args": [2.0],
+"method": &"shake"
+}, {
+"args": [2.0],
+"method": &"shake"
+}, {
+"args": [2.0],
+"method": &"shake"
+}, {
+"args": [2.0],
+"method": &"shake"
+}, {
+"args": [2.0],
+"method": &"shake"
+}, {
+"args": [2.0],
+"method": &"shake"
+}, {
+"args": [4.0],
+"method": &"shake"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"die"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5okav"]
 _data = {
 "RESET": SubResource("Animation_xv5ae"),
+"boss_die": SubResource("Animation_wt2tq"),
 "close_door": SubResource("Animation_m7kaw"),
 "open_door": SubResource("Animation_7a4pl")
 }
@@ -131,7 +206,10 @@ _player_stats = SubResource("Resource_cgdht")
 _boss_stats = SubResource("Resource_red6o")
 metadata/_edit_vertical_guides_ = [-37.0]
 
+[node name="Background" parent="." instance=ExtResource("4_tjflg")]
+
 [node name="BackgroundSprite" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(17, 24)
 sprite_frames = SubResource("SpriteFrames_7i34f")
 autoplay = "default"
@@ -189,6 +267,7 @@ texture = ExtResource("6_y2l7w")
 libraries = {
 "": SubResource("AnimationLibrary_5okav")
 }
+autoplay = "RESET"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0

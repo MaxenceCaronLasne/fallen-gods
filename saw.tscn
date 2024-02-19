@@ -249,7 +249,7 @@ filter_enabled = true
 filters = ["Sprite2D:scale"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_l72wf"]
-graph_offset = Vector2(-86.9505, -22.3885)
+graph_offset = Vector2(-371.399, -48.1599)
 nodes/Bounce/node = SubResource("AnimationNodeAnimation_1lojc")
 nodes/Bounce/position = Vector2(-200, 140)
 nodes/Destroy/node = SubResource("AnimationNodeAnimation_evaxd")

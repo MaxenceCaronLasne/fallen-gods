@@ -7,6 +7,7 @@ enum State {
 	WaitingToClose,
 	Closing,
 	Resetting,
+	BossDying,
 }
 
 @export var _player_stats: PlayerStats
@@ -20,6 +21,34 @@ enum State {
 
 var _state: State = State.Playing
 
+func _enter_playing() -> void:
+	_state = State.Playing
+	_animation_player.play("open_door")
+
+func _enter_waiting_to_close() -> void:
+	_state = State.WaitingToClose
+	await get_tree().create_timer(1.0).timeout
+	_enter_closing()
+
+func _enter_closing() -> void:
+	_state = State.Closing
+	_animation_player.play("close_door")
+	await _animation_player.animation_finished
+	_enter_resetting()
+
+func _enter_resetting() -> void:
+	_state = State.Resetting
+
+func _enter_boss_dying() -> void:
+	_state = State.BossDying
+	_stop_saws()
+	await get_tree().create_timer(0.2).timeout
+	_animation_player.play("boss_die")
+	_background_sprite.play("die")
+	await _animation_player.animation_finished
+	await get_tree().create_timer(2.0).timeout
+	_animation_player.play("close_door")
+
 func _gen_mult(mult: int) -> void:
 	var m := _MULT_PRELOAD.instantiate() as MultSprite
 	m.mult = mult
@@ -27,31 +56,30 @@ func _gen_mult(mult: int) -> void:
 	add_child(m)
 
 func _ready():
-	_animation_player.play("open_door")
 	EventBus.saw_destroyed.connect(_on_saw_destroyed)
 	_player_stats.died.connect(_on_player_stats_died)
 	_boss_stats.updated.connect(_on_boss_updated)
+	_boss_stats.died.connect(_on_boss_died)
+	
 	_player_stats._init()
 	_boss_stats._init()
+	
+	_enter_playing()
 
 func _process(_delta):
 	pass
 
-func _destroy_saws() -> void:
+func _destroy_saws() -> int:
 	var saws := get_tree().get_nodes_in_group("saws")
-	var nb_of_destroyed_saws := 0
+	var res := 0
 	
 	for s in saws:
 		var saw := s as Saw
 		var is_destroyed := saw.maybe_destroy()
 		if is_destroyed:
-			nb_of_destroyed_saws += 1
+			res += 1
 
-	if nb_of_destroyed_saws > 0:
-		_boss_stats.hit(nb_of_destroyed_saws)
-	
-	if nb_of_destroyed_saws >= 2:
-		_gen_mult(nb_of_destroyed_saws)
+	return res
 
 func _stop_saws() -> void:
 	get_tree().call_group("saws", "queue_free")
@@ -71,12 +99,7 @@ func _on_saw_destroyed() -> void:
 		_background_sprite.play("default")
 
 func _on_player_finished_dying() -> void:
-	_state = State.WaitingToClose
-	await get_tree().create_timer(1.0).timeout
-	_state = State.Closing
-	_animation_player.play("close_door")
-	await _animation_player.animation_finished
-	_state = State.Resetting
+	_enter_waiting_to_close()
 
 func _on_player_just_hit():
 	_player_stats.hit()
@@ -88,7 +111,16 @@ func _on_player_stats_died():
 	_stop_saws()
 
 func _on_player_just_touched_floor():
-	_destroy_saws()
+	var nb_of_destroyed_saws := _destroy_saws()
+
+	if nb_of_destroyed_saws > 0:
+		_boss_stats.hit(nb_of_destroyed_saws)
+
+	if nb_of_destroyed_saws >= 2:
+		_gen_mult(nb_of_destroyed_saws)
 
 func _on_boss_updated(value: float) -> void:
 	_ui.update_boss_health(value)
+
+func _on_boss_died() -> void:
+	_enter_boss_dying()
