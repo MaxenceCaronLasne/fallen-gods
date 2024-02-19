@@ -76,3 +76,31 @@ Je suis content du résultat des animations, mais le système d'animation est
 bordelique maintenant. C'est bon pour la première milestone, mais ça va demander
 un refactoring. C'est pas juste pour de la branlette ingérieur, je pense que
 c'est essentiel pour éviter les bugs en tout cas pour le player.
+
+* <2024-02-19 Mon>
+
+Aujourd'hui j'ai réglé quelques ajouts esthétiques. Il me reste uniquement les
+SFX à finir avant d'attaindre une V1.
+
+** Pour demain
+
+Journée SFX.
+
+*** TODO [#A] Personnage
+**** TODO [#A] SFX :ASSET:
+***** TODO [#A] Implementation SFX :PROG:
+
+*** TODO [#A] Projectiles
+**** TODO [#A] SFX :ASSET:PROG:
+
+*** TODO [#A] Interaction personnage-projectile
+**** TODO [#A] Sauter au-dessus d'un projectile
+***** TODO [#A] SFX :ASSET:
+
+*** TODO [#A] Boss
+**** TODO [#A] Prise de dégat :PROG:ASSET:
+***** TODO [#A] SFX :ASSET:
+
+*** TODO [#A] Vies du personnage
+**** TODO [#A] Prise de dégats :PROG:
+***** TODO [#A] SFX :ASSET:PROG:
