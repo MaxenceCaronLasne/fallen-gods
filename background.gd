@@ -9,6 +9,9 @@ func die() -> void:
 	var state_machine = _animation_tree["parameters/playback"] as AnimationNodeStateMachinePlayback
 	state_machine.travel("dying")
 
+func hit() -> void:
+	_animation_player.play("hit")
+
 func _ready():
 	_animation_player.play("RESET")
 

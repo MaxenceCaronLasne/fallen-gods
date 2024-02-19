@@ -15,9 +15,9 @@ enum State {
 
 @onready var _player := $Player as Player
 @onready var _animation_player := $AnimationPlayer as AnimationPlayer
-@onready var _background_sprite := $BackgroundSprite as AnimatedSprite2D
 @onready var _saw_spawner := $SawSpawner as SawSpawner
 @onready var _ui := $Ui as Ui
+@onready var _background := $Background as Background
 
 var _state: State = State.Playing
 
@@ -44,10 +44,9 @@ func _enter_boss_dying() -> void:
 	_stop_saws()
 	await get_tree().create_timer(0.2).timeout
 	_animation_player.play("boss_die")
-	_background_sprite.play("die")
 	await _animation_player.animation_finished
 	await get_tree().create_timer(2.0).timeout
-	_animation_player.play("close_door")
+	_animation_player.play("close_door_game_over")
 
 func _gen_mult(mult: int) -> void:
 	var m := _MULT_PRELOAD.instantiate() as MultSprite
@@ -93,10 +92,7 @@ func _on_shake_component_ended_shaking():
 			get_tree().change_scene_to_file("res://game_scene.tscn")
 
 func _on_saw_destroyed() -> void:
-	_background_sprite.play("hit")
-	await _background_sprite.animation_finished
-	if _state == State.Playing:
-		_background_sprite.play("default")
+	_background.hit()
 
 func _on_player_finished_dying() -> void:
 	_enter_waiting_to_close()
