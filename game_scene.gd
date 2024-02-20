@@ -56,6 +56,7 @@ func _gen_mult(mult: int) -> void:
 
 func _ready():
 	EventBus.saw_destroyed.connect(_on_saw_destroyed)
+	EventBus.shake_ended.connect(_on_shake_ended)
 	_player_stats.died.connect(_on_player_stats_died)
 	_boss_stats.updated.connect(_on_boss_updated)
 	_boss_stats.died.connect(_on_boss_died)
@@ -84,7 +85,7 @@ func _stop_saws() -> void:
 	get_tree().call_group("saws", "queue_free")
 	_saw_spawner.stop()
 
-func _on_shake_component_ended_shaking():
+func _on_shake_ended():
 	match _state:
 		State.Playing: pass
 		State.Closing: pass

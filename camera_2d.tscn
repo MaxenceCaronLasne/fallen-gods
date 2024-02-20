@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwggfuxkotf6t"]
+
+[ext_resource type="Script" path="res://shake_component.gd" id="1_afgfa"]
+
+[node name="Camera2D" type="Camera2D"]
+anchor_mode = 0
+
+[node name="ShakeComponent" type="Node" parent="." node_paths=PackedStringArray("_actor")]
+script = ExtResource("1_afgfa")
+_actor = NodePath("..")
