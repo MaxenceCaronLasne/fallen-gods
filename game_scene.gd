@@ -21,6 +21,9 @@ enum State {
 
 var _state: State = State.Playing
 
+func shake(intensity: float) -> void:
+	EventBus.shake.emit(intensity)
+
 func _enter_playing() -> void:
 	_state = State.Playing
 	_animation_player.play("open_door")

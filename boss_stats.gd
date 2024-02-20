@@ -9,7 +9,7 @@ signal died
 var _health: float = 100.0
 
 func hit(nb: int) -> void:
-	_health -= nb * _damage_per_hit * 100
+	_health -= nb * _damage_per_hit
 
 	updated.emit(_health)
 

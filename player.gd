@@ -22,7 +22,6 @@ signal finished_dying
 @onready var _move_component := $MoveComponent as MoveComponent
 @onready var _animated_sprite := $Sprite2D as AnimatedSprite2D
 
-@onready var _step_audio_player := $StepAudioPlayer as AudioStreamPlayer
 @onready var _jump_audio_player := $JumpAudioPlayer as AudioStreamPlayer
 @onready var _land_audio_player := $LandAudioPlayer as AudioStreamPlayer
 @onready var _hurt_audio_player := $HurtAudioPlayer as AudioStreamPlayer
