@@ -86,21 +86,28 @@ SFX à finir avant d'attaindre une V1.
 
 Journée SFX.
 
-*** TODO [#A] Personnage
-**** TODO [#A] SFX :ASSET:
-***** TODO [#A] Implementation SFX :PROG:
 
-*** TODO [#A] Projectiles
-**** TODO [#A] SFX :ASSET:PROG:
+* <2024-02-20 Tue>
 
-*** TODO [#A] Interaction personnage-projectile
-**** TODO [#A] Sauter au-dessus d'un projectile
-***** TODO [#A] SFX :ASSET:
+SFX terminés, pour l'instant. Le résultat est moyen, mais il fait l'affaire pour
+l'instant. On va essayer de commencer la musique aujourd'hui. Je sais pas trop
+quelle méthode utiliser. Le mieux serait sûrement de sortir les pocket operators.
 
-*** TODO [#A] Boss
-**** TODO [#A] Prise de dégat :PROG:ASSET:
-***** TODO [#A] SFX :ASSET:
+*** DONE [#A] Personnage
+**** DONE [#A] SFX :ASSET:
+***** DONE [#A] Implementation SFX :PROG:
 
-*** TODO [#A] Vies du personnage
-**** TODO [#A] Prise de dégats :PROG:
-***** TODO [#A] SFX :ASSET:PROG:
+*** DONE [#A] Projectiles
+**** DONE [#A] SFX :ASSET:PROG:
+
+*** DONE [#A] Interaction personnage-projectile
+**** DONE [#A] Sauter au-dessus d'un projectile
+***** DONE [#A] SFX :ASSET:
+
+*** DONE [#A] Boss
+**** DONE [#A] Prise de dégat :PROG:ASSET:
+***** DONE [#A] SFX :ASSET:
+
+*** DONE [#A] Vies du personnage
+**** DONE [#A] Prise de dégats :PROG:
+***** DONE [#A] SFX :ASSET:PROG:

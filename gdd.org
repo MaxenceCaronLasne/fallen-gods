@@ -116,7 +116,7 @@ g = -2h/t_h^2
 
 ** TODO Milestone 1 : boucle de saut
 
-*** TODO [#A] Personnage
+*** DONE [#A] Personnage
 **** DONE Déplacement (input) :PROG:
 **** DONE Saut (input) :PROG:
 **** DONE Sprite :ASSET:
@@ -127,10 +127,10 @@ g = -2h/t_h^2
 ***** DONE Animation Mort :ASSET:
 ***** DONE Implementation Animation :PROG:
 ***** DONE Anim dynamique :PROG:
-**** TODO [#A] SFX :ASSET:
-***** TODO [#A] Implementation SFX :PROG:
+**** DONE [#A] SFX :ASSET:
+***** DONE [#A] Implementation SFX :PROG:
 
-*** TODO [#A] Projectiles
+*** DONE [#A] Projectiles
 **** DONE Déplacement :PROG:
 **** DONE Rebond :PROG:
 **** DONE Apparition/Destruction :PROG:
@@ -140,19 +140,19 @@ g = -2h/t_h^2
 ***** DONE Pulsation :PROG:
 ***** DONE Destruction (particules ?) :PROG:
 ****** DONE Screen shake :PROG:
-**** TODO [#A] SFX :ASSET:PROG:
+**** DONE [#A] SFX :ASSET:PROG:
 **** DONE Patterns de spawn simple :PROG:
 
-*** TODO [#A] Interaction personnage-projectile
+*** DONE [#A] Interaction personnage-projectile
 **** DONE Toucher un projectile
 ***** DONE Animation Game Over
 ****** KILL Personnage Destruction (doublon) :ASSET:PROG:
 ****** DONE Animation reset level :ASSET:PROG:
 ****** DONE Reset du level :PROG:
 ***** DONE Implementation :PROG:
-**** TODO [#A] Sauter au-dessus d'un projectile
+**** DONE [#A] Sauter au-dessus d'un projectile
 ***** DONE Animation Validation Saut :ASSET:PROG:
-***** TODO [#A] SFX :ASSET:
+***** DONE [#A] SFX :ASSET:
 
 *** DONE Interface
 **** DONE Background :ASSET:
@@ -163,17 +163,19 @@ g = -2h/t_h^2
 
 *** DONE Refactoring player :PROG:
 
+*** TODO [#A] Musique :ASSET:
+
 *** TODO [#C] Interface :ASSET:PROG:
 **** TODO [#C] Modules décoratifs :ASSET:
 **** TODO [#C] Implem :PROG:
 
-*** TODO [#A] Boss
+*** TODO [#B] Boss
 **** DONE Barre de vie :PROG:ASSET:
 ***** DONE Interface dynamique :PROG:ASSET:
-**** TODO [#A] Prise de dégat :PROG:ASSET:
+**** TODO [#C] Prise de dégat :PROG:ASSET:
 ***** TODO [#C] Animation dynamique :PROG:
 ***** TODO [#C] Portrait damaged :ASSET:
-***** TODO [#A] SFX :ASSET:
+***** DONE [#A] SFX :ASSET:
 ***** DONE Clignotement :ASSET:PROG:
 ***** DONE Implem :PROG:
 **** TODO [#B] Paliers de barre de vie :PROG:ASSET:
@@ -202,12 +204,12 @@ g = -2h/t_h^2
 **** TODO [#B] Tracker global :PROG:
 ***** TODO [#B] Interface :ASSET:PROG:
 
-*** TODO [#A] Vies du personnage
+*** DONE [#A] Vies du personnage
 **** DONE Player invuln :PROG:
 **** DONE Game over :PROG:
-**** TODO [#A] Prise de dégats :PROG:
+**** DONE [#A] Prise de dégats :PROG:
 ***** DONE Juice :ASSET:PROG:
-***** TODO [#A] SFX :ASSET:PROG:
+***** DONE [#A] SFX :ASSET:PROG:
 ***** DONE Implem :PROG:
 **** DONE Interface :ASSET:PROG:
 
