@@ -22,6 +22,12 @@ signal finished_dying
 @onready var _move_component := $MoveComponent as MoveComponent
 @onready var _animated_sprite := $Sprite2D as AnimatedSprite2D
 
+@onready var _step_audio_player := $StepAudioPlayer as AudioStreamPlayer
+@onready var _jump_audio_player := $JumpAudioPlayer as AudioStreamPlayer
+@onready var _land_audio_player := $LandAudioPlayer as AudioStreamPlayer
+@onready var _hurt_audio_player := $HurtAudioPlayer as AudioStreamPlayer
+@onready var _die_audio_player := $DieAudioPlayer as AudioStreamPlayer
+
 var _is_invuln: bool = false
 
 var _state: State = State.Idle :
@@ -38,6 +44,8 @@ func _hit() -> void:
 	_animated_sprite.modulate.a = 0.5
 	_is_invuln = true
 	just_hit.emit()
+	print_debug("hit")
+	_hurt_audio_player.play()
 
 	await get_tree().create_timer(1.0).timeout
 
@@ -57,6 +65,7 @@ func _enter_walk() -> void:
 func _enter_up() -> void:
 	_state = State.Up
 	_animated_sprite.play("up")
+	_jump_audio_player.play()
 
 func _enter_down() -> void:
 	_state = State.Down
@@ -68,6 +77,7 @@ func _enter_land() -> void:
 	_jump_component.touch_floor()
 	_move_component.touch_floor()
 	_animated_sprite.play("land")
+	_land_audio_player.play()
 	await _animated_sprite.animation_finished
 	if _state == State.Land:
 		_enter_idle()
@@ -78,6 +88,8 @@ func _enter_pause() -> void:
 	_animated_sprite.pause()
 	_jump_component.process_mode = Node.PROCESS_MODE_DISABLED
 	_move_component.process_mode = Node.PROCESS_MODE_DISABLED
+
+	_die_audio_player.play()
 
 	velocity = Vector2.ZERO
 	EventBus.shake.emit(2.0)
@@ -95,6 +107,7 @@ func _enter_fall() -> void:
 func _enter_crash() -> void:
 	_state = State.Crash
 	EventBus.shake.emit(2.0)
+	_land_audio_player.play()
 	_animated_sprite.play("crash")
 	finished_dying.emit()
 
@@ -122,7 +135,7 @@ func _on_hit_box_body_entered(body: Saw):
 		State.Pause: return
 		State.Fall: return
 		State.Crash: return
-		_: 
+		_:
 			body.destroy()
 			_hit()
 

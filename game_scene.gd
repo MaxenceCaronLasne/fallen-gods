@@ -59,10 +59,10 @@ func _ready():
 	_player_stats.died.connect(_on_player_stats_died)
 	_boss_stats.updated.connect(_on_boss_updated)
 	_boss_stats.died.connect(_on_boss_died)
-	
+
 	_player_stats._init()
 	_boss_stats._init()
-	
+
 	_enter_playing()
 
 func _process(_delta):
@@ -71,7 +71,7 @@ func _process(_delta):
 func _destroy_saws() -> int:
 	var saws := get_tree().get_nodes_in_group("saws")
 	var res := 0
-	
+
 	for s in saws:
 		var saw := s as Saw
 		var is_destroyed := saw.maybe_destroy()

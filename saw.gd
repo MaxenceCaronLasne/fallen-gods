@@ -10,6 +10,7 @@ var initial_direction: Vector2 = Vector2.DOWN + Vector2.LEFT
 @onready var _animation_tree := $AnimationTree as AnimationTree
 @onready var _spirte := $Sprite2D as Sprite2D
 @onready var _pop_gfx := $PopGfx as AnimatedSprite2D
+@onready var _saw_jumped_audio_player := $SawJumpedAudioPlayer as AudioStreamPlayer
 
 var _is_touched: bool = false
 var _is_dead: bool = false
@@ -49,9 +50,6 @@ func _move(delta: float) -> void:
 
 	velocity = velocity.bounce(collision.get_normal())
 
-	if _has_just_touched_floor(collision):
-		_on_just_touched_floor()
-
 func _ready():
 	velocity = initial_direction * _speed
 
@@ -67,9 +65,4 @@ func _on_hit_box_body_entered(_body):
 	_is_touched = true
 	_animation_tree.set("parameters/ShotSelect/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 	_pop_gfx.play("pop")
-
-
-func _on_just_touched_floor():
-	if _is_dead:
-		return
-	_animation_tree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+	_saw_jumped_audio_player.play()
