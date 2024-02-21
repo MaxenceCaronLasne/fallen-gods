@@ -14,7 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://cu1xsoo40u5mv" path="res://assets/close_door.wav" id="11_63s3t"]
 [ext_resource type="AudioStream" uid="uid://c87k70lkh3jye" path="res://assets/open_door.wav" id="12_gdki1"]
 [ext_resource type="AudioStream" uid="uid://b2dv1jbmue75s" path="res://assets/win.wav" id="14_8ecxp"]
-[ext_resource type="PackedScene" uid="uid://bwggfuxkotf6t" path="res://camera_2d.tscn" id="17_liooq"]
+[ext_resource type="PackedScene" path="res://camera_2d.tscn" id="17_liooq"]
 
 [sub_resource type="Resource" id="Resource_cgdht"]
 script = ExtResource("2_4qeua")
