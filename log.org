@@ -111,3 +111,79 @@ quelle méthode utiliser. Le mieux serait sûrement de sortir les pocket operato
 *** DONE [#A] Vies du personnage
 **** DONE [#A] Prise de dégats :PROG:
 ***** DONE [#A] SFX :ASSET:PROG:
+
+* <2024-02-22 Thu>
+
+J'ai pas pu musiquer hier. J'ai plutot fait des tests avec divers outils de
+live coding. Au final, je pense qu'il me faut un plan. Je dois savoir quoi
+composer pour pouvoir composer.
+
+Les inspirations de mon jeu :
+- mythologie grecque
+- musique byzantine
+- cyberpunk
+
+** Musique antique grecque
+
+*** Types
+
+- Hymne : adressé à un dieu
+- Paean : victoire, ou face à un péril
+- Hyporchema : musique de danse
+- Dithyrambs : celebration, pour Dionysos
+
+*** Harmonie
+
+Pas de tonique, mais une médiante : le *la*.
+
+Gamme dorienne (mi ré do si la sol fa mi descendante), avec les modes :
+- Dorien
+- Hypodorien
+- Phrygien
+- Hypophrygien
+- Lydien
+- Hypolydien
+- Mixolydien
+- Hypomixolydien (=Dorien)
+
+Trois modes harmoniques :
+- Lamentations (lydien mixte, dorien, phrygien, éolien)
+- Beuveries (ionien)
+- Ardeur virile (dorien et phrygien)
+
+Homophone (juste ou à l'octave)
+
+*** Rythmes
+
+Pieds :
+- iambe : u_
+- trochée : _u
+- tribachys : uuu
+- dactyle : _uu
+- anapeste : uu_
+- spondée : __
+
+Plusieurs pieds = mètre.
+
+Plusieurs mètres = kolon.
+
+Deux kola = phrase.
+
+Plusieurs phrases = période.
+
+Plusieurs périodes = strophe.
+
+Strophe -> antistrophe -> épode.
+
+*** Instruments
+
+- Lyre
+- Cithare
+- Pandoura
+- Aulos (double hautbois)
+- Syrinx (flute de Pan)
+- Salpinx (trompette droite)
+- Crotales (castagnettes)
+- Sistres
+- Tambourins
+- Koudounia : copper bell
