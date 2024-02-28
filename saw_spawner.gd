@@ -19,6 +19,7 @@ enum State {
 var _SAW_PRELOAD := preload("res://saw.tscn")
 
 var _state := State.Idle
+var _time_cruncher := 1
 
 func stop() -> void:
 	_state = State.Stopped
@@ -48,15 +49,19 @@ func _get_spawn_position(action_position: SpawnAction.SpawnPosition) -> Vector2:
 func _process_action(action: SpawnAction) -> void:
 	var saw := _SAW_PRELOAD.instantiate() as Saw
 	saw.global_position = _get_spawn_position(action.position)
+	saw._speed /= _time_cruncher
 	saw.initial_direction = Vector2.DOWN.rotated(deg_to_rad(-action.angle)) # negative for better ui
 	add_child(saw)
-	await get_tree().create_timer(action.then_wait).timeout
+	await get_tree().create_timer(action.then_wait * _time_cruncher).timeout
 
 func _ready() -> void:
-	pass
+	EventBus.boss_hp_tier_annihilated.connect(_on_boss_hp_annihilated)
 
 func _on_timer_timeout():
 	if not _state == State.Idle:
 		return
 
 	run(SpawnPattern.get_random_pattern())
+
+func _on_boss_hp_annihilated() -> void:
+	_time_cruncher -= 0.2

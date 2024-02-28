@@ -9,10 +9,13 @@ signal died
 var _health: float = 100.0
 
 func hit(nb: int) -> void:
+	var tmp := _health
 	_health -= nb * _damage_per_hit
 
 	updated.emit(_health)
 
+	if _health < 66 and 66 < tmp or _health < 33 and 33 < tmp:
+		EventBus.boss_hp_tier_annihilated
 	if _health < 0:
 		died.emit()
 
