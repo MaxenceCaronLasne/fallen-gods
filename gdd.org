@@ -214,13 +214,14 @@ g = -2h/t_h^2
 **** DONE Interface :ASSET:PROG:
 
 
-*** TODO [#B] Patterns de projectiles
+*** DONE [#B] Patterns de projectiles
 **** DONE [#B] Génération roguelikesque :PROG:
 ***** DONE [#B] Abstraction sur les patterns :PROG:
 Comme un donjon de roguelike, des pièces préfabriquées assemblées procéduralement.
-**** TODO [#B] Augmentation de la difficulté :LEVEL:
-***** TODO [#B] Patterns a difficulté variable :PROG:LEVEL:
+**** DONE [#B] Augmentation de la difficulté :LEVEL:
+***** DONE [#B] Patterns a difficulté variable :PROG:LEVEL:
 ***** DONE [#B] Vitesse variable :PROG:
+
 
 ** TODO Milestone 3 : la progression roguelike
 
