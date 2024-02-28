@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Toggles="*res://toggles.gd"
 EventBus="*res://event_bus.gd"
+Patterns="*res://patterns.gd"
 
 [display]
 

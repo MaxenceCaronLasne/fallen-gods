@@ -61,7 +61,7 @@ func _on_timer_timeout():
 	if not _state == State.Idle:
 		return
 
-	run(SpawnPattern.get_random_pattern())
+	run(Patterns.get_random_pattern())
 
 func _on_boss_hp_annihilated() -> void:
 	_time_cruncher -= 0.2
