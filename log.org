@@ -112,6 +112,7 @@ quelle méthode utiliser. Le mieux serait sûrement de sortir les pocket operato
 **** DONE [#A] Prise de dégats :PROG:
 ***** DONE [#A] SFX :ASSET:PROG:
 
+
 * <2024-02-22 Thu>
 
 J'ai pas pu musiquer hier. J'ai plutot fait des tests avec divers outils de
@@ -187,3 +188,30 @@ Strophe -> antistrophe -> épode.
 - Sistres
 - Tambourins
 - Koudounia : copper bell
+
+* <2024-02-28 Wed>
+
+J'ai essayé de faire la musique du jeu pendant une semaine, mais il est
+clair que j'ai pas encore les bons process. Il va falloir que je
+développe une méthode et que je m'entraine. Ou que j'accepte de juste
+utiliser mes pocket operators de manière laxe. Dans tous les cas, je
+repousse cette tache pour continuer à implem du gameplay.
+
+On va tenter cette semaine de finir la milestone 2, pour finir le jeu la semaine
+prochaine.
+
+*** TODO [#B] Pièces/collectables
+**** TODO [#B] Gravité, déplacement :PROG:
+**** TODO [#B] Génération par les projectiles :PROG:
+***** TODO [#B] Calcul du nombre de pièces générées :PROG:
+**** TODO [#B] Ramassage :PROG:
+**** TODO [#B] Tracker global :PROG:
+***** TODO [#B] Interface :ASSET:PROG:
+
+*** TODO [#B] Patterns de projectiles
+**** TODO [#B] Génération roguelikesque :PROG:
+***** DONE [#B] Abstraction sur les patterns :PROG:
+Comme un donjon de roguelike, des pièces préfabriquées assemblées procéduralement.
+**** TODO [#B] Augmentation de la difficulté :LEVEL:
+***** TODO [#B] Patterns a difficulté variable :PROG:LEVEL:
+***** TODO [#B] Vitesse variable :PROG:

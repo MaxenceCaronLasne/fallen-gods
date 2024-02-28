@@ -114,7 +114,7 @@ g = -2h/t_h^2
 
 * Todolist et milestones
 
-** TODO Milestone 1 : boucle de saut
+** DONE Milestone 1 : boucle de saut
 
 *** DONE [#A] Personnage
 **** DONE Déplacement (input) :PROG:
@@ -163,11 +163,10 @@ g = -2h/t_h^2
 
 *** DONE Refactoring player :PROG:
 
-*** TODO [#A] Musique :ASSET:
-
 *** TODO [#C] Interface :ASSET:PROG:
 **** TODO [#C] Modules décoratifs :ASSET:
 **** TODO [#C] Implem :PROG:
+
 
 *** TODO [#B] Boss
 **** DONE Barre de vie :PROG:ASSET:
@@ -194,6 +193,7 @@ g = -2h/t_h^2
 ***** TODO [#C] Sprite :ASSET:
 ***** TODO [#C] Animation dynamique :PROG:
 
+
 *** TODO [#B] Pièces/collectables
 **** TODO [#B] Gravité, déplacement :PROG:
 **** TODO [#B] Génération par les projectiles :PROG:
@@ -215,14 +215,16 @@ g = -2h/t_h^2
 
 
 *** TODO [#B] Patterns de projectiles
-**** TODO [#B] Abstraction sur les patterns :PROG:
-***** TODO [#B] Génération roguelikesque :PROG:
+**** TODO [#B] Génération roguelikesque :PROG:
+***** DONE [#B] Abstraction sur les patterns :PROG:
 Comme un donjon de roguelike, des pièces préfabriquées assemblées procéduralement.
 **** TODO [#B] Augmentation de la difficulté :LEVEL:
 ***** TODO [#B] Patterns a difficulté variable :PROG:LEVEL:
 ***** TODO [#B] Vitesse variable :PROG:
 
 ** TODO Milestone 3 : la progression roguelike
+
+*** TODO [#A] Musique :ASSET:
 
 *** TODO Magasin
 **** TODO Interface :PROG:ASSET:

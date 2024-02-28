@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://b11fn3e44iy06"]
+[gd_scene load_steps=29 format=3 uid="uid://b11fn3e44iy06"]
 
 [ext_resource type="Script" path="res://game_scene.gd" id="1_nhhsk"]
 [ext_resource type="Script" path="res://player_stats.gd" id="2_4qeua"]
@@ -23,9 +23,6 @@ _max_health = 4
 [sub_resource type="Resource" id="Resource_red6o"]
 script = ExtResource("3_8js3f")
 _damage_per_hit = 1.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wfaqy"]
-size = Vector2(72, 23)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_grfdt"]
 b = Vector2(-80, -0.000202179)
@@ -308,12 +305,19 @@ metadata/_edit_vertical_guides_ = [-37.0]
 
 [node name="Background" parent="." instance=ExtResource("4_tjflg")]
 
-[node name="SawSpawner" parent="." instance=ExtResource("3_mrat1")]
+[node name="SawSpawner" parent="." node_paths=PackedStringArray("_left_spawner", "_middle_spawner", "_right_spawner") instance=ExtResource("3_mrat1")]
+_left_spawner = NodePath("LeftMarker2D")
+_middle_spawner = NodePath("MiddleMarker2D")
+_right_spawner = NodePath("RightMarker2D")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SawSpawner"]
-position = Vector2(64, 23)
-shape = SubResource("RectangleShape2D_wfaqy")
-debug_color = Color(0, 0.647059, 0.207843, 0.419608)
+[node name="LeftMarker2D" type="Marker2D" parent="SawSpawner"]
+position = Vector2(39, 20)
+
+[node name="MiddleMarker2D" type="Marker2D" parent="SawSpawner"]
+position = Vector2(64, 20)
+
+[node name="RightMarker2D" type="Marker2D" parent="SawSpawner"]
+position = Vector2(89, 20)
 
 [node name="Player" parent="." instance=ExtResource("2_w52sr")]
 position = Vector2(65, 108)

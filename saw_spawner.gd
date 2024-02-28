@@ -1,54 +1,66 @@
-extends Area2D
+extends Node2D
 class_name SawSpawner
 
 enum State {
+	Idle,
 	Running,
 	Stopped,
 }
 
+@export var _left_spawner: Marker2D
+@export var _middle_spawner: Marker2D
+@export var _right_spawner: Marker2D
+
+@onready var _left_spawner_position := _left_spawner.global_position
+@onready var _middle_spawner_position := _middle_spawner.global_position
+@onready var _right_spawner_position := _right_spawner.global_position
+@onready var _timer := $Timer as Timer
+
 var _SAW_PRELOAD := preload("res://saw.tscn")
 
-@onready var _collision_shape := $CollisionShape2D as CollisionShape2D
-
-var _state = State.Running
+var _state = State.Idle
 
 func stop() -> void:
 	_state = State.Stopped
 
-func _spawn() -> void:
-	if not Toggles.spawn_saws:
-		return
+func run(pattern: SpawnPattern) -> void:
+	print_debug("run: ", pattern)
+	_state = State.Running
+	for action in pattern.actions:
+		print_debug("action")
+		await _process_action(action)
+	_state = State.Idle
+	_timer.start()
 
+func _get_spawn_position(action_position: SpawnAction.SpawnPosition) -> Vector2:
+	match action_position:
+		SpawnAction.SpawnPosition.Left: return _left_spawner_position
+		SpawnAction.SpawnPosition.Middle: return _middle_spawner_position
+		SpawnAction.SpawnPosition.Right: return _right_spawner_position
+		SpawnAction.SpawnPosition.Random:
+			return [
+				_left_spawner_position,
+				_middle_spawner_position,
+				_right_spawner_position
+			].pick_random() as Vector2
+		_: 
+			assert(false)
+			return Vector2.ZERO
+
+func _process_action(action: SpawnAction) -> void:
 	var saw := _SAW_PRELOAD.instantiate() as Saw
-	var zone := _get_spawn_zone()
-	saw.position = Vector2(
-		randf_range(zone.position.x, zone.size.x),
-		randf_range(zone.position.y, zone.size.y)
-	)
-	saw.initial_direction = _get_initial_direction()
+	saw.global_position = _get_spawn_position(action.position)
+	saw.initial_direction = Vector2.DOWN.rotated(deg_to_rad(action.angle))
 	add_child(saw)
+	await get_tree().create_timer(action.then_wait).timeout
 
-func _get_spawn_zone() -> Rect2:
-	var res := Rect2(
-		position + _collision_shape.position + _collision_shape.shape.get_rect().position, 
-		_collision_shape.shape.get_rect().size)
-
-	return res
-
-func _get_initial_direction() -> Vector2:
-	var res := Vector2.DOWN
-	res += [
-		Vector2.LEFT + Vector2(randf_range(0, 0.2), 0), 
-		Vector2.RIGHT + Vector2(randf_range(-0.2, 0), 0)
-	].pick_random() as Vector2
-	return res
-
-func _ready():
-	pass
-
-func _process(_delta):
+func _ready() -> void:
 	pass
 
 func _on_timer_timeout():
-	if _state == State.Running:
-		_spawn()
+	print_debug("timeout")
+	if not _state == State.Idle:
+		print_debug("ho?")
+		return
+	print_debug("waa")
+	run(SpawnPattern.get_random_pattern())
