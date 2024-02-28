@@ -209,9 +209,9 @@ prochaine.
 ***** TODO [#B] Interface :ASSET:PROG:
 
 *** TODO [#B] Patterns de projectiles
-**** TODO [#B] Génération roguelikesque :PROG:
+**** DONE [#B] Génération roguelikesque :PROG:
 ***** DONE [#B] Abstraction sur les patterns :PROG:
 Comme un donjon de roguelike, des pièces préfabriquées assemblées procéduralement.
 **** TODO [#B] Augmentation de la difficulté :LEVEL:
 ***** TODO [#B] Patterns a difficulté variable :PROG:LEVEL:
-***** TODO [#B] Vitesse variable :PROG:
+***** DONE [#B] Vitesse variable :PROG:
