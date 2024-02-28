@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="SpawnPattern" load_steps=5 format=3 uid="uid://de5lxcq2ldyiu"]
+
+[ext_resource type="Script" path="res://spawn_action.gd" id="1_saq84"]
+[ext_resource type="Script" path="res://spawn_pattern.gd" id="1_ubl8i"]
+
+[sub_resource type="Resource" id="Resource_pwf4i"]
+script = ExtResource("1_saq84")
+position = 2
+angle = -45.0
+then_wait = 0.5
+
+[sub_resource type="Resource" id="Resource_2sbs6"]
+script = ExtResource("1_saq84")
+position = 2
+angle = -45.0
+then_wait = 0.0
+
+[resource]
+script = ExtResource("1_ubl8i")
+difficulty = 2
+actions = Array[ExtResource("1_saq84")]([SubResource("Resource_pwf4i"), SubResource("Resource_2sbs6")])

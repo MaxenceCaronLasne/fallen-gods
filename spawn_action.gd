@@ -9,5 +9,5 @@ enum SpawnPosition {
 }
 	
 @export var position: SpawnPosition
-@export var angle: float ## angle from Vector2.DOWN, pos -> left, neg -> right
+@export_range(-90, 90) var angle: float ## negative
 @export var then_wait: float ## in seconds
