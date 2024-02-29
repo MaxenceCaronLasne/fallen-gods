@@ -13,6 +13,7 @@
 script = ExtResource("1_p7l0q")
 
 [node name="UiBackgroundSprite" type="Sprite2D" parent="."]
+position = Vector2(-64, -64)
 texture = ExtResource("1_rh4ok")
 centered = false
 

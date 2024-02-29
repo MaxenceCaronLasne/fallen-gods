@@ -99,7 +99,7 @@ func _destroy_coins() -> void:
 	var coins := get_tree().get_nodes_in_group("coins")
 	for c in coins:
 		var coin := c as Coin
-		c.queue_free()
+		coin.queue_free()
 
 func _stop_saws() -> void:
 	get_tree().call_group("saws", "queue_free")

@@ -15,7 +15,7 @@ func hit(nb: int) -> void:
 	updated.emit(_health)
 
 	if _health < 66 and 66 < tmp or _health < 33 and 33 < tmp:
-		EventBus.boss_hp_tier_annihilated
+		EventBus.boss_hp_tier_annihilated.emit()
 	if _health < 0:
 		died.emit()
 

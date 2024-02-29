@@ -325,10 +325,10 @@ position = Vector2(64, 20)
 [node name="RightMarker2D" type="Marker2D" parent="SawSpawner"]
 position = Vector2(89, 20)
 
-[node name="CoinSpawner" parent="." instance=ExtResource("6_hxc0d")]
-
 [node name="Player" parent="." instance=ExtResource("2_w52sr")]
 position = Vector2(65, 108)
+
+[node name="CoinSpawner" parent="." instance=ExtResource("6_hxc0d")]
 
 [node name="LevelDoorSprite" type="Sprite2D" parent="."]
 scale = Vector2(1.01587, 1.01587)

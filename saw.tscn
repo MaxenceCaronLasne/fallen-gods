@@ -1,67 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://hkyoltpvyp03"]
+[gd_scene load_steps=21 format=3 uid="uid://hkyoltpvyp03"]
 
 [ext_resource type="Script" path="res://saw.gd" id="1_w563r"]
+[ext_resource type="SpriteFrames" uid="uid://ciyrav4gpydon" path="res://pop_particles.tres" id="2_ajx72"]
 [ext_resource type="Texture2D" uid="uid://wp2lfe7da8xp" path="res://assets/projectile.png" id="2_ifafc"]
-[ext_resource type="Texture2D" uid="uid://cuv2ymbylqvxk" path="res://assets/pop_gfx.png" id="2_sh8w4"]
 [ext_resource type="AudioStream" uid="uid://bawbexkw0ooqe" path="res://assets/saw_jumped.wav" id="4_hj54k"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e8223"]
-atlas = ExtResource("2_sh8w4")
-region = Rect2(0, 0, 14, 14)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3otpj"]
-atlas = ExtResource("2_sh8w4")
-region = Rect2(14, 0, 14, 14)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xfesa"]
-atlas = ExtResource("2_sh8w4")
-region = Rect2(28, 0, 14, 14)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cjsgj"]
-atlas = ExtResource("2_sh8w4")
-region = Rect2(42, 0, 14, 14)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2iywy"]
-atlas = ExtResource("2_sh8w4")
-region = Rect2(56, 0, 14, 14)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x545k"]
-atlas = ExtResource("2_sh8w4")
-region = Rect2(70, 0, 14, 14)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_f7hbk"]
-animations = [{
-"frames": [],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_e8223")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3otpj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xfesa")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cjsgj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2iywy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x545k")
-}, {
-"duration": 1.0,
-"texture": null
-}],
-"loop": false,
-"name": &"pop",
-"speed": 20.0
-}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7k0th"]
 radius = 2.0
@@ -287,7 +229,7 @@ collision_layer = 4
 script = ExtResource("1_w563r")
 
 [node name="PopGfx" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_f7hbk")
+sprite_frames = ExtResource("2_ajx72")
 animation = &"pop"
 autoplay = "default"
 

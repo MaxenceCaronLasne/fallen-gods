@@ -19,7 +19,7 @@ enum State {
 var _SAW_PRELOAD := preload("res://saw.tscn")
 
 var _state := State.Idle
-var _time_cruncher := 1
+var _time_cruncher := 1.0
 
 func stop() -> void:
 	_state = State.Stopped
