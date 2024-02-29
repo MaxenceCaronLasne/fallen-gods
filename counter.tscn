@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://drq2axx5gef0v"]
+
+[ext_resource type="Script" path="res://counter.gd" id="1_x68gy"]
+[ext_resource type="PackedScene" uid="uid://isckqq0wxt61" path="res://number_sprite_2d.tscn" id="2_e2ikh"]
+
+[node name="Counter" type="Node2D"]
+script = ExtResource("1_x68gy")
+
+[node name="NumberSprite2D_0" parent="." instance=ExtResource("2_e2ikh")]
+position = Vector2(16, 0)
+
+[node name="NumberSprite2D_1" parent="." instance=ExtResource("2_e2ikh")]
+position = Vector2(12, 0)
+
+[node name="NumberSprite2D_2" parent="." instance=ExtResource("2_e2ikh")]
+position = Vector2(8, 0)
+
+[node name="NumberSprite2D_3" parent="." instance=ExtResource("2_e2ikh")]
+position = Vector2(4, 0)
+
+[node name="NumberSprite2D_4" parent="." instance=ExtResource("2_e2ikh")]

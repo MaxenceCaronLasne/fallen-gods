@@ -68,7 +68,8 @@ func _ready():
 
 	_player_stats._init()
 	_boss_stats._init()
-
+	_inventory.setup()
+	
 	_enter_playing()
 
 func _process(_delta):
@@ -93,6 +94,12 @@ func _destroy_saws() -> int:
 	_generate_coins(destroyed_saws)
 
 	return len(destroyed_saws)
+
+func _destroy_coins() -> void:
+	var coins := get_tree().get_nodes_in_group("coins")
+	for c in coins:
+		var coin := c as Coin
+		c.queue_free()
 
 func _stop_saws() -> void:
 	get_tree().call_group("saws", "queue_free")
@@ -119,6 +126,7 @@ func _on_player_just_hit():
 func _on_player_stats_died():
 	_player.die()
 	_stop_saws()
+	_destroy_coins()
 
 func _on_player_just_touched_floor():
 	var nb_of_destroyed_saws := _destroy_saws()

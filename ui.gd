@@ -5,6 +5,7 @@ class_name Ui
 @onready var _first_jauge := $FirstTextureProgressBar as TextureProgressBar
 @onready var _second_jauge := $SecondTextureProgressBar as TextureProgressBar
 @onready var _third_jauge := $ThirdTextureProgressBar as TextureProgressBar
+@onready var _coin_counter := $CoinCounter as Counter
 
 func hit_player() -> void:
 	_player_ui.frame -= 1
@@ -27,6 +28,7 @@ func _init_boss_jauge() -> void:
 func _ready():
 	_init_player_jauge()
 	_init_boss_jauge()
+	EventBus.update_coin_score.connect(_coin_counter.set_value)
 
 func _process(_delta):
 	pass
