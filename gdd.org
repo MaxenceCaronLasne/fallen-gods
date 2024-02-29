@@ -161,28 +161,28 @@ g = -2h/t_h^2
 
 ** TODO Milestone 2 : boucle de la partie
 
-*** DONE Refactoring player :PROG:
 
 *** TODO [#C] Interface :ASSET:PROG:
 **** TODO [#C] Modules décoratifs :ASSET:
 **** TODO [#C] Implem :PROG:
 
-*** TODO [#C] Boss
-**** DONE Barre de vie :PROG:ASSET:
-***** DONE Interface dynamique :PROG:ASSET:
+*** TODO [#B] Boss
 **** TODO [#C] Prise de dégat :PROG:ASSET:
 ***** TODO [#C] Animation dynamique :PROG:
 ***** TODO [#C] Portrait damaged :ASSET:
 ***** DONE [#A] SFX :ASSET:
 ***** DONE Clignotement :ASSET:PROG:
 ***** DONE Implem :PROG:
-**** TODO [#C] Paliers de barre de vie :PROG:ASSET:
+**** TODO [#B] Paliers de barre de vie :PROG:ASSET:
+***** TODO [#B] Juice a la fin d'un palier :PROG:ASSET:
+****** TODO [#B] SFX :ASSET:
 ***** DONE [#B] Patterns selon le palier de barre de vie :PROG:
-***** TODO [#C] Juice a la fin d'un palier :PROG:
 **** TODO [#C] Boss battu
-***** DONE [#A] Interface game over :ASSET:PROG:
 ***** TODO [#C] Cinématique de fin ? :ASSET:PROG:
+***** DONE [#B] Interface game over :ASSET:PROG:
 ***** DONE [#A] Animation dynamique :PROG:
+**** DONE Barre de vie :PROG:ASSET:
+***** DONE Interface dynamique :PROG:ASSET:
 
 *** TODO [#C] Combo multiplicateur
 **** TODO [#C] Compteur :PROG:
@@ -192,18 +192,21 @@ g = -2h/t_h^2
 ***** TODO [#C] Sprite :ASSET:
 ***** TODO [#C] Animation dynamique :PROG:
 
-*** TODO [#C] Pièces/collectables
-**** TODO [#C] Génération par les projectiles :PROG:
+*** TODO [#B] Pièces/collectables
+**** TODO [#B] Ramassage :PROG:
+***** TODO [#B] Juice :ASSET:PROG:
+****** TODO [#B] SFX
+****** DONE [#B] GFX
+**** DONE [#C] Génération par les projectiles :PROG:
+***** DONE [#C] Juice :ASSET:PROG:
 ***** DONE [#B] Calcul du nombre de pièces générées :PROG:
-***** TODO [#C] Juice :ASSET:PROG:
-**** TODO [#C] Ramassage :PROG:
-***** TODO [#C] Juice :ASSET:PROG:
 ***** DONE Collision destruction
 **** DONE [#B] Tracker global :PROG:
 ***** DONE [#B] Interface :ASSET:PROG:
 ***** DONE Resource inventaire
 
 **** DONE [#B] Gravité, déplacement :PROG:
+
 *** DONE [#A] Vies du personnage
 **** DONE Player invuln :PROG:
 **** DONE Game over :PROG:
@@ -213,7 +216,7 @@ g = -2h/t_h^2
 ***** DONE Implem :PROG:
 **** DONE Interface :ASSET:PROG:
 
-
+*** DONE Refactoring player :PROG:
 *** DONE [#B] Patterns de projectiles
 **** DONE [#B] Génération roguelikesque :PROG:
 ***** DONE [#B] Abstraction sur les patterns :PROG:
@@ -227,22 +230,22 @@ Comme un donjon de roguelike, des pièces préfabriquées assemblées procédura
 
 *** TODO [#A] Musique :ASSET:
 
-*** TODO Magasin
-**** TODO Interface :PROG:ASSET:
-**** TODO Acheter élément :PROG:
+*** TODO [#A] Magasin
+**** TODO [#A] Interface :PROG:ASSET:
+**** TODO [#A] Acheter élément :PROG:
 
-*** TODO Inventaire
-**** TODO Équiper/Déséquiper :PROG:
-**** TODO Interface :ASSET:PROG:
+*** TODO [#A] Inventaire
+**** TODO [#A] Équiper/Déséquiper :PROG:
+**** TODO [#A] Interface :ASSET:PROG:
 
-*** TODO Double-sauts :PROG:
-**** TODO Dash :PROG:ASSET:
-**** TODO TP :PROG:ASSET:
-**** TODO Dive :PROG:ASSET:
-**** TODO Avantage aléatoire sur un double-saut :PROG:
+*** TODO [#A] Double-sauts :PROG:
+**** TODO [#A] Dash :PROG:ASSET:
+**** TODO [#A] TP :PROG:ASSET:
+**** TODO [#A] Dive :PROG:ASSET:
+**** TODO [#B] Avantage aléatoire sur un double-saut :PROG:
 
-*** TODO Vies supplémentaires :PROG:
-**** TODO Avantage à jouer avec moins de PV :PROG:
+*** TODO [#A] Vies supplémentaires :PROG:
+**** TODO [#B] Avantage à jouer avec moins de PV :PROG:
 
-*** TODO Saut supplémentaires :PROG:
-**** TODO Avantage à jouer avec moins de sauts :PROG:
+*** TODO [#B] Saut supplémentaires :PROG:
+**** TODO [#B] Avantage à jouer avec moins de sauts :PROG:

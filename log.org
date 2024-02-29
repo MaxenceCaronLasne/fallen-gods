@@ -214,10 +214,24 @@ Aujourd'hui c'est l'heure du JUICY COINSSS!!! On ajoute des collectables pour
 chaque projectile tué, des pièces. On donne 1 pièce par projectile multiplié par
 le nombre de projectile détruits simultanéments.
 
-*** TODO [#B] Pièces/collectables
+*** DONE [#B] Pièces/collectables
 **** DONE [#B] Gravité, déplacement :PROG:
 **** DONE [#B] Génération par les projectiles :PROG:
 ***** DONE [#B] Calcul du nombre de pièces générées :PROG:
 **** DONE [#B] Ramassage :PROG:
-**** TODO [#B] Tracker global :PROG:
-***** TODO [#B] Interface :ASSET:PROG:
+**** DONE [#B] Tracker global :PROG:
+***** DONE [#B] Interface :ASSET:PROG:
+
+** Pour la prochaine fois
+
+Il faut faire du SFX, et on aura terminé les taches importantes pour la milestone 2.
+
+*** TODO [#B] Boss
+**** TODO [#B] Paliers de barre de vie :PROG:ASSET:
+***** TODO [#B] Juice a la fin d'un palier :PROG:ASSET:
+****** TODO [#B] SFX :ASSET:
+
+*** TODO [#B] Pièces/collectables
+**** TODO [#B] Ramassage :PROG:
+***** TODO [#B] Juice :ASSET:PROG:
+****** TODO [#B] SFX
