@@ -200,14 +200,6 @@ repousse cette tache pour continuer à implem du gameplay.
 On va tenter cette semaine de finir la milestone 2, pour finir le jeu la semaine
 prochaine.
 
-*** TODO [#B] Pièces/collectables
-**** TODO [#B] Gravité, déplacement :PROG:
-**** TODO [#B] Génération par les projectiles :PROG:
-***** TODO [#B] Calcul du nombre de pièces générées :PROG:
-**** TODO [#B] Ramassage :PROG:
-**** TODO [#B] Tracker global :PROG:
-***** TODO [#B] Interface :ASSET:PROG:
-
 *** DONE [#B] Patterns de projectiles
 **** DONE [#B] Génération roguelikesque :PROG:
 ***** DONE [#B] Abstraction sur les patterns :PROG:
@@ -215,3 +207,17 @@ Comme un donjon de roguelike, des pièces préfabriquées assemblées procédura
 **** DONE [#B] Augmentation de la difficulté :LEVEL:
 ***** DONE [#B] Patterns a difficulté variable :PROG:LEVEL:
 ***** DONE [#B] Vitesse variable :PROG:
+
+* <2024-02-29 Thu>
+
+Aujourd'hui c'est l'heure du JUICY COINSSS!!! On ajoute des collectables pour
+chaque projectile tué, des pièces. On donne 1 pièce par projectile multiplié par
+le nombre de projectile détruits simultanéments.
+
+*** TODO [#B] Pièces/collectables
+**** DONE [#B] Gravité, déplacement :PROG:
+**** DONE [#B] Génération par les projectiles :PROG:
+***** DONE [#B] Calcul du nombre de pièces générées :PROG:
+**** DONE [#B] Ramassage :PROG:
+**** TODO [#B] Tracker global :PROG:
+***** TODO [#B] Interface :ASSET:PROG:

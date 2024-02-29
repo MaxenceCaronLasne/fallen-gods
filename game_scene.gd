@@ -10,6 +10,7 @@ enum State {
 	BossDying,
 }
 
+@export var _inventory: Inventory
 @export var _player_stats: PlayerStats
 @export var _boss_stats: BossStats
 
@@ -18,6 +19,7 @@ enum State {
 @onready var _saw_spawner := $SawSpawner as SawSpawner
 @onready var _ui := $Ui as Ui
 @onready var _background := $Background as Background
+@onready var _coin_spawner := $CoinSpawner as CoinSpawner
 
 var _state: State = State.Playing
 
@@ -72,17 +74,25 @@ func _ready():
 func _process(_delta):
 	pass
 
+func _generate_coins(destroyed_saws: Array[Saw]) -> void:
+	var positions: Array[Vector2] = []
+	for s in destroyed_saws:
+		positions.append(s.global_position)
+
+	_coin_spawner.generate_coins(positions)
+
 func _destroy_saws() -> int:
 	var saws := get_tree().get_nodes_in_group("saws")
-	var res := 0
+	var destroyed_saws: Array[Saw] = []
 
 	for s in saws:
 		var saw := s as Saw
-		var is_destroyed := saw.maybe_destroy()
-		if is_destroyed:
-			res += 1
+		if saw.maybe_destroy():
+			destroyed_saws.append(saw)
 
-	return res
+	_generate_coins(destroyed_saws)
+
+	return len(destroyed_saws)
 
 func _stop_saws() -> void:
 	get_tree().call_group("saws", "queue_free")

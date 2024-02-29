@@ -167,7 +167,6 @@ g = -2h/t_h^2
 **** TODO [#C] Modules décoratifs :ASSET:
 **** TODO [#C] Implem :PROG:
 
-
 *** TODO [#B] Boss
 **** DONE Barre de vie :PROG:ASSET:
 ***** DONE Interface dynamique :PROG:ASSET:
@@ -193,17 +192,18 @@ g = -2h/t_h^2
 ***** TODO [#C] Sprite :ASSET:
 ***** TODO [#C] Animation dynamique :PROG:
 
-
 *** TODO [#B] Pièces/collectables
-**** TODO [#B] Gravité, déplacement :PROG:
-**** TODO [#B] Génération par les projectiles :PROG:
-***** TODO [#B] Calcul du nombre de pièces générées :PROG:
+**** TODO [#C] Génération par les projectiles :PROG:
+***** DONE [#B] Calcul du nombre de pièces générées :PROG:
 ***** TODO [#C] Juice :ASSET:PROG:
-**** TODO [#B] Ramassage :PROG:
+**** TODO [#C] Ramassage :PROG:
 ***** TODO [#C] Juice :ASSET:PROG:
+***** DONE Collision destruction
 **** TODO [#B] Tracker global :PROG:
 ***** TODO [#B] Interface :ASSET:PROG:
+***** DONE Resource inventaire
 
+**** DONE [#B] Gravité, déplacement :PROG:
 *** DONE [#A] Vies du personnage
 **** DONE Player invuln :PROG:
 **** DONE Game over :PROG:

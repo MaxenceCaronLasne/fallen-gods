@@ -292,6 +292,15 @@ position = Vector2(0, -2)
 shape = SubResource("CapsuleShape2D_ajxl5")
 debug_color = Color(0, 0.65098, 0.113725, 0.419608)
 
+[node name="CoinBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CoinBox"]
+position = Vector2(0, -2)
+shape = SubResource("CapsuleShape2D_ajxl5")
+debug_color = Color(0, 0.65098, 0.113725, 0.419608)
+
 [node name="StepAudioPlayer" type="AudioStreamPlayer" parent="."]
 
 [node name="JumpAudioPlayer" type="AudioStreamPlayer" parent="."]
@@ -311,3 +320,4 @@ stream = ExtResource("10_beiry")
 [connection signal="jump_from_air" from="JumpComponent" to="." method="_on_jump_component_jump_from_air"]
 [connection signal="jump_from_ground" from="JumpComponent" to="." method="_on_jump_component_jump_from_ground"]
 [connection signal="reached_apogea" from="JumpComponent" to="." method="_on_jump_component_reached_apogea"]
+[connection signal="body_entered" from="CoinBox" to="." method="_on_coin_box_body_entered"]

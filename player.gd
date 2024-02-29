@@ -180,3 +180,7 @@ func _on_jump_component_jump_from_air():
 	match _state:
 		State.Up: _enter_up()
 		State.Down: _enter_up()
+
+func _on_coin_box_body_entered(body):
+	var coin := body as Coin
+	coin.pick()
