@@ -192,10 +192,10 @@ g = -2h/t_h^2
 ***** TODO [#C] Sprite :ASSET:
 ***** TODO [#C] Animation dynamique :PROG:
 
-*** TODO [#B] Pièces/collectables
-**** TODO [#B] Ramassage :PROG:
-***** TODO [#B] Juice :ASSET:PROG:
-****** TODO [#B] SFX
+*** DONE [#B] Pièces/collectables
+**** DONE [#B] Ramassage :PROG:
+***** DONE [#B] Juice :ASSET:PROG:
+****** DONE [#B] SFX
 ****** DONE [#B] GFX
 **** DONE [#C] Génération par les projectiles :PROG:
 ***** DONE [#C] Juice :ASSET:PROG:

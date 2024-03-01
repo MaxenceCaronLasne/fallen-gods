@@ -226,12 +226,18 @@ le nombre de projectile détruits simultanéments.
 
 Il faut faire du SFX, et on aura terminé les taches importantes pour la milestone 2.
 
+* <2024-03-01 Fri>
+
+Je vais jouer avec GodotSfrx, un plugin de synthetiseur de sons, car je sens qu'il peut
+etre un réel avantage pour réduire le pipeline de sfx du jeu, voire meme servir de
+synthé tout court, dans Godot.
+
 *** TODO [#B] Boss
 **** TODO [#B] Paliers de barre de vie :PROG:ASSET:
 ***** TODO [#B] Juice a la fin d'un palier :PROG:ASSET:
 ****** TODO [#B] SFX :ASSET:
 
-*** TODO [#B] Pièces/collectables
-**** TODO [#B] Ramassage :PROG:
-***** TODO [#B] Juice :ASSET:PROG:
-****** TODO [#B] SFX
+*** DONE [#B] Pièces/collectables
+**** DONE [#B] Ramassage :PROG:
+***** DONE [#B] Juice :ASSET:PROG:
+****** DONE [#B] SFX

@@ -22,10 +22,11 @@ signal finished_dying
 @onready var _move_component := $MoveComponent as MoveComponent
 @onready var _animated_sprite := $Sprite2D as AnimatedSprite2D
 
-@onready var _jump_audio_player := $JumpAudioPlayer as AudioStreamPlayer
-@onready var _land_audio_player := $LandAudioPlayer as AudioStreamPlayer
-@onready var _hurt_audio_player := $HurtAudioPlayer as AudioStreamPlayer
-@onready var _die_audio_player := $DieAudioPlayer as AudioStreamPlayer
+@onready var _jump_from_ground_audio_player := $JumpFromGroundSfxrStreamPlayer as AudioStreamPlayer
+@onready var _jump_from_air_audio_player := $JumpFromAirSfxrStreamPlayer as AudioStreamPlayer
+@onready var _land_audio_player := $LandSfxrStreamPlayer as AudioStreamPlayer
+@onready var _hurt_audio_player := $HurtSfxrStreamPlayer as AudioStreamPlayer
+@onready var _die_audio_player := $DieSfxrStreamPlayer as AudioStreamPlayer
 
 var _is_invuln: bool = false
 
@@ -61,10 +62,16 @@ func _enter_walk() -> void:
 	_state = State.Walk
 	_animated_sprite.play("walk")
 
-func _enter_up() -> void:
+func _enter_up(is_from_ground: bool) -> void:
 	_state = State.Up
 	_animated_sprite.play("up")
-	_jump_audio_player.play()
+	if is_from_ground:
+		_jump_from_ground_audio_player.pitch_scale = randf_range(0.90, 1.10)
+		_jump_from_ground_audio_player.play()
+	else:
+		_jump_from_ground_audio_player.stop()
+		_jump_from_air_audio_player.pitch_scale = randf_range(0.80, 1.00)
+		_jump_from_air_audio_player.play()
 
 func _enter_down() -> void:
 	_state = State.Down
@@ -149,9 +156,9 @@ func _on_floor_notifier_just_touched_floor():
 
 func _on_jump_component_jump_from_ground() -> void:
 	match _state:
-		State.Idle: _enter_up()
-		State.Walk: _enter_up()
-		State.Land: _enter_up()
+		State.Idle: _enter_up(true)
+		State.Walk: _enter_up(true)
+		State.Land: _enter_up(true)
 		_: push_warning("jump from ground in unprocessed state: ", _state)
 
 func _on_jump_component_reached_apogea() -> void:
@@ -178,8 +185,8 @@ func _on_move_component_stopped_walking() -> void:
 
 func _on_jump_component_jump_from_air():
 	match _state:
-		State.Up: _enter_up()
-		State.Down: _enter_up()
+		State.Up: _enter_up(false)
+		State.Down: _enter_up(false)
 
 func _on_coin_box_body_entered(body):
 	var coin := body as Coin

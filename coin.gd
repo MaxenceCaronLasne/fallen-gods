@@ -5,10 +5,12 @@ class_name Coin
 
 @onready var _pop_gfx := $ParticlesSprite2D as AnimatedSprite2D
 @onready var _sprite_2d := $Sprite2D as Sprite2D
+@onready var _pick_up_sound := $SfxrStreamPlayer as AudioStreamPlayer
 
 func pick() -> void:
 	EventBus.coin_picked.emit()
 	_pop_gfx.play("pop")
+	_pick_up_sound.play()
 	_sprite_2d.visible = false
 	_pop_gfx.visible = true
 	
