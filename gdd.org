@@ -246,6 +246,13 @@ Comme un donjon de roguelike, des pièces préfabriquées assemblées procédura
 
 *** TODO [#A] Vies supplémentaires :PROG:
 **** TODO [#B] Avantage à jouer avec moins de PV :PROG:
+**** TODO [#A] Implem vies variables :PROG:
+***** TODO [#A] Dans le code :PROG:
+***** TODO [#A] Dans l'interface :PROG:
+
+*** TODO [#A] Smart bomb :PROG:ASSET:
+**** TODO [#B] Activable manuellement ou lors d'une touche ? :ASK:
 
 *** TODO [#B] Saut supplémentaires :PROG:
 **** TODO [#B] Avantage à jouer avec moins de sauts :PROG:
+**** DONE Implem nuple saut

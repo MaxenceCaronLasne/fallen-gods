@@ -241,3 +241,20 @@ synthé tout court, dans Godot.
 **** DONE [#B] Ramassage :PROG:
 ***** DONE [#B] Juice :ASSET:PROG:
 ****** DONE [#B] SFX
+
+** Bilan d'aujourd'hui
+
+J'ai ajouté les sfx pour les pièces, mais j'ai pas trop d'idées pour la fin du
+palier du boss.  Tout ça ira avec les animations du boss, que j'ai envie de
+faire plus tard.
+
+On passe maintenant à la partie ++, la partie magasin et progression rogue-lite.
+
+Pour prouver que la partie rogue-like a un sens, il faut d'abord implem les sauts
+alternatifs.
+
+*** TODO [#A] Double-sauts :PROG:
+**** TODO [#A] Dash :PROG:ASSET:
+**** TODO [#A] TP :PROG:ASSET:
+**** TODO [#A] Dive :PROG:ASSET:
+**** TODO [#B] Avantage aléatoire sur un double-saut :PROG:
