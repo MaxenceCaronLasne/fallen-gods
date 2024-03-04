@@ -18,9 +18,8 @@ signal finished_dying
 
 @onready var _hitbox := $HitBox as Area2D
 @onready var _on_floor_notifier := $OnFloorNotifier as OnFloorNotifier
-@onready var _jump_component := $JumpComponent as JumpComponent
-@onready var _move_component := $MoveComponent as MoveComponent
 @onready var _animated_sprite := $Sprite2D as AnimatedSprite2D
+@onready var _movement_state_machine := $MovementStateMachine as MovementStateMachine
 
 @onready var _jump_from_ground_audio_player := $JumpFromGroundSfxrStreamPlayer as AudioStreamPlayer
 @onready var _jump_from_air_audio_player := $JumpFromAirSfxrStreamPlayer as AudioStreamPlayer
@@ -55,8 +54,6 @@ func _hit() -> void:
 func _enter_idle() -> void:
 	_state = State.Idle
 	_animated_sprite.play("idle")
-	_jump_component.accept_input()
-	_move_component.accept_input()
 
 func _enter_walk() -> void:
 	_state = State.Walk
@@ -80,8 +77,6 @@ func _enter_down() -> void:
 func _enter_land() -> void:
 	_state = State.Land
 	just_touched_floor.emit()
-	_jump_component.touch_floor()
-	_move_component.touch_floor()
 	_animated_sprite.play("land")
 	_land_audio_player.play()
 	await _animated_sprite.animation_finished
@@ -92,8 +87,7 @@ func _enter_pause() -> void:
 	_state = State.Pause
 	_animated_sprite.modulate.a = 1.0
 	_animated_sprite.pause()
-	_jump_component.process_mode = Node.PROCESS_MODE_DISABLED
-	_move_component.process_mode = Node.PROCESS_MODE_DISABLED
+	_movement_state_machine.stop()
 
 	_die_audio_player.play()
 
@@ -191,3 +185,47 @@ func _on_jump_component_jump_from_air():
 func _on_coin_box_body_entered(body):
 	var coin := body as Coin
 	coin.pick()
+
+func _on_move_state_started_walking():
+	match _state:
+		State.Idle: _enter_walk()
+		State.Up: pass
+		State.Land: pass
+		_: push_warning("started walking from unprocessed state: ", _state)
+
+func _on_move_state_stopped_walking():
+	match _state:
+		State.Idle: pass
+		State.Walk: _enter_idle()
+		State.Up: pass # Stop walking when jumping
+		State.Down: pass
+		State.Land: pass
+		_: push_warning("stopped walking from unprocessed state: ", _state)
+
+
+func _on_jump_state_jump_from_ground():
+	match _state:
+		State.Idle: _enter_up(true)
+		State.Walk: _enter_up(true)
+		State.Land: _enter_up(true)
+		_: push_warning("jump from ground in unprocessed state: ", _state)
+
+
+func _on_jump_state_reached_apogea():
+	match _state:
+		State.Idle: pass # Falling when game starts
+		State.Up: _enter_down()
+		_: push_warning("reached apogea in unprocessed state: ", _state)
+
+
+func _on_double_jump_state_jump_from_air():
+	match _state:
+		State.Up: _enter_up(false)
+		State.Down: _enter_up(false)
+
+
+func _on_double_jump_state_reached_apogea():
+	match _state:
+		State.Idle: pass # Falling when game starts
+		State.Up: _enter_down()
+		_: push_warning("reached apogea in unprocessed state: ", _state)

@@ -25,6 +25,9 @@ func stop() -> void:
 	_state = State.Stopped
 
 func run(pattern: SpawnPattern) -> void:
+	if not Toggles.spawn_saws:
+		return
+
 	_state = State.Running
 	for action in pattern.actions:
 		await _process_action(action)

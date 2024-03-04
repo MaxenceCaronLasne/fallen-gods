@@ -1,20 +1,15 @@
-[gd_scene load_steps=43 format=3 uid="uid://bdlafp6fbnvn6"]
+[gd_scene load_steps=45 format=3 uid="uid://bdlafp6fbnvn6"]
 
 [ext_resource type="Texture2D" uid="uid://lidrjc7f8inu" path="res://assets/player.png" id="1_sh734"]
 [ext_resource type="Script" path="res://player.gd" id="1_sjyse"]
-[ext_resource type="Script" path="res://jump_component.gd" id="2_jluf1"]
-[ext_resource type="Script" path="res://move_component.gd" id="3_mwi1w"]
+[ext_resource type="Script" path="res://movement_state_machine.gd" id="2_3033c"]
+[ext_resource type="Script" path="res://move_state.gd" id="3_thy2a"]
 [ext_resource type="Script" path="res://on_floor_notifier.gd" id="4_a2idf"]
-[ext_resource type="Script" path="res://jump_settings.gd" id="4_v8uii"]
+[ext_resource type="Resource" uid="uid://c3pukr0ciak1g" path="res://jump_setting_1.tres" id="4_lvntc"]
+[ext_resource type="Script" path="res://jump_state.gd" id="4_x5dgk"]
+[ext_resource type="Script" path="res://double_jump_state.gd" id="5_8jic5"]
+[ext_resource type="Script" path="res://dash_state.gd" id="6_vv0vt"]
 [ext_resource type="Script" path="res://addons/godot_sfxr/SfxrStreamPlayer.gd" id="11_l8ip8"]
-
-[sub_resource type="Resource" id="Resource_43prj"]
-script = ExtResource("4_v8uii")
-_jump_brake = 0.3
-_max_height = 40.0
-_peak_duration = 0.3
-_fall_duration = 0.2
-_double_jump_max_height = 30.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xbsow"]
 atlas = ExtResource("1_sh734")
@@ -266,17 +261,34 @@ data = PackedByteArray(246, 232, 225, 222, 221, 220, 220, 216, 200, 191, 187, 18
 collision_layer = 2
 script = ExtResource("1_sjyse")
 
-[node name="MoveComponent" type="Node" parent="." node_paths=PackedStringArray("_actor")]
-script = ExtResource("3_mwi1w")
-_actor = NodePath("..")
-_speed = 1000.0
-_max_speed = 4000.0
+[node name="MovementStateMachine" type="Node" parent="." node_paths=PackedStringArray("_move_state_node", "_jump_state_node", "_double_jump_state_node")]
+script = ExtResource("2_3033c")
+_move_state_node = NodePath("MoveState")
+_jump_state_node = NodePath("JumpState")
+_double_jump_state_node = NodePath("DoubleJumpState")
 
-[node name="JumpComponent" type="Node" parent="." node_paths=PackedStringArray("_actor")]
-script = ExtResource("2_jluf1")
-_actor = NodePath("..")
-_jump_settings = SubResource("Resource_43prj")
-_lateral_speed = 90.0
+[node name="MoveState" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("_actor")]
+script = ExtResource("3_thy2a")
+_speed = 60.0
+_jump_settings = ExtResource("4_lvntc")
+_actor = NodePath("../..")
+
+[node name="JumpState" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("_actor")]
+script = ExtResource("4_x5dgk")
+_jump_settings = ExtResource("4_lvntc")
+_lateral_speed = 80.0
+_actor = NodePath("../..")
+
+[node name="DoubleJumpState" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("_actor")]
+script = ExtResource("5_8jic5")
+_jump_settings = ExtResource("4_lvntc")
+_max_double_jump = 1
+_lateral_speed = 80.0
+_actor = NodePath("../..")
+
+[node name="DashState" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("_actor")]
+script = ExtResource("6_vv0vt")
+_actor = NodePath("../..")
 
 [node name="OnFloorNotifier" type="Node" parent="." node_paths=PackedStringArray("_actor")]
 script = ExtResource("4_a2idf")
@@ -456,9 +468,10 @@ low_pass_filter/resonance = 0.0060423
 high_pass_filter/cutoff_frequency = 0.038852
 high_pass_filter/cutoff_sweep = 0.032668
 
-[connection signal="started_walking" from="MoveComponent" to="." method="_on_move_component_started_walking"]
-[connection signal="stopped_walking" from="MoveComponent" to="." method="_on_move_component_stopped_walking"]
-[connection signal="jump_from_air" from="JumpComponent" to="." method="_on_jump_component_jump_from_air"]
-[connection signal="jump_from_ground" from="JumpComponent" to="." method="_on_jump_component_jump_from_ground"]
-[connection signal="reached_apogea" from="JumpComponent" to="." method="_on_jump_component_reached_apogea"]
+[connection signal="started_walking" from="MovementStateMachine/MoveState" to="." method="_on_move_state_started_walking"]
+[connection signal="stopped_walking" from="MovementStateMachine/MoveState" to="." method="_on_move_state_stopped_walking"]
+[connection signal="jump_from_ground" from="MovementStateMachine/JumpState" to="." method="_on_jump_state_jump_from_ground"]
+[connection signal="reached_apogea" from="MovementStateMachine/JumpState" to="." method="_on_jump_state_reached_apogea"]
+[connection signal="jump_from_air" from="MovementStateMachine/DoubleJumpState" to="." method="_on_double_jump_state_jump_from_air"]
+[connection signal="reached_apogea" from="MovementStateMachine/DoubleJumpState" to="." method="_on_double_jump_state_reached_apogea"]
 [connection signal="body_entered" from="CoinBox" to="." method="_on_coin_box_body_entered"]

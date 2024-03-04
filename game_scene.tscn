@@ -326,7 +326,7 @@ position = Vector2(64, 20)
 position = Vector2(89, 20)
 
 [node name="Player" parent="." instance=ExtResource("2_w52sr")]
-position = Vector2(65, 108)
+position = Vector2(65, 116)
 
 [node name="CoinSpawner" parent="." instance=ExtResource("6_hxc0d")]
 
