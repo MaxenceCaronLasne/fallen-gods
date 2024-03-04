@@ -253,6 +253,11 @@ On passe maintenant à la partie ++, la partie magasin et progression rogue-lite
 Pour prouver que la partie rogue-like a un sens, il faut d'abord implem les sauts
 alternatifs.
 
+
+* <2024-03-04 Mon>
+
+Nouvelle semaine ! Aujourd'hui on implémente les doubles-sauts !
+
 *** TODO [#A] Double-sauts :PROG:
 **** TODO [#A] Dash :PROG:ASSET:
 **** TODO [#A] TP :PROG:ASSET:

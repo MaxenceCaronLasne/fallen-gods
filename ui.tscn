@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bapgolibq7usw"]
+[gd_scene load_steps=10 format=3 uid="uid://bapgolibq7usw"]
 
 [ext_resource type="Script" path="res://ui.gd" id="1_p7l0q"]
 [ext_resource type="Texture2D" uid="uid://bqjx6tqw6pgf6" path="res://assets/ui.png" id="1_rh4ok"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://eii487oomcel" path="res://assets/ui_boss_jauge_bar.png" id="6_6sc2p"]
 [ext_resource type="Texture2D" uid="uid://d1bwhsuhbk0lu" path="res://assets/ui_boss_jauge_frame_alt.png" id="7_skh53"]
 [ext_resource type="PackedScene" uid="uid://drq2axx5gef0v" path="res://counter.tscn" id="8_cllbd"]
+[ext_resource type="Texture2D" uid="uid://cy7ghyoj3r52v" path="res://assets/drachma_symbol.png" id="9_5x0et"]
 
 [node name="Ui" type="Node2D"]
 script = ExtResource("1_p7l0q")
@@ -68,4 +69,9 @@ texture_over = ExtResource("7_skh53")
 texture_progress = ExtResource("6_6sc2p")
 
 [node name="CoinCounter" parent="." instance=ExtResource("8_cllbd")]
-position = Vector2(1, 1)
+position = Vector2(4, 85)
+
+[node name="Sprite2D" type="Sprite2D" parent="CoinCounter"]
+position = Vector2(-3, -2)
+texture = ExtResource("9_5x0et")
+centered = false
