@@ -43,7 +43,6 @@ func _hit() -> void:
 	_animated_sprite.modulate.a = 0.5
 	_is_invuln = true
 	just_hit.emit()
-	print_debug("hit")
 	_hurt_audio_player.play()
 
 	await get_tree().create_timer(1.0).timeout

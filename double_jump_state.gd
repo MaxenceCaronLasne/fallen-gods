@@ -74,6 +74,5 @@ func _process(delta: float):
 	_process_break()
 
 func _on_touched_floor() -> void:
-	print_debug("touched floor")
 	_current_state = State.Idle
 	exited.emit(MovementStateMachine.State.Move)
