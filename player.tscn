@@ -265,7 +265,7 @@ script = ExtResource("1_sjyse")
 script = ExtResource("2_3033c")
 _move_state_node = NodePath("MoveState")
 _jump_state_node = NodePath("JumpState")
-_double_jump_state_node = NodePath("DoubleJumpState")
+_double_jump_state_node = NodePath("DashState")
 
 [node name="MoveState" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("_actor")]
 script = ExtResource("3_thy2a")
