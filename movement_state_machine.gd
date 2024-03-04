@@ -23,12 +23,12 @@ func start(new_state: State) -> void:
 		State.DoubleJump: _double_jump_state_node.enter()
 
 func stop() -> void:
-	_current_state = State.Pause
-
 	match _current_state:
 		State.Move: _move_state_node.exit()
 		State.Jump: _jump_state_node.exit()
 		State.DoubleJump: _double_jump_state_node.exit()
+
+	_current_state = State.Pause
 
 func _ready():
 	_move_state_node.exited.connect(_on_state_exited)

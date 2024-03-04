@@ -87,6 +87,7 @@ func _enter_pause() -> void:
 	_animated_sprite.modulate.a = 1.0
 	_animated_sprite.pause()
 	_movement_state_machine.stop()
+	velocity = Vector2.ZERO
 
 	_die_audio_player.play()
 
