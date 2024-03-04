@@ -29,6 +29,7 @@ func _process(delta: float):
 		if _is_shaking:
 			_is_shaking = false
 			EventBus.shake_ended.emit()
+			_actor.position = _initial_position
 		return
 
 	var offset_x := _noise.get_noise_2d(0, _noise_offset) * _shake_factor
