@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="JumpSettings" load_steps=2 format=3 uid="uid://c3pukr0ciak1g"]
+
+[ext_resource type="Script" path="res://jump_settings.gd" id="1_uwu05"]
+
+[resource]
+script = ExtResource("1_uwu05")
+_jump_brake = 0.3
+_max_height = 40.0
+_peak_duration = 0.3
+_fall_duration = 0.2
+_double_jump_max_height = 30.0
