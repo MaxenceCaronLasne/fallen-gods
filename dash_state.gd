@@ -25,7 +25,7 @@ func enter() -> void:
 	_current_state = State.NotDashing
 	exited.emit(MovementStateMachine.State.Move)
 
-func _process(delta):
+func _process(_delta):
 	if _current_state == State.NotDashing:
 		return
 	
