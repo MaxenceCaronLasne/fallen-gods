@@ -235,14 +235,14 @@ Comme un donjon de roguelike, des pièces préfabriquées assemblées procédura
 **** TODO [#A] Acheter élément :PROG:
 
 *** TODO [#A] Inventaire
-**** TODO [#A] Équiper/Déséquiper :PROG:
+**** KILL [#A] Équiper/Déséquiper :PROG:
 **** TODO [#A] Interface :ASSET:PROG:
 
-*** TODO [#A] Double-sauts :PROG:
-**** TODO [#A] Dash :PROG:ASSET:
-**** TODO [#A] TP :PROG:ASSET:
-**** TODO [#A] Dive :PROG:ASSET:
-**** TODO [#B] Avantage aléatoire sur un double-saut :PROG:
+*** DONE [#A] Double-sauts :PROG:
+**** DONE [#A] Dash :PROG:ASSET:
+**** KILL [#A] TP :PROG:ASSET:
+**** KILL [#A] Dive :PROG:ASSET:
+**** KILL [#B] Avantage aléatoire sur un double-saut :PROG:
 
 *** TODO [#A] Vies supplémentaires :PROG:
 **** TODO [#B] Avantage à jouer avec moins de PV :PROG:

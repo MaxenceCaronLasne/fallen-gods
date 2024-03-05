@@ -270,6 +270,27 @@ Cette fois on a tout en place pour implem des doubles sauts !
 
 *** TODO [#A] Double-sauts :PROG:
 **** DONE [#A] Dash :PROG:ASSET:
-**** TODO [#A] TP :PROG:ASSET:
-**** TODO [#A] Dive :PROG:ASSET:
-**** TODO [#B] Avantage aléatoire sur un double-saut :PROG:
+**** KILL [#A] TP :PROG:ASSET:
+**** KILL [#A] Dive :PROG:ASSET:
+**** KILL [#B] Avantage aléatoire sur un double-saut :PROG:
+
+** Milieu de journée
+
+En réfléchissant bien, je ne suis pas sur que les autres double-sauts
+fonctionnent. Le TP c'est un dash, et le dive c'est un dash bas. Le
+dash en lui-meme est pas si mal.
+
+Je pense qu'on peut maintenant partir sur la partie magasin. On peut
+se baser sur les upgrades de PV et de sauts, peut-etre sur le dash,
+les smart bombs pour commencer. A partir de là, on aura peut-etre une
+bonne base pour la derniere ligne droite.
+
+Une base magasin + inventaire, pour commencer.
+
+*** TODO [#A] Magasin
+**** TODO [#A] Interface :PROG:ASSET:
+**** TODO [#A] Acheter élément :PROG:
+
+*** TODO [#A] Inventaire
+**** KILL [#A] Équiper/Déséquiper :PROG:
+**** TODO [#A] Interface :ASSET:PROG:
