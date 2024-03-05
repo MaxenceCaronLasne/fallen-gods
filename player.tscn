@@ -468,6 +468,9 @@ low_pass_filter/resonance = 0.0060423
 high_pass_filter/cutoff_frequency = 0.038852
 high_pass_filter/cutoff_sweep = 0.032668
 
+[node name="InvulnTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="started_walking" from="MovementStateMachine/MoveState" to="." method="_on_move_state_started_walking"]
 [connection signal="stopped_walking" from="MovementStateMachine/MoveState" to="." method="_on_move_state_stopped_walking"]
 [connection signal="jump_from_ground" from="MovementStateMachine/JumpState" to="." method="_on_jump_state_jump_from_ground"]
@@ -475,3 +478,4 @@ high_pass_filter/cutoff_sweep = 0.032668
 [connection signal="jump_from_air" from="MovementStateMachine/DoubleJumpState" to="." method="_on_double_jump_state_jump_from_air"]
 [connection signal="reached_apogea" from="MovementStateMachine/DoubleJumpState" to="." method="_on_double_jump_state_reached_apogea"]
 [connection signal="body_entered" from="CoinBox" to="." method="_on_coin_box_body_entered"]
+[connection signal="timeout" from="InvulnTimer" to="." method="_on_invuln_timer_timeout"]

@@ -26,6 +26,7 @@ signal finished_dying
 @onready var _land_audio_player := $LandSfxrStreamPlayer as AudioStreamPlayer
 @onready var _hurt_audio_player := $HurtSfxrStreamPlayer as AudioStreamPlayer
 @onready var _die_audio_player := $DieSfxrStreamPlayer as AudioStreamPlayer
+@onready var _invuln_timer := $InvulnTimer as Timer
 
 var _is_invuln: bool = false
 
@@ -36,19 +37,26 @@ var _state: State = State.Idle :
 func die() -> void:
 	_enter_pause()
 
+func add_invuln_time(value: float) -> void:
+	if _state == State.Pause or _state == State.Fall or _state == State.Crash:
+		return
+
+	if not _invuln_timer.is_stopped():
+		_invuln_timer.wait_time += value
+		return
+
+	_invuln_timer.wait_time = value
+	_invuln_timer.start()
+	_is_invuln = true
+	_animated_sprite.modulate.a = 0.5
+
 func _hit() -> void:
 	if _state == State.Pause or _state == State.Fall or _state == State.Crash:
 		return
 
-	_animated_sprite.modulate.a = 0.5
-	_is_invuln = true
 	just_hit.emit()
 	_hurt_audio_player.play()
-
-	await get_tree().create_timer(1.0).timeout
-
-	_is_invuln = false
-	_animated_sprite.modulate.a = 1.0
+	add_invuln_time(1.0)
 
 func _enter_idle() -> void:
 	_state = State.Idle
@@ -83,7 +91,9 @@ func _enter_land() -> void:
 		_enter_idle()
 
 func _enter_pause() -> void:
+	print_debug("enter pause")
 	_state = State.Pause
+	_invuln_timer.stop()
 	_animated_sprite.modulate.a = 1.0
 	_animated_sprite.pause()
 	_movement_state_machine.stop()
@@ -229,3 +239,7 @@ func _on_double_jump_state_reached_apogea():
 		State.Idle: pass # Falling when game starts
 		State.Up: _enter_down()
 		_: push_warning("reached apogea in unprocessed state: ", _state)
+
+func _on_invuln_timer_timeout():
+	_is_invuln = false
+	_animated_sprite.modulate.a = 1.0

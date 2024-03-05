@@ -38,9 +38,9 @@ func _check_walking(direction: float) -> void:
 		started_walking.emit()
 		_was_walking_last_frame = true
 
-func _process_movement() -> void:
+func _process_movement(delta: float) -> void:
 	if not _actor.is_on_floor():
-		_actor.velocity.y += _jump_settings.get_gravity(true)
+		_actor.velocity.y += _jump_settings.get_gravity(true) * delta
 		return
 
 	if Input.is_action_just_pressed("jump"):
@@ -54,7 +54,7 @@ func _process_movement() -> void:
 	_check_walking(direction)
 	_actor.velocity.x = direction * _speed
 
-func _process(_delta):
+func _process(delta: float):
 	match _current_state:
 		State.NotOnFloor: return
-		State.OnFloor: _process_movement()
+		State.OnFloor: _process_movement(delta)
