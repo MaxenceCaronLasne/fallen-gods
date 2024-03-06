@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlr8qgy8hd8cf"]
+
+[ext_resource type="Script" path="res://store_ui.gd" id="1_c2y1y"]
+[ext_resource type="Script" path="res://store_shelf.gd" id="2_ftsw1"]
+[ext_resource type="Resource" uid="uid://dk8qc0vimncgk" path="res://inventory_res.tres" id="3_s8hml"]
+
+[node name="StoreScene" type="Node2D"]
+
+[node name="StoreUi" type="Control" parent="." node_paths=PackedStringArray("_currently_focus")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c2y1y")
+_currently_focus = NodePath("LivesBuy")
+
+[node name="LivesBuy" type="ColorRect" parent="StoreUi"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 48.0
+offset_bottom = 48.0
+focus_neighbor_right = NodePath("../JumpsBut")
+color = Color(0.921569, 0.0980392, 0.682353, 1)
+script = ExtResource("2_ftsw1")
+_inventory = ExtResource("3_s8hml")
+_price = 3
+
+[node name="JumpsBut" type="ColorRect" parent="StoreUi"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 8.0
+offset_right = 120.0
+offset_bottom = 48.0
+focus_neighbor_left = NodePath("../LivesBuy")
+color = Color(0.921569, 0.0980392, 0.682353, 1)
+script = ExtResource("2_ftsw1")
+_inventory = ExtResource("3_s8hml")
+_price = 5

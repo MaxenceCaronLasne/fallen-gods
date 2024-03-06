@@ -21,7 +21,6 @@ func increment() -> void:
 func _update() -> void:
 	for i in range(len(_numbers)):
 		var order := 10 ** i
-		#_numbers[i].visible = _value >= order
 		@warning_ignore("integer_division")
 		_numbers[i].frame = (_value / order) % 10
 

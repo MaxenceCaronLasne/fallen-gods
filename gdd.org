@@ -232,17 +232,17 @@ Comme un donjon de roguelike, des pièces préfabriquées assemblées procédura
 
 *** TODO [#A] Magasin
 **** TODO [#A] Interface :PROG:ASSET:
+***** TODO [#A] Buy more lives button
+***** TODO [#A] Buy more jumps button
+***** TODO [#A] Curseur
+***** TODO [#A] Selectionner les boutons avec les directions
 **** TODO [#A] Acheter élément :PROG:
+***** TODO [#A] Valider un élément
+***** TODO [#A] Appliquer l'upgrade
 
 *** TODO [#A] Inventaire
 **** KILL [#A] Équiper/Déséquiper :PROG:
 **** TODO [#A] Interface :ASSET:PROG:
-
-*** DONE [#A] Double-sauts :PROG:
-**** DONE [#A] Dash :PROG:ASSET:
-**** KILL [#A] TP :PROG:ASSET:
-**** KILL [#A] Dive :PROG:ASSET:
-**** KILL [#B] Avantage aléatoire sur un double-saut :PROG:
 
 *** TODO [#A] Vies supplémentaires :PROG:
 **** TODO [#B] Avantage à jouer avec moins de PV :PROG:
@@ -256,3 +256,9 @@ Comme un donjon de roguelike, des pièces préfabriquées assemblées procédura
 *** TODO [#B] Saut supplémentaires :PROG:
 **** TODO [#B] Avantage à jouer avec moins de sauts :PROG:
 **** DONE Implem nuple saut
+
+*** DONE [#A] Double-sauts :PROG:
+**** DONE [#A] Dash :PROG:ASSET:
+**** KILL [#A] TP :PROG:ASSET:
+**** KILL [#A] Dive :PROG:ASSET:
+**** KILL [#B] Avantage aléatoire sur un double-saut :PROG:
