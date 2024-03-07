@@ -69,7 +69,7 @@ func _ready():
 	_player_stats._init()
 	_boss_stats._init()
 	_inventory.setup()
-	
+
 	_enter_playing()
 
 func _process(_delta):
