@@ -39,3 +39,4 @@ color = Color(0.921569, 0.0980392, 0.682353, 1)
 script = ExtResource("2_ftsw1")
 _inventory = ExtResource("3_s8hml")
 _price = 5
+_kind = 1

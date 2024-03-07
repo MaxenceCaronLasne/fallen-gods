@@ -1,17 +1,40 @@
 extends Control
 class_name StoreShelf
 
+enum Kind {
+	Life,
+	Jump,
+}
+
 @export var _inventory: Inventory
 @export var _price: int
+@export var _kind: Kind
 
 func maybe_buy() -> bool:
-	return _inventory.maybe_pay(_price)
+	if not _inventory.is_able_to_pay(_price):
+		return false
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+	match _kind:
+		Kind.Life: return _maybe_buy_life()
+		Kind.Jump: return _maybe_buy_jump()
+		_: 
+			assert(false, "invalid kind")
+			return false
 
+func _maybe_buy_life() -> bool:
+	if not _inventory.is_able_to_upgrade_live():
+		return false
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+	_inventory.pay(_price)
+	_inventory.upgrade_live()
+	
+	return true
+
+func _maybe_buy_jump() -> bool:
+	if not _inventory.is_able_to_upgrade_jump():
+		return false
+	
+	_inventory.pay(_price)
+	_inventory.upgrade_jump()
+	
+	return true
