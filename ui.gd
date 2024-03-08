@@ -11,15 +11,14 @@ enum ChoosingMenu {
 	GoToStore,
 }
 
-@onready var _player_ui := $UiPlayerSprite2D as Sprite2D
 @onready var _first_jauge := $FirstTextureProgressBar as TextureProgressBar
 @onready var _second_jauge := $SecondTextureProgressBar as TextureProgressBar
 @onready var _third_jauge := $ThirdTextureProgressBar as TextureProgressBar
-@onready var _coin_counter := $CoinCounter as Counter
 @onready var _restart_label := $RestartLabel as Sprite2D
 @onready var _go_to_store_label := $StoreLabel as Sprite2D
 @onready var _cursor := $Cursor as Sprite2D
 @onready var _bip_sfxr_stream_player := $BipSfxrStreamPlayer as AudioStreamPlayer
+@onready var _real_player_ui := $PlayerUI as PlayerUI
 
 var _state := State.Idle
 var _menu_state := ChoosingMenu.Restart
@@ -40,7 +39,7 @@ func _show_game_over_menu() -> void:
 	_cursor.visible = true
 
 func hit_player() -> void:
-	_player_ui.frame -= 1
+	_real_player_ui.hit()
 
 func update_boss_health(value: float) -> void:
 	_first_jauge.value = value
@@ -48,9 +47,7 @@ func update_boss_health(value: float) -> void:
 	_third_jauge.value = value
 
 func _init_player_jauge() -> void:
-	for i in range(min(_inventory.live_level + 1, 5)):
-		_player_ui.frame = i
-		await get_tree().create_timer(0.2).timeout
+	_real_player_ui.init()
 
 func _init_boss_jauge() -> void:
 	for i in range(101):
@@ -60,7 +57,6 @@ func _init_boss_jauge() -> void:
 func _ready():
 	_init_player_jauge()
 	_init_boss_jauge()
-	EventBus.update_coin_score.connect(_coin_counter.set_value)
 	_hide_game_over_menu()
 
 func _process_choosing(_delta: float) -> void:

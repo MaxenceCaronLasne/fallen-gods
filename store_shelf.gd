@@ -39,6 +39,7 @@ func _maybe_buy_life() -> bool:
 
 	_inventory.pay(_price)
 	_inventory.upgrade_live()
+	frame += 1
 
 	return true
 
@@ -48,5 +49,6 @@ func _maybe_buy_jump() -> bool:
 
 	_inventory.pay(_price)
 	_inventory.upgrade_jump()
+	frame += 1
 
 	return true

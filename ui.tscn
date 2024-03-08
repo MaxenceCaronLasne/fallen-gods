@@ -1,14 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://bapgolibq7usw"]
+[gd_scene load_steps=13 format=3 uid="uid://bapgolibq7usw"]
 
 [ext_resource type="Script" path="res://ui.gd" id="1_p7l0q"]
 [ext_resource type="Texture2D" uid="uid://bqjx6tqw6pgf6" path="res://assets/ui.png" id="1_rh4ok"]
-[ext_resource type="Texture2D" uid="uid://daf46t4wev8n2" path="res://assets/ui_player.png" id="2_7ipdr"]
+[ext_resource type="PackedScene" uid="uid://b8dflih38kycx" path="res://player_ui.tscn" id="3_opxas"]
 [ext_resource type="Texture2D" uid="uid://cr4fcdb2odk6a" path="res://assets/ui_boss_jauge_background.png" id="4_5btiy"]
 [ext_resource type="Texture2D" uid="uid://ckr31jlymb57a" path="res://assets/ui_boss_jauge_frame.png" id="5_rcslr"]
 [ext_resource type="Texture2D" uid="uid://eii487oomcel" path="res://assets/ui_boss_jauge_bar.png" id="6_6sc2p"]
 [ext_resource type="Texture2D" uid="uid://d1bwhsuhbk0lu" path="res://assets/ui_boss_jauge_frame_alt.png" id="7_skh53"]
-[ext_resource type="PackedScene" uid="uid://drq2axx5gef0v" path="res://counter.tscn" id="8_cllbd"]
-[ext_resource type="Texture2D" uid="uid://cy7ghyoj3r52v" path="res://assets/drachma_symbol.png" id="9_5x0et"]
 [ext_resource type="Texture2D" uid="uid://mxo232x6uvxv" path="res://assets/restart_label.png" id="10_6i6mu"]
 [ext_resource type="Texture2D" uid="uid://ga067uc7n7aw" path="res://assets/go-to-store-label.png" id="11_kvw64"]
 [ext_resource type="Texture2D" uid="uid://bjq4q20icek2j" path="res://assets/cursor-choose.png" id="12_owi4v"]
@@ -25,11 +23,7 @@ position = Vector2(-64, -64)
 texture = ExtResource("1_rh4ok")
 centered = false
 
-[node name="UiPlayerSprite2D" type="Sprite2D" parent="."]
-position = Vector2(12, 54)
-texture = ExtResource("2_7ipdr")
-hframes = 5
-frame = 4
+[node name="PlayerUI" parent="." instance=ExtResource("3_opxas")]
 
 [node name="FirstTextureProgressBar" type="TextureProgressBar" parent="."]
 offset_left = 121.0
@@ -74,14 +68,6 @@ nine_patch_stretch = true
 texture_under = ExtResource("4_5btiy")
 texture_over = ExtResource("7_skh53")
 texture_progress = ExtResource("6_6sc2p")
-
-[node name="CoinCounter" parent="." instance=ExtResource("8_cllbd")]
-position = Vector2(4, 85)
-
-[node name="Sprite2D" type="Sprite2D" parent="CoinCounter"]
-position = Vector2(-3, -2)
-texture = ExtResource("9_5x0et")
-centered = false
 
 [node name="RestartLabel" type="Sprite2D" parent="."]
 position = Vector2(30, 65)
