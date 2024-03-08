@@ -29,7 +29,6 @@ signal finished_dying
 @onready var _invuln_timer := $InvulnTimer as Timer
 
 var _is_invuln: bool = false
-var _inventory := load("res://inventory.tres") as Inventory
 
 var _state: State = State.Idle :
 	set(value):

@@ -63,7 +63,7 @@ func _ready():
 	EventBus.update_coin_score.connect(_coin_counter.set_value)
 	_hide_game_over_menu()
 
-func _process_choosing(delta: float) -> void:
+func _process_choosing(_delta: float) -> void:
 	if Input.is_action_just_pressed("up"):
 		_menu_state = ChoosingMenu.Restart
 		_cursor.position = _restart_label.position
