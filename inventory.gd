@@ -4,8 +4,8 @@ class_name Inventory
 const MAX_LEVEL := 4
 
 var _coins := 0
-var _live_level := 1
-var _jump_level := 1
+@export var live_level := 1
+@export var jump_level := 0
 
 func setup() -> void:
 	EventBus.update_coin_score.emit(_coins)
@@ -15,18 +15,20 @@ func is_able_to_pay(price: int) -> bool:
 	return _coins - price >= 0
 
 func is_able_to_upgrade_live() -> bool:
-	return _live_level < MAX_LEVEL
+	return live_level < MAX_LEVEL
 
 func is_able_to_upgrade_jump() -> bool:
-	return _jump_level < MAX_LEVEL
+	return jump_level < MAX_LEVEL
 
 func upgrade_live() -> void:
 	assert(is_able_to_upgrade_live())
-	_jump_level += 1
+	live_level += 1
+	EventBus.update_live_value.emit(live_level)
 
 func upgrade_jump() -> void:
 	assert(is_able_to_upgrade_jump())
-	_jump_level += 1
+	jump_level += 1
+	EventBus.update_jump_value.emit(jump_level)
 
 func pay(price: int) -> void:
 	assert(is_able_to_pay(price))

@@ -3,7 +3,7 @@ class_name PlayerStats
 
 signal died
 
-@export var _max_health: int = 4
+@export var max_health: int = 4
 
 var _health: int = 0
 
@@ -13,4 +13,4 @@ func hit() -> void:
 		died.emit()
 
 func _init():
-	_health = _max_health
+	_health = max_health

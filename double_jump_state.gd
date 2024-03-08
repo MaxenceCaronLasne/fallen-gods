@@ -1,4 +1,5 @@
 extends MovementState
+class_name DoubleJumpState
 
 signal jump_from_air
 signal reached_apogea
@@ -11,16 +12,21 @@ enum State {
 
 @export var _jump_settings: JumpSettings
 
-@export var _max_double_jump: int
+@export var max_double_jump: int
 @export var _lateral_speed: float
 
-@onready var _nb_double_jump := _max_double_jump
+@onready var _nb_double_jump := max_double_jump
 
+var _inventory := load("res://inventory.tres") as Inventory
 var _current_state := State.Idle
 var _was_falling_last_frame := false
 
 func enter() -> void:
-	_nb_double_jump = _max_double_jump
+	if max_double_jump <= 0:
+		_current_state = State.Idle
+		exited.emit(MovementStateMachine.State.Move)
+
+	_nb_double_jump = max_double_jump
 	_jump()
 
 func exit() -> void:
@@ -59,6 +65,10 @@ func _process_lateral_move() -> void:
 func _process_break() -> void:
 	if Input.is_action_just_released("jump") and _current_state == State.Ascending:
 		_actor.velocity.y *= _jump_settings.get_jump_brake()
+
+func _ready():
+	max_double_jump = _inventory.jump_level
+	print_debug("max double jump: ", max_double_jump)
 
 func _process(delta: float):
 	if _current_state == State.Idle:

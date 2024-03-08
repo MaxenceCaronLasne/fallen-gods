@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://c5ovjh7d8xp6q" path="res://ad_banner.tscn" id="1_kwi04"]
 [ext_resource type="Script" path="res://store_shelf.gd" id="2_ftsw1"]
 [ext_resource type="Texture2D" uid="uid://bbejd1hyl1s5" path="res://assets/live-shelf.png" id="2_kfaen"]
-[ext_resource type="Resource" uid="uid://dk8qc0vimncgk" path="res://inventory_res.tres" id="3_s8hml"]
 [ext_resource type="Texture2D" uid="uid://b4iife2vh17mt" path="res://assets/store_ui.png" id="4_537bi"]
+[ext_resource type="Resource" uid="uid://bi15742n8axi8" path="res://inventory.tres" id="5_228pn"]
 [ext_resource type="Texture2D" uid="uid://cdgh7owhaqqlp" path="res://assets/jump-shelf.png" id="5_k3evn"]
 [ext_resource type="Texture2D" uid="uid://bb1od0rm6yn8i" path="res://assets/store-cursor.png" id="6_vr35c"]
 [ext_resource type="Script" path="res://addons/godot_sfxr/SfxrStreamPlayer.gd" id="7_4dy1g"]
@@ -37,7 +37,7 @@ centered = false
 hframes = 5
 frame = 1
 script = ExtResource("2_ftsw1")
-_inventory = ExtResource("3_s8hml")
+_inventory = ExtResource("5_228pn")
 _price = 3
 neighbor_right = NodePath("../JumpsBut")
 neighbor_down = NodePath("../RestartButton")
@@ -49,7 +49,7 @@ centered = false
 hframes = 5
 frame = 1
 script = ExtResource("2_ftsw1")
-_inventory = ExtResource("3_s8hml")
+_inventory = ExtResource("5_228pn")
 _price = 5
 _kind = 1
 neighbor_left = NodePath("../LivesBuy")

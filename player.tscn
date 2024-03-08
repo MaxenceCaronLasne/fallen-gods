@@ -282,7 +282,6 @@ _actor = NodePath("../..")
 [node name="DoubleJumpState" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("_actor")]
 script = ExtResource("5_8jic5")
 _jump_settings = ExtResource("4_lvntc")
-_max_double_jump = 1
 _lateral_speed = 80.0
 _actor = NodePath("../..")
 

@@ -23,6 +23,7 @@ enum ChoosingMenu {
 
 var _state := State.Idle
 var _menu_state := ChoosingMenu.Restart
+var _inventory := load("res://inventory.tres") as Inventory
 
 func enter_choosing_state() -> void:
 	_state = State.Choosing
@@ -47,7 +48,7 @@ func update_boss_health(value: float) -> void:
 	_third_jauge.value = value
 
 func _init_player_jauge() -> void:
-	for i in range(5):
+	for i in range(min(_inventory.live_level + 1, 5)):
 		_player_ui.frame = i
 		await get_tree().create_timer(0.2).timeout
 

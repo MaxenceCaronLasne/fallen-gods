@@ -79,6 +79,8 @@ func _ready():
 	_boss_stats.updated.connect(_on_boss_updated)
 	_boss_stats.died.connect(_on_boss_died)
 
+	_player_stats.max_health = _inventory.live_level
+
 	_player_stats._init()
 	_boss_stats._init()
 	_inventory.setup()

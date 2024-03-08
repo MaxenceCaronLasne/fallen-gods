@@ -1,8 +1,8 @@
 [gd_scene load_steps=31 format=3 uid="uid://b11fn3e44iy06"]
 
 [ext_resource type="Script" path="res://game_scene.gd" id="1_nhhsk"]
-[ext_resource type="Resource" uid="uid://dk8qc0vimncgk" path="res://inventory_res.tres" id="2_4b4rx"]
 [ext_resource type="Script" path="res://player_stats.gd" id="2_4qeua"]
+[ext_resource type="Resource" uid="uid://bi15742n8axi8" path="res://inventory.tres" id="2_5gqj4"]
 [ext_resource type="PackedScene" uid="uid://bdlafp6fbnvn6" path="res://player.tscn" id="2_w52sr"]
 [ext_resource type="Script" path="res://boss_stats.gd" id="3_8js3f"]
 [ext_resource type="PackedScene" uid="uid://cit65nmayb275" path="res://saw_spawner.tscn" id="3_mrat1"]
@@ -20,7 +20,7 @@
 
 [sub_resource type="Resource" id="Resource_cgdht"]
 script = ExtResource("2_4qeua")
-_max_health = 4
+max_health = 4
 
 [sub_resource type="Resource" id="Resource_red6o"]
 script = ExtResource("3_8js3f")
@@ -301,7 +301,7 @@ _data = {
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_nhhsk")
-_inventory = ExtResource("2_4b4rx")
+_inventory = ExtResource("2_5gqj4")
 _player_stats = SubResource("Resource_cgdht")
 _boss_stats = SubResource("Resource_red6o")
 metadata/_edit_vertical_guides_ = [-37.0]
