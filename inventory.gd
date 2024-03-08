@@ -11,7 +11,8 @@ func setup() -> void:
 	EventBus.update_coin_score.emit(_coins)
 
 func is_able_to_pay(price: int) -> bool:
-	return _coins - price < 0
+	print_debug("price: ", price, "; coins: ", _coins)
+	return _coins - price >= 0
 
 func is_able_to_upgrade_live() -> bool:
 	return _live_level < MAX_LEVEL
@@ -32,9 +33,10 @@ func pay(price: int) -> void:
 	_coins -= price
 
 func maybe_pay(price: int) -> bool:
+	print_debug("price: ", price, "; coins: ", _coins)
 	if _coins - price < 0:
 		return false
-	
+
 	_coins -= price
 	return true
 
