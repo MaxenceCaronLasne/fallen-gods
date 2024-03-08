@@ -4,6 +4,7 @@ class_name StoreShelf
 enum Kind {
 	Life,
 	Jump,
+	Restart
 }
 
 @export var _inventory: Inventory
@@ -11,8 +12,14 @@ enum Kind {
 @export var _kind: Kind
 @export var neighbor_left: StoreShelf
 @export var neighbor_right: StoreShelf
+@export var neighbor_up: StoreShelf
+@export var neighbor_down: StoreShelf
 
 func maybe_buy() -> bool:
+	if _kind == Kind.Restart:
+		_restart()
+		return false
+
 	if not _inventory.is_able_to_pay(_price):
 		return false
 
@@ -22,6 +29,9 @@ func maybe_buy() -> bool:
 		_:
 			assert(false, "invalid kind")
 			return false
+
+func _restart() -> void:
+	get_tree().change_scene_to_file("res://game_scene.tscn")
 
 func _maybe_buy_life() -> bool:
 	if not _inventory.is_able_to_upgrade_live():

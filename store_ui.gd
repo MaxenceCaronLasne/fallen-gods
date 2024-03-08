@@ -6,6 +6,7 @@ extends Node2D
 @onready var _move_sfxr_stream_player := $MoveSfxrStreamPlayer as AudioStreamPlayer
 @onready var _buy_sfxr_stream_player := $BuySfxrStreamPlayer as AudioStreamPlayer
 @onready var _failed_sfxr_stream_player := $FailedSfxrStreamPlayer as AudioStreamPlayer
+@onready var _restart_button := $RestartButton as Sprite2D
 
 func _ready():
 	pass
@@ -29,6 +30,16 @@ func _process(delta: float):
 	if Input.is_action_just_pressed("right"):
 		_maybe_focus(_currently_focus.neighbor_right)
 		_update_cursor()
+	if Input.is_action_just_pressed("up"):
+		_maybe_focus(_currently_focus.neighbor_up)
+		_update_cursor()
+		_cursor.visible = true
+		_restart_button.frame = 0
+	if Input.is_action_just_pressed("down"):
+		_maybe_focus(_currently_focus.neighbor_down)
+		_update_cursor()
+		_cursor.visible = false
+		_restart_button.frame = 1
 	if Input.is_action_just_pressed("jump"):
 		if _currently_focus.maybe_buy():
 			_buy_sfxr_stream_player.play()
