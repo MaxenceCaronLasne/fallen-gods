@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://dlr8qgy8hd8cf"]
+[gd_scene load_steps=14 format=3 uid="uid://dlr8qgy8hd8cf"]
 
 [ext_resource type="Script" path="res://store_ui.gd" id="1_c2y1y"]
+[ext_resource type="PackedScene" uid="uid://c5ovjh7d8xp6q" path="res://ad_banner.tscn" id="1_kwi04"]
 [ext_resource type="Script" path="res://store_shelf.gd" id="2_ftsw1"]
 [ext_resource type="Texture2D" uid="uid://bbejd1hyl1s5" path="res://assets/live-shelf.png" id="2_kfaen"]
 [ext_resource type="Resource" uid="uid://dk8qc0vimncgk" path="res://inventory_res.tres" id="3_s8hml"]
@@ -21,12 +22,16 @@ data = PackedByteArray(72, 69, 66, 63, 60, 57, 54, 51, 48, 46, 43, 40, 37, 34, 3
 
 [node name="StoreScene" type="Node2D"]
 
+[node name="AdBanner" parent="." instance=ExtResource("1_kwi04")]
+position = Vector2(25, 107)
+_speed = 30.0
+
 [node name="StoreUi" type="Node2D" parent="." node_paths=PackedStringArray("_currently_focus")]
 script = ExtResource("1_c2y1y")
 _currently_focus = NodePath("LivesBuy")
 
 [node name="LivesBuy" type="Sprite2D" parent="StoreUi" node_paths=PackedStringArray("neighbor_right", "neighbor_down")]
-position = Vector2(30, 47)
+position = Vector2(30, 57)
 texture = ExtResource("2_kfaen")
 centered = false
 hframes = 5
@@ -38,7 +43,7 @@ neighbor_right = NodePath("../JumpsBut")
 neighbor_down = NodePath("../RestartButton")
 
 [node name="JumpsBut" type="Sprite2D" parent="StoreUi" node_paths=PackedStringArray("neighbor_left", "neighbor_down")]
-position = Vector2(67, 47)
+position = Vector2(67, 57)
 texture = ExtResource("5_k3evn")
 centered = false
 hframes = 5
@@ -51,7 +56,7 @@ neighbor_left = NodePath("../LivesBuy")
 neighbor_down = NodePath("../RestartButton")
 
 [node name="Cursor" type="Sprite2D" parent="StoreUi"]
-position = Vector2(30, 47)
+position = Vector2(30, 57)
 texture = ExtResource("6_vr35c")
 centered = false
 offset = Vector2(-3, -3)

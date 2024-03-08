@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5ovjh7d8xp6q"]
+
+[ext_resource type="Script" path="res://ad_banner.gd" id="1_7y83w"]
+[ext_resource type="Texture2D" uid="uid://bxq27tdqy4ys3" path="res://assets/ad-banner.png" id="1_qvef8"]
+
+[node name="AdBanner" type="Node2D"]
+script = ExtResource("1_7y83w")
+
+[node name="Sprite1" type="Sprite2D" parent="."]
+texture = ExtResource("1_qvef8")
+centered = false
+
+[node name="Sprite2" type="Sprite2D" parent="."]
+position = Vector2(443, 0)
+texture = ExtResource("1_qvef8")
+centered = false

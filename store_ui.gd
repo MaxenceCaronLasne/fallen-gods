@@ -43,7 +43,5 @@ func _process(delta: float):
 	if Input.is_action_just_pressed("jump"):
 		if _currently_focus.maybe_buy():
 			_buy_sfxr_stream_player.play()
-			print_debug("try buying")
-		else:
+		elif is_inside_tree():
 			_failed_sfxr_stream_player.play()
-			print_debug("failed")

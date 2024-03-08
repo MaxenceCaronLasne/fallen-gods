@@ -90,9 +90,10 @@ centered = false
 offset = Vector2(8, 0)
 
 [node name="StoreLabel" type="Sprite2D" parent="."]
-position = Vector2(30, 80)
+position = Vector2(30, 82)
 texture = ExtResource("11_kvw64")
 centered = false
+offset = Vector2(3, 0)
 
 [node name="Cursor" type="Sprite2D" parent="."]
 position = Vector2(30, 65)
