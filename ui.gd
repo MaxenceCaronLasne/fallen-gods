@@ -19,6 +19,7 @@ enum ChoosingMenu {
 @onready var _restart_label := $RestartLabel as Sprite2D
 @onready var _go_to_store_label := $StoreLabel as Sprite2D
 @onready var _cursor := $Cursor as Sprite2D
+@onready var _bip_sfxr_stream_player := $BipSfxrStreamPlayer as AudioStreamPlayer
 
 var _state := State.Idle
 var _menu_state := ChoosingMenu.Restart
@@ -65,10 +66,13 @@ func _process_choosing(delta: float) -> void:
 	if Input.is_action_just_pressed("up"):
 		_menu_state = ChoosingMenu.Restart
 		_cursor.position = _restart_label.position
+		_bip_sfxr_stream_player.play()
 	if Input.is_action_just_pressed("down"):
 		_menu_state = ChoosingMenu.GoToStore
 		_cursor.position = _go_to_store_label.position
+		_bip_sfxr_stream_player.play()
 	if Input.is_action_just_pressed("jump"):
+		_bip_sfxr_stream_player.play()
 		match _menu_state:
 			ChoosingMenu.Restart: EventBus.go_to_game.emit()
 			ChoosingMenu.GoToStore: EventBus.go_to_store.emit()
