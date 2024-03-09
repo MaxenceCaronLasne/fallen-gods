@@ -177,20 +177,20 @@ g = -2h/t_h^2
 ***** TODO [#B] Juice a la fin d'un palier :PROG:ASSET:
 ****** TODO [#B] SFX :ASSET:
 ***** DONE [#B] Patterns selon le palier de barre de vie :PROG:
-**** TODO [#C] Boss battu
-***** TODO [#C] Cinématique de fin ? :ASSET:PROG:
+**** DONE [#C] Boss battu
+***** DONE [#C] Cinématique de fin ? :ASSET:PROG:
 ***** DONE [#B] Interface game over :ASSET:PROG:
 ***** DONE [#A] Animation dynamique :PROG:
 **** DONE Barre de vie :PROG:ASSET:
 ***** DONE Interface dynamique :PROG:ASSET:
 
-*** TODO [#C] Combo multiplicateur
-**** TODO [#C] Compteur :PROG:
-**** TODO [#C] Augmentation lors des destructions multiples :PROG:
-**** TODO [#C] Cassage de combo :PROG:
-**** TODO [#C] Interface :ASSET:PROG:
-***** TODO [#C] Sprite :ASSET:
-***** TODO [#C] Animation dynamique :PROG:
+*** KILL [#C] Combo multiplicateur
+**** KILL [#C] Compteur :PROG:
+**** KILL [#C] Augmentation lors des destructions multiples :PROG:
+**** KILL [#C] Cassage de combo :PROG:
+**** KILL [#C] Interface :ASSET:PROG:
+***** KILL [#C] Sprite :ASSET:
+***** KILL [#C] Animation dynamique :PROG:
 
 *** DONE [#B] Pièces/collectables
 **** DONE [#B] Ramassage :PROG:
@@ -230,31 +230,17 @@ Comme un donjon de roguelike, des pièces préfabriquées assemblées procédura
 
 *** TODO [#A] Musique :ASSET:
 
-*** TODO [#A] Magasin
-**** TODO [#A] Interface :PROG:ASSET:
-***** TODO [#A] Buy more lives button
-***** TODO [#A] Buy more jumps button
-***** TODO [#A] Curseur
-***** TODO [#A] Selectionner les boutons avec les directions
-**** TODO [#A] Acheter élément :PROG:
-***** TODO [#A] Valider un élément
-***** TODO [#A] Appliquer l'upgrade
+*** KILL [#C] Vies supplémentaires :PROG:
+**** KILL [#C] Avantage à jouer avec moins de PV :PROG:
+**** DONE [#A] Implem vies variables :PROG:
+***** DONE [#A] Dans le code :PROG:
+***** DONE [#A] Dans l'interface :PROG:
 
-*** TODO [#A] Inventaire
-**** KILL [#A] Équiper/Déséquiper :PROG:
-**** TODO [#A] Interface :ASSET:PROG:
+*** KILL [#C] Smart bomb :PROG:ASSET:
+**** KILL [#C] Activable manuellement ou lors d'une touche ? :ASK:
 
-*** TODO [#A] Vies supplémentaires :PROG:
-**** TODO [#B] Avantage à jouer avec moins de PV :PROG:
-**** TODO [#A] Implem vies variables :PROG:
-***** TODO [#A] Dans le code :PROG:
-***** TODO [#A] Dans l'interface :PROG:
-
-*** TODO [#A] Smart bomb :PROG:ASSET:
-**** TODO [#B] Activable manuellement ou lors d'une touche ? :ASK:
-
-*** TODO [#B] Saut supplémentaires :PROG:
-**** TODO [#B] Avantage à jouer avec moins de sauts :PROG:
+*** KILL [#C] Saut supplémentaires :PROG:
+**** KILL [#C] Avantage à jouer avec moins de sauts :PROG:
 **** DONE Implem nuple saut
 
 *** DONE [#A] Double-sauts :PROG:
@@ -262,3 +248,52 @@ Comme un donjon de roguelike, des pièces préfabriquées assemblées procédura
 **** KILL [#A] TP :PROG:ASSET:
 **** KILL [#A] Dive :PROG:ASSET:
 **** KILL [#B] Avantage aléatoire sur un double-saut :PROG:
+*** DONE [#A] Magasin
+**** DONE [#A] Interface :PROG:ASSET:
+***** DONE [#A] Buy more lives button
+***** DONE [#A] Buy more jumps button
+***** DONE [#A] Curseur
+***** DONE [#A] Selectionner les boutons avec les directions
+**** DONE [#A] Acheter élément :PROG:
+***** DONE [#A] Valider un élément
+***** DONE [#A] Appliquer l'upgrade
+
+*** DONE [#A] Inventaire
+**** KILL [#A] Équiper/Déséquiper :PROG:
+**** DONE [#A] Interface :ASSET:PROG:
+
+
+** TODO Milestone 4 : premiers playtests
+
+*** TODO [#A] Equilibrage :PROG:
+**** TODO [#A] Equilibrer le prix des upgrades :PROG:
+***** TODO [#A] Rendre les prix différents pour chaque palier :PROG:
+
+*** TODO [#A] Bugs
+**** TODO [#A] Init des items du magasin
+Les items du magasin ne sont pas init avec les valeurs courantes des niveaux des
+upgrades.
+
+*** TODO [#A] Interface :ASSET:PROG:
+**** TODO [#A] Afficher le prix des upgrades
+
+** TODO Milestone 5 : la réunification, polish et art
+
+*** TODO [#A] Musique :ASSET:
+
+*** TODO [#B] Boss
+**** TODO [#C] Prise de dégat :PROG:ASSET:
+***** TODO [#C] Animation dynamique :PROG:
+**** TODO [#B] Paliers de barre de vie :PROG:ASSET:
+***** TODO [#B] Juice a la fin d'un palier :PROG:ASSET:
+****** TODO [#C] Portrait damaged :ASSET:
+****** TODO [#B] SFX :ASSET:
+
+*** TODO [#A] Interface :ASSET:PROG:
+**** TODO [#C] Modules décoratifs :ASSET:
+**** TODO [#C] Implem :PROG:
+
+*** TODO [#A] Polish
+**** TODO [#A] Pluie en background, pour plus de dynamisme.
+**** TODO [#B] Une cinématique de début.
+**** TODO [#B] Un tutoriel (sauter au-dessus d'un seul projectile)

@@ -268,7 +268,7 @@ aussi un début de dash. Ca fonctionne plutot bien.
 
 Cette fois on a tout en place pour implem des doubles sauts !
 
-*** TODO [#A] Double-sauts :PROG:
+*** DONE [#A] Double-sauts :PROG:
 **** DONE [#A] Dash :PROG:ASSET:
 **** KILL [#A] TP :PROG:ASSET:
 **** KILL [#A] Dive :PROG:ASSET:
@@ -287,10 +287,20 @@ bonne base pour la derniere ligne droite.
 
 Une base magasin + inventaire, pour commencer.
 
-*** TODO [#A] Magasin
-**** TODO [#A] Interface :PROG:ASSET:
-**** TODO [#A] Acheter élément :PROG:
+*** DONE [#A] Magasin
+**** DONE [#A] Interface :PROG:ASSET:
+**** DONE [#A] Acheter élément :PROG:
 
-*** TODO [#A] Inventaire
+*** DONE [#A] Inventaire
 **** KILL [#A] Équiper/Déséquiper :PROG:
-**** TODO [#A] Interface :ASSET:PROG:
+**** DONE [#A] Interface :ASSET:PROG:
+
+* <2024-03-09 Sat>
+
+J'ai pas mal bossé hier. Je pense que j'ai atteint un état jouable du jeu.
+Maintenant, le reste est du polish et de l'équilibrage.
+
+50-100 pièces par minute au début
+
+Je dirai 100 pièces pour le premier double-jump, et 200 pour la première vie
+supplémentaire.

@@ -41,7 +41,7 @@ hframes = 5
 frame = 1
 script = ExtResource("2_ftsw1")
 _inventory = ExtResource("5_228pn")
-_price = 3
+_price = 200
 neighbor_right = NodePath("../JumpsBut")
 neighbor_down = NodePath("../RestartButton")
 
@@ -53,7 +53,7 @@ hframes = 5
 frame = 1
 script = ExtResource("2_ftsw1")
 _inventory = ExtResource("5_228pn")
-_price = 5
+_price = 100
 _kind = 1
 neighbor_left = NodePath("../LivesBuy")
 neighbor_down = NodePath("../RestartButton")

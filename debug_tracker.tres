@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="DebugTracker" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://debug_tracker.gd" id="1_ee3co"]
+
+[resource]
+script = ExtResource("1_ee3co")
+coin_values = Array[int]([21, 21, 21, 21, 21, 23, 25, 26, 29, 32, 32, 32, 34, 34, 37, 37, 44, 47, 47, 50, 52, 57, 59])
