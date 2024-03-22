@@ -55,3 +55,10 @@ func _maybe_buy_jump() -> bool:
 	frame += 1
 
 	return true
+
+func _ready():
+	match _kind:
+		Kind.Life:
+			frame = _inventory.live_level
+		Kind.Jump:
+			frame = _inventory.jump_level

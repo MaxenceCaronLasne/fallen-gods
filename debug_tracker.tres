@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource("1_ee3co")
-coin_values = Array[int]([70, 70, 70, 70, 70, 70, 72, 72, 73, 74, 78, 78, 78, 78, 78])
+coin_values = Array[int]([29, 29, 29, 29, 29, 30, 32, 34, 35])
