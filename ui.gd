@@ -22,7 +22,6 @@ enum ChoosingMenu {
 
 var _state := State.Idle
 var _menu_state := ChoosingMenu.Restart
-var _inventory := load("res://inventory.tres") as Inventory
 
 func enter_choosing_state() -> void:
 	_state = State.Choosing

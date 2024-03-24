@@ -4,6 +4,3 @@ extends Node2D
 
 func _ready():
 	_player_ui.init()
-
-func _process(delta):
-	pass

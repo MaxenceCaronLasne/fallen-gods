@@ -21,6 +21,3 @@ func _ready():
 		func(value: int): 
 			_player_ui.frame = value)
 	_coin_counter.set_value(_inventory.coins)
-
-func _process(delta: float):
-	pass

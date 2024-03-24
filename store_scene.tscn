@@ -1,12 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://dlr8qgy8hd8cf"]
+[gd_scene load_steps=15 format=3 uid="uid://dlr8qgy8hd8cf"]
 
 [ext_resource type="Script" path="res://store_scene.gd" id="1_3cbme"]
 [ext_resource type="Script" path="res://store_ui.gd" id="1_c2y1y"]
 [ext_resource type="PackedScene" uid="uid://c5ovjh7d8xp6q" path="res://ad_banner.tscn" id="1_kwi04"]
 [ext_resource type="Script" path="res://store_shelf.gd" id="2_ftsw1"]
-[ext_resource type="Texture2D" uid="uid://bbejd1hyl1s5" path="res://assets/live-shelf.png" id="2_kfaen"]
 [ext_resource type="Texture2D" uid="uid://b4iife2vh17mt" path="res://assets/store_ui.png" id="4_537bi"]
-[ext_resource type="Resource" uid="uid://bi15742n8axi8" path="res://inventory.tres" id="5_228pn"]
+[ext_resource type="PackedScene" uid="uid://i1spm4nbp2va" path="res://store_shelf.tscn" id="4_wyb03"]
 [ext_resource type="Texture2D" uid="uid://cdgh7owhaqqlp" path="res://assets/jump-shelf.png" id="5_k3evn"]
 [ext_resource type="Texture2D" uid="uid://bb1od0rm6yn8i" path="res://assets/store-cursor.png" id="6_vr35c"]
 [ext_resource type="Script" path="res://addons/godot_sfxr/SfxrStreamPlayer.gd" id="7_4dy1g"]
@@ -33,33 +32,21 @@ _speed = 30.0
 script = ExtResource("1_c2y1y")
 _currently_focus = NodePath("LivesBuy")
 
-[node name="LivesBuy" type="Sprite2D" parent="StoreUi" node_paths=PackedStringArray("neighbor_right", "neighbor_down")]
-position = Vector2(30, 57)
-texture = ExtResource("2_kfaen")
-centered = false
-hframes = 5
-frame = 1
-script = ExtResource("2_ftsw1")
-_inventory = ExtResource("5_228pn")
-_prices = Array[int]([10, 50, 200, 500])
-neighbor_right = NodePath("../JumpsBut")
+[node name="LivesBuy" parent="StoreUi" node_paths=PackedStringArray("neighbor_right", "neighbor_down") instance=ExtResource("4_wyb03")]
+position = Vector2(30, 48)
+neighbor_right = NodePath("../JumpBuy")
 neighbor_down = NodePath("../RestartButton")
 
-[node name="JumpsBut" type="Sprite2D" parent="StoreUi" node_paths=PackedStringArray("neighbor_left", "neighbor_down")]
-position = Vector2(67, 57)
+[node name="JumpBuy" parent="StoreUi" node_paths=PackedStringArray("neighbor_left", "neighbor_down") instance=ExtResource("4_wyb03")]
+position = Vector2(67, 48)
 texture = ExtResource("5_k3evn")
-centered = false
-hframes = 5
-frame = 1
-script = ExtResource("2_ftsw1")
-_inventory = ExtResource("5_228pn")
-_prices = Array[int]([10, 50, 200, 500])
+frame = 0
 _kind = 1
 neighbor_left = NodePath("../LivesBuy")
 neighbor_down = NodePath("../RestartButton")
 
 [node name="Cursor" type="Sprite2D" parent="StoreUi"]
-position = Vector2(30, 57)
+position = Vector2(30, 48)
 texture = ExtResource("6_vr35c")
 centered = false
 offset = Vector2(-3, -3)

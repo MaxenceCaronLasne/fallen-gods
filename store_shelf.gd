@@ -15,6 +15,8 @@ enum Kind {
 @export var neighbor_up: StoreShelf
 @export var neighbor_down: StoreShelf
 
+@onready var _counter: Counter
+
 func maybe_buy() -> bool:
 	if _kind == Kind.Restart:
 		_restart()
@@ -23,10 +25,14 @@ func maybe_buy() -> bool:
 	match _kind:
 		Kind.Life:
 			if _inventory.is_able_to_pay(_prices[_inventory.live_level]):
-				return _maybe_buy_life()
+				var res := _maybe_buy_life()
+				_update_price()
+				return res
 		Kind.Jump: 
 			if _inventory.is_able_to_pay(_prices[_inventory.jump_level]):
-				return _maybe_buy_jump()
+				var res := _maybe_buy_jump()
+				_update_price()
+				return res
 		_:
 			assert(false, "invalid kind")
 			return false
@@ -56,9 +62,22 @@ func _maybe_buy_jump() -> bool:
 
 	return true
 
+func _update_price() -> void:
+	if not _counter:
+		return
+	match _kind:
+		Kind.Life:
+			_counter.set_value(_prices[_inventory.live_level])
+		Kind.Jump:
+			_counter.set_value(_prices[_inventory.jump_level])
+
 func _ready():
+	_counter = get_node_or_null("Counter")
+
 	match _kind:
 		Kind.Life:
 			frame = _inventory.live_level
 		Kind.Jump:
 			frame = _inventory.jump_level
+
+	_update_price()

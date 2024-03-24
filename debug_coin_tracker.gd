@@ -12,9 +12,6 @@ func _ready():
 	_debug_tracker_res.coin_values.clear()
 	_timer.timeout.connect(_on_timer_timeout)
 
-func _process(delta):
-	pass
-
 func _exit_tree():
 	if not Toggles.debug_coin_tracker:
 		return

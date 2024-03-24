@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://i1spm4nbp2va"]
+
+[ext_resource type="Texture2D" uid="uid://bbejd1hyl1s5" path="res://assets/live-shelf.png" id="1_k6iov"]
+[ext_resource type="Script" path="res://store_shelf.gd" id="2_aoi3m"]
+[ext_resource type="Resource" uid="uid://bi15742n8axi8" path="res://inventory.tres" id="3_h0mt7"]
+[ext_resource type="PackedScene" uid="uid://drq2axx5gef0v" path="res://counter.tscn" id="4_ofxjc"]
+
+[node name="LivesBuy" type="Sprite2D"]
+texture = ExtResource("1_k6iov")
+centered = false
+hframes = 5
+frame = 1
+script = ExtResource("2_aoi3m")
+_inventory = ExtResource("3_h0mt7")
+_prices = Array[int]([10, 50, 200, 500])
+
+[node name="Counter" parent="." instance=ExtResource("4_ofxjc")]
+position = Vector2(5, 34)

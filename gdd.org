@@ -267,12 +267,13 @@ Comme un donjon de roguelike, des pièces préfabriquées assemblées procédura
 
 *** TODO [#A] Equilibrage :PROG:
 **** TODO [#A] Equilibrer le prix des upgrades :PROG:
-***** TODO [#A] Rendre les prix différents pour chaque palier :PROG:
+***** DONE [#A] Rendre les prix différents pour chaque palier :PROG:
 
-*** TODO [#A] Bugs
-**** TODO [#A] Init des items du magasin
+*** TODO [#C] Bugs
+**** DONE [#A] Init des items du magasin
 Les items du magasin ne sont pas init avec les valeurs courantes des niveaux des
 upgrades.
+
 
 *** TODO [#A] Interface :ASSET:PROG:
 **** TODO [#A] Afficher le prix des upgrades
