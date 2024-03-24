@@ -184,6 +184,7 @@ g = -2h/t_h^2
 **** DONE Barre de vie :PROG:ASSET:
 ***** DONE Interface dynamique :PROG:ASSET:
 
+
 *** KILL [#C] Combo multiplicateur
 **** KILL [#C] Compteur :PROG:
 **** KILL [#C] Augmentation lors des destructions multiples :PROG:
@@ -263,20 +264,19 @@ Comme un donjon de roguelike, des pièces préfabriquées assemblées procédura
 **** DONE [#A] Interface :ASSET:PROG:
 
 
-** TODO Milestone 4 : premiers playtests
-
-*** TODO [#A] Equilibrage :PROG:
-**** TODO [#A] Equilibrer le prix des upgrades :PROG:
+** DONE Milestone 4 : premiers playtests
+*** DONE [#A] Equilibrage :PROG:
+**** DONE [#A] Equilibrer le prix des upgrades :PROG:
 ***** DONE [#A] Rendre les prix différents pour chaque palier :PROG:
 
-*** TODO [#C] Bugs
+*** DONE [#C] Bugs
 **** DONE [#A] Init des items du magasin
 Les items du magasin ne sont pas init avec les valeurs courantes des niveaux des
 upgrades.
 
+*** DONE [#A] Interface :ASSET:PROG:
+**** DONE [#A] Afficher le prix des upgrades
 
-*** TODO [#A] Interface :ASSET:PROG:
-**** TODO [#A] Afficher le prix des upgrades
 
 ** TODO Milestone 5 : la réunification, polish et art
 
