@@ -114,7 +114,7 @@ g = -2h/t_h^2
 
 * Todolist et milestones
 
-** DONE Milestone 1 : boucle de saut
+** Milestone 1 : boucle de saut
 
 *** DONE [#A] Personnage
 **** DONE Déplacement (input) :PROG:
@@ -159,23 +159,22 @@ g = -2h/t_h^2
 **** DONE Reset du niveau :PROG:
 
 
-** TODO Milestone 2 : boucle de la partie
+** Milestone 2 : boucle de la partie
 
+*** KILL [#C] Interface :ASSET:PROG:
+**** KILL [#C] Modules décoratifs :ASSET:
+**** KILL [#C] Implem :PROG:
 
-*** TODO [#C] Interface :ASSET:PROG:
-**** TODO [#C] Modules décoratifs :ASSET:
-**** TODO [#C] Implem :PROG:
-
-*** TODO [#B] Boss
-**** TODO [#C] Prise de dégat :PROG:ASSET:
-***** TODO [#C] Animation dynamique :PROG:
-***** TODO [#C] Portrait damaged :ASSET:
+*** KILL [#B] Boss
+**** KILL [#C] Prise de dégat :PROG:ASSET:
+***** KILL [#C] Animation dynamique :PROG:
+***** KILL [#C] Portrait damaged :ASSET:
 ***** DONE [#A] SFX :ASSET:
 ***** DONE Clignotement :ASSET:PROG:
 ***** DONE Implem :PROG:
-**** TODO [#B] Paliers de barre de vie :PROG:ASSET:
-***** TODO [#B] Juice a la fin d'un palier :PROG:ASSET:
-****** TODO [#B] SFX :ASSET:
+**** KILL [#B] Paliers de barre de vie :PROG:ASSET:
+***** KILL [#B] Juice a la fin d'un palier :PROG:ASSET:
+****** KILL [#B] SFX :ASSET:
 ***** DONE [#B] Patterns selon le palier de barre de vie :PROG:
 **** DONE [#C] Boss battu
 ***** DONE [#C] Cinématique de fin ? :ASSET:PROG:
@@ -183,7 +182,6 @@ g = -2h/t_h^2
 ***** DONE [#A] Animation dynamique :PROG:
 **** DONE Barre de vie :PROG:ASSET:
 ***** DONE Interface dynamique :PROG:ASSET:
-
 
 *** KILL [#C] Combo multiplicateur
 **** KILL [#C] Compteur :PROG:
@@ -227,9 +225,7 @@ Comme un donjon de roguelike, des pièces préfabriquées assemblées procédura
 ***** DONE [#B] Vitesse variable :PROG:
 
 
-** TODO Milestone 3 : la progression roguelike
-
-*** TODO [#A] Musique :ASSET:
+** Milestone 3 : la progression roguelike
 
 *** KILL [#C] Vies supplémentaires :PROG:
 **** KILL [#C] Avantage à jouer avec moins de PV :PROG:
@@ -264,7 +260,8 @@ Comme un donjon de roguelike, des pièces préfabriquées assemblées procédura
 **** DONE [#A] Interface :ASSET:PROG:
 
 
-** DONE Milestone 4 : premiers playtests
+** Milestone 4 : premiers playtests
+
 *** DONE [#A] Equilibrage :PROG:
 **** DONE [#A] Equilibrer le prix des upgrades :PROG:
 ***** DONE [#A] Rendre les prix différents pour chaque palier :PROG:
@@ -278,9 +275,15 @@ upgrades.
 **** DONE [#A] Afficher le prix des upgrades
 
 
-** TODO Milestone 5 : la réunification, polish et art
+** Milestone 5 : la réunification, polish et art
 
 *** TODO [#A] Musique :ASSET:
+
+*** TODO [#A] Fix from reviews
+**** TODO [#A] Rendre les boulettes survolées clignotantes
+***** TODO [#A] En faire un Toggle
+**** TODO [#A] Faire disparaitre les boulettes survolées
+***** TODO [#A] En faire un Toggle
 
 *** TODO [#B] Boss
 **** TODO [#C] Prise de dégat :PROG:ASSET:
