@@ -1,4 +1,5 @@
 extends Node2D
+class_name GameScene
 
 var _MULT_PRELOAD := preload("res://mult_sprite.tscn")
 
@@ -22,6 +23,7 @@ enum State {
 @onready var _ui := $Ui as Ui
 @onready var _background := $Background as Background
 @onready var _coin_spawner := $CoinSpawner as CoinSpawner
+@onready var _level_door := $LevelDoorSprite as Sprite2D
 
 var _state: State = State.Playing
 
@@ -85,6 +87,11 @@ func _ready():
 	_player_stats._init()
 	_boss_stats._init()
 	_inventory.setup()
+	
+	_level_door.visible = false
+	if _inventory.first_time:
+		_level_door.visible = false
+		_inventory.first_time = false
 
 	_enter_playing()
 

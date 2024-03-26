@@ -329,6 +329,7 @@ position = Vector2(65, 116)
 [node name="CoinSpawner" parent="." instance=ExtResource("6_hxc0d")]
 
 [node name="LevelDoorSprite" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(1.01587, 1.01587)
 texture = ExtResource("5_amm0m")
 centered = false
