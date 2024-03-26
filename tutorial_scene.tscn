@@ -7,11 +7,10 @@
 [node name="TutorialScene" instance=ExtResource("1_1d1o3")]
 _is_tutorial = true
 
-[node name="TutorialManager" type="Node" parent="." index="0" node_paths=PackedStringArray("_saw_spawner", "_background", "_scene")]
+[node name="TutorialManager" type="Node" parent="." index="0" node_paths=PackedStringArray("_saw_spawner", "_background")]
 script = ExtResource("2_yfa3k")
 _saw_spawner = NodePath("../SawSpawner")
 _background = NodePath("../Background")
-_scene = NodePath("..")
 
 [node name="TutorialText" type="Sprite2D" parent="." index="1"]
 position = Vector2(65, 63)

@@ -29,6 +29,9 @@ func stop() -> void:
 func run(pattern: SpawnPattern) -> void:
 	if not Toggles.spawn_saws:
 		return
+	
+	if _state == State.Stopped:
+		return
 
 	_state = State.Running
 	for action in pattern.actions:

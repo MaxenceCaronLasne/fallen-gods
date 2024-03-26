@@ -286,7 +286,8 @@ upgrades.
 ***** TODO [#A] En faire un Toggle
 
 *** TODO [#A] Tutoriel
-**** TODO [#A] Rendre la game scene modulable
+**** DONE [#A] Rendre la game scene modulable
+**** TODO [#A] Add sound and feedback shake etc
 
 *** TODO [#B] Boss
 **** TODO [#C] Prise de dégat :PROG:ASSET:

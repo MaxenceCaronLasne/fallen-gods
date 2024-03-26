@@ -2,14 +2,10 @@ extends Node
 
 @export var _saw_spawner: SawSpawner
 @export var _background: Node2D
-@export var _scene: GameScene
 
 func _ready():
 	assert(_saw_spawner)
 	EventBus.saw_destroyed.connect(_on_saw_destroyed)
-
-func _process(delta):
-	pass
 
 func _on_player_just_hit():
 	_saw_spawner.run(Patterns.get_random_pattern(true))

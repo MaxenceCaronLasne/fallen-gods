@@ -34,6 +34,7 @@ _currently_focus = NodePath("LivesBuy")
 
 [node name="LivesBuy" parent="StoreUi" node_paths=PackedStringArray("neighbor_right", "neighbor_down") instance=ExtResource("4_wyb03")]
 position = Vector2(30, 48)
+_prices = Array[int]([0, 50, 200, 500, 0])
 neighbor_right = NodePath("../JumpBuy")
 neighbor_down = NodePath("../RestartButton")
 
