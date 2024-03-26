@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://bapgolibq7usw"]
+[gd_scene load_steps=14 format=3 uid="uid://bapgolibq7usw"]
 
 [ext_resource type="Script" path="res://ui.gd" id="1_p7l0q"]
 [ext_resource type="Texture2D" uid="uid://bqjx6tqw6pgf6" path="res://assets/ui.png" id="1_rh4ok"]
 [ext_resource type="PackedScene" uid="uid://b8dflih38kycx" path="res://player_ui.tscn" id="3_opxas"]
 [ext_resource type="Texture2D" uid="uid://cr4fcdb2odk6a" path="res://assets/ui_boss_jauge_background.png" id="4_5btiy"]
+[ext_resource type="Texture2D" uid="uid://bjqna4riexcu3" path="res://assets/boss_portrait.png" id="4_kxobw"]
 [ext_resource type="Texture2D" uid="uid://ckr31jlymb57a" path="res://assets/ui_boss_jauge_frame.png" id="5_rcslr"]
 [ext_resource type="Texture2D" uid="uid://eii487oomcel" path="res://assets/ui_boss_jauge_bar.png" id="6_6sc2p"]
 [ext_resource type="Texture2D" uid="uid://d1bwhsuhbk0lu" path="res://assets/ui_boss_jauge_frame_alt.png" id="7_skh53"]
@@ -25,7 +26,14 @@ centered = false
 
 [node name="PlayerUI" parent="." instance=ExtResource("3_opxas")]
 
-[node name="FirstTextureProgressBar" type="TextureProgressBar" parent="."]
+[node name="BossUI" type="Node2D" parent="."]
+
+[node name="BossPortrait" type="Sprite2D" parent="BossUI"]
+position = Vector2(116, 40)
+texture = ExtResource("4_kxobw")
+
+[node name="FirstTextureProgressBar" type="TextureProgressBar" parent="BossUI"]
+unique_name_in_owner = true
 offset_left = 121.0
 offset_top = 57.0
 offset_right = 127.0
@@ -39,7 +47,8 @@ texture_under = ExtResource("4_5btiy")
 texture_over = ExtResource("5_rcslr")
 texture_progress = ExtResource("6_6sc2p")
 
-[node name="SecondTextureProgressBar" type="TextureProgressBar" parent="."]
+[node name="SecondTextureProgressBar" type="TextureProgressBar" parent="BossUI"]
+unique_name_in_owner = true
 offset_left = 114.0
 offset_top = 57.0
 offset_right = 120.0
@@ -55,7 +64,8 @@ texture_under = ExtResource("4_5btiy")
 texture_over = ExtResource("5_rcslr")
 texture_progress = ExtResource("6_6sc2p")
 
-[node name="ThirdTextureProgressBar" type="TextureProgressBar" parent="."]
+[node name="ThirdTextureProgressBar" type="TextureProgressBar" parent="BossUI"]
+unique_name_in_owner = true
 offset_left = 107.0
 offset_top = 57.0
 offset_right = 113.0

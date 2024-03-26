@@ -14,6 +14,7 @@ enum State {
 @export var _inventory: Inventory
 @export var _player_stats: PlayerStats
 @export var _boss_stats: BossStats
+@export var _is_tutorial: bool = false
 
 @onready var _player := $Player as Player
 @onready var _animation_player := $AnimationPlayer as AnimationPlayer
@@ -134,6 +135,8 @@ func _on_player_finished_dying() -> void:
 	_enter_waiting_to_close()
 
 func _on_player_just_hit():
+	if _is_tutorial:
+		return
 	_player_stats.hit()
 	EventBus.shake.emit(2.0)
 	_ui.hit_player()

@@ -27,7 +27,10 @@ var _high_risk_patterns: Array[SpawnPattern] = [
 	load("res://patterns/three_bullets_right.tres") as SpawnPattern,
 ]
 
-func get_random_pattern() -> SpawnPattern:
+func get_random_pattern(is_tutorial: bool) -> SpawnPattern:
+	if is_tutorial:
+		return _pause_patterns[0]
+
 	_next()
 	match _state:
 		State.Pause, State.LowRecovery, State.HighRecovery:

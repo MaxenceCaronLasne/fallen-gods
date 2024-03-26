@@ -7,6 +7,8 @@ enum State {
 	Stopped,
 }
 
+@export var _is_tutorial: bool = false
+
 @export var _left_spawner: Marker2D
 @export var _middle_spawner: Marker2D
 @export var _right_spawner: Marker2D
@@ -54,17 +56,23 @@ func _process_action(action: SpawnAction) -> void:
 	saw.global_position = _get_spawn_position(action.position)
 	saw._speed /= _time_cruncher
 	saw.initial_direction = Vector2.DOWN.rotated(deg_to_rad(-action.angle)) # negative for better ui
-	add_child(saw)
+	add_child.call_deferred(saw)
 	await get_tree().create_timer(action.then_wait * _time_cruncher).timeout
 
 func _ready() -> void:
 	EventBus.boss_hp_tier_annihilated.connect(_on_boss_hp_annihilated)
+	if _is_tutorial:
+		await get_tree().create_timer(2.0).timeout
+		run(Patterns.get_random_pattern(true))
 
 func _on_timer_timeout():
 	if not _state == State.Idle:
 		return
+	
+	if _is_tutorial:
+		return
 
-	run(Patterns.get_random_pattern())
+	run(Patterns.get_random_pattern(false))
 
 func _on_boss_hp_annihilated() -> void:
 	_time_cruncher -= 0.2

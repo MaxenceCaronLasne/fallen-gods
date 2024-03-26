@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://bli2gq01r7pcs"]
+
+[ext_resource type="PackedScene" uid="uid://b11fn3e44iy06" path="res://game_scene.tscn" id="1_1d1o3"]
+[ext_resource type="Script" path="res://tutorial_manager.gd" id="2_yfa3k"]
+[ext_resource type="Texture2D" uid="uid://xfov3qnf64le" path="res://assets/tutorial-text.png" id="3_kgjqg"]
+
+[node name="TutorialScene" instance=ExtResource("1_1d1o3")]
+_is_tutorial = true
+
+[node name="TutorialManager" type="Node" parent="." index="0" node_paths=PackedStringArray("_saw_spawner")]
+script = ExtResource("2_yfa3k")
+_saw_spawner = NodePath("../SawSpawner")
+
+[node name="TutorialText" type="Sprite2D" parent="." index="1"]
+position = Vector2(65, 63)
+texture = ExtResource("3_kgjqg")
+
+[node name="Background" parent="." index="2"]
+visible = false
+
+[node name="SawSpawner" parent="." index="3"]
+_is_tutorial = true
+
+[node name="LevelDoorSprite" parent="." index="6"]
+visible = false
+
+[node name="Ui" parent="." index="7"]
+_show_ui_left = false
+_show_ui_right = false
+
+[connection signal="just_hit" from="Player" to="TutorialManager" method="_on_player_just_hit"]

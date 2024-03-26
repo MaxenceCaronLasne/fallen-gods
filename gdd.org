@@ -285,6 +285,9 @@ upgrades.
 **** TODO [#A] Faire disparaitre les boulettes survolées
 ***** TODO [#A] En faire un Toggle
 
+*** TODO [#A] Tutoriel
+**** TODO [#A] Rendre la game scene modulable
+
 *** TODO [#B] Boss
 **** TODO [#C] Prise de dégat :PROG:ASSET:
 ***** TODO [#C] Animation dynamique :PROG:
@@ -293,11 +296,11 @@ upgrades.
 ****** TODO [#C] Portrait damaged :ASSET:
 ****** TODO [#B] SFX :ASSET:
 
-*** TODO [#A] Interface :ASSET:PROG:
+*** TODO [#C] Interface :ASSET:PROG:
 **** TODO [#C] Modules décoratifs :ASSET:
 **** TODO [#C] Implem :PROG:
 
-*** TODO [#A] Polish
-**** TODO [#A] Pluie en background, pour plus de dynamisme.
+*** TODO [#B] Polish
+**** TODO [#B] Pluie en background, pour plus de dynamisme.
 **** TODO [#B] Une cinématique de début.
 **** TODO [#B] Un tutoriel (sauter au-dessus d'un seul projectile)

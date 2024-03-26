@@ -11,9 +11,14 @@ enum ChoosingMenu {
 	GoToStore,
 }
 
-@onready var _first_jauge := $FirstTextureProgressBar as TextureProgressBar
-@onready var _second_jauge := $SecondTextureProgressBar as TextureProgressBar
-@onready var _third_jauge := $ThirdTextureProgressBar as TextureProgressBar
+@export var _show_ui_left: bool = true
+@export var _show_ui_right: bool = true
+
+@onready var _player_ui := $PlayerUI as PlayerUI
+@onready var _boss_ui := $BossUI as Node2D
+@onready var _first_jauge := %FirstTextureProgressBar as TextureProgressBar
+@onready var _second_jauge := %SecondTextureProgressBar as TextureProgressBar
+@onready var _third_jauge := %ThirdTextureProgressBar as TextureProgressBar
 @onready var _restart_label := $RestartLabel as Sprite2D
 @onready var _go_to_store_label := $StoreLabel as Sprite2D
 @onready var _cursor := $Cursor as Sprite2D
@@ -54,6 +59,8 @@ func _init_boss_jauge() -> void:
 		await get_tree().create_timer(0.005).timeout
 
 func _ready():
+	_player_ui.visible = _show_ui_left
+	_boss_ui.visible = _show_ui_right
 	_init_player_jauge()
 	_init_boss_jauge()
 	_hide_game_over_menu()
