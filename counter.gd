@@ -1,7 +1,7 @@
 extends Node2D
 class_name Counter
 
-@onready var _numbers: Array[Sprite2D]= [
+@onready var _numbers: Array[Sprite2D] = [
 	$NumberSprite2D_0 as Sprite2D,
 	$NumberSprite2D_1 as Sprite2D,
 	$NumberSprite2D_2 as Sprite2D,
@@ -12,7 +12,10 @@ class_name Counter
 var _value := 0
 
 func set_value(new_value) -> void:
-	_value = new_value
+	if new_value >= 99999:
+		push_warning("Counter overflow, clamping...")
+
+	_value = clampi(new_value, 0, 99999)
 	_update()
 
 func increment() -> void:
@@ -20,9 +23,9 @@ func increment() -> void:
 
 func _update() -> void:
 	for i in range(len(_numbers)):
-		var order := 10 ** i
+		var order := pow(10, i)
 		@warning_ignore("integer_division")
-		_numbers[i].frame = (_value / order) % 10
+		_numbers[i].frame = int(_value / order) % 10
 
 func _ready():
 	_update()

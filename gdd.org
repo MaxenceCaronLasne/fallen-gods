@@ -290,7 +290,7 @@ upgrades.
 **** TODO [#A] Add sound and feedback shake etc
 
 *** TODO [#A] Tests and fixes
-**** TODO [#A] Vérifier si le compteur overflow (bloquer le ramassage si plein ?)
+**** DONE [#A] Vérifier si le compteur overflow (bloquer le ramassage si plein ?)
 **** TODO [#A] Vérifier si on peut acheter des niveaux max overflow
 
 *** TODO [#B] Boss

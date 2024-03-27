@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgeketuqk1afx"]
+
+[ext_resource type="Script" path="res://test_counter.gd" id="1_geucg"]
+[ext_resource type="PackedScene" uid="uid://drq2axx5gef0v" path="res://counter.tscn" id="2_hm456"]
+
+[node name="TestCounter" type="Node2D"]
+script = ExtResource("1_geucg")
+
+[node name="Counter" parent="." instance=ExtResource("2_hm456")]
