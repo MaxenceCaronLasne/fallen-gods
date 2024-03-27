@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bli2gq01r7pcs"]
+[gd_scene load_steps=5 format=3 uid="uid://bli2gq01r7pcs"]
 
 [ext_resource type="PackedScene" uid="uid://b11fn3e44iy06" path="res://game_scene.tscn" id="1_1d1o3"]
 [ext_resource type="Script" path="res://tutorial_manager.gd" id="2_yfa3k"]
+[ext_resource type="AudioStream" uid="uid://clqtwuxmh6ag1" path="res://boss_rumble_sound.tres" id="3_1l5ow"]
 [ext_resource type="Texture2D" uid="uid://xfov3qnf64le" path="res://assets/tutorial-text.png" id="3_kgjqg"]
 
 [node name="TutorialScene" instance=ExtResource("1_1d1o3")]
@@ -13,6 +14,9 @@ _saw_spawner = NodePath("../SawSpawner")
 _background = NodePath("../Background")
 _player = NodePath("../Player")
 
+[node name="BossRumbleAudioStreamPlayer" type="AudioStreamPlayer" parent="TutorialManager" index="0"]
+stream = ExtResource("3_1l5ow")
+
 [node name="TutorialText" type="Sprite2D" parent="." index="1"]
 position = Vector2(65, 63)
 texture = ExtResource("3_kgjqg")
@@ -22,9 +26,6 @@ modulate = Color(1, 1, 1, 0)
 
 [node name="SawSpawner" parent="." index="3"]
 _is_tutorial = true
-
-[node name="LevelDoorSprite" parent="." index="6"]
-visible = true
 
 [node name="Ui" parent="." index="7"]
 _show_ui_left = false

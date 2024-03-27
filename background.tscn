@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://d3kyvdabxtyh6" path="res://assets/background.png" id="1_hpv4f"]
 [ext_resource type="Script" path="res://background.gd" id="1_s1cd7"]
 [ext_resource type="AudioStream" uid="uid://cad5qsbof18xp" path="res://assets/saw_destroy.wav" id="3_bb7ge"]
-[ext_resource type="AudioStream" uid="uid://d287f5uxudft1" path="res://assets/boss_dying.wav" id="4_baaai"]
+[ext_resource type="AudioStream" uid="uid://clqtwuxmh6ag1" path="res://boss_rumble_sound.tres" id="4_rbl6n"]
 [ext_resource type="AudioStream" uid="uid://ca6g4g7q61feo" path="res://assets/boss_dead.wav" id="5_xct4e"]
 
 [sub_resource type="Animation" id="Animation_2ssxr"]
@@ -279,7 +279,7 @@ parameters/dying/Add2/add_amount = 1.0
 stream = ExtResource("3_bb7ge")
 
 [node name="BossDyingAudioPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_baaai")
+stream = ExtResource("4_rbl6n")
 
 [node name="BossDeadAudioPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_xct4e")
