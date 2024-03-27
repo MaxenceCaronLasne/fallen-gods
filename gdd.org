@@ -278,8 +278,9 @@ upgrades.
 ** Milestone 5 : la réunification, polish et art
 
 *** TODO [#A] Musique :ASSET:
-*** TODO [#A] Tutoriel
-**** TODO [#A] Add sound and feedback shake etc
+
+*** DONE [#A] Tutoriel
+**** DONE [#A] Add sound and feedback shake etc
 **** DONE [#A] Rendre la game scene modulable
 
 *** TODO [#B] Boss

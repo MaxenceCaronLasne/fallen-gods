@@ -310,5 +310,5 @@ supplémentaire.
 *** DONE [#A] Tests and fixes
 **** DONE [#A] Vérifier si le compteur overflow (bloquer le ramassage si plein ?)
 **** DONE [#A] Vérifier si on peut acheter des niveaux max overflow
-*** TODO [#A] Add sound and feedback shake etc
+*** DONE [#A] Add sound and feedback shake etc
 *** TODO [#A] Musique :ASSET:
