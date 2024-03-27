@@ -278,22 +278,9 @@ upgrades.
 ** Milestone 5 : la réunification, polish et art
 
 *** TODO [#A] Musique :ASSET:
-
-*** WAIT Fix from reviews
-**** KILL [#A] Rendre les boulettes survolées clignotantes
-***** KILL [#A] En faire un Toggle
-**** KILL [#A] Faire disparaitre les boulettes survolées
-***** KILL [#A] En faire un Toggle
-
-
 *** TODO [#A] Tutoriel
 **** TODO [#A] Add sound and feedback shake etc
 **** DONE [#A] Rendre la game scene modulable
-
-*** WAIT Tests and fixes
-**** DONE [#A] Vérifier si le compteur overflow (bloquer le ramassage si plein ?)
-**** DONE [#A] Vérifier si on peut acheter des niveaux max overflow
-
 
 *** TODO [#B] Boss
 **** TODO [#C] Prise de dégat :PROG:ASSET:
@@ -310,4 +297,15 @@ upgrades.
 *** TODO [#B] Polish
 **** TODO [#B] Pluie en background, pour plus de dynamisme.
 **** TODO [#B] Une cinématique de début.
-**** TODO [#B] Un tutoriel (sauter au-dessus d'un seul projectile)
+**** DONE [#B] Un tutoriel (sauter au-dessus d'un seul projectile)
+
+*** WAIT Fix from reviews
+**** KILL [#A] Rendre les boulettes survolées clignotantes
+***** KILL [#A] En faire un Toggle
+**** KILL [#A] Faire disparaitre les boulettes survolées
+***** KILL [#A] En faire un Toggle
+
+
+*** WAIT Tests and fixes
+**** DONE [#A] Vérifier si le compteur overflow (bloquer le ramassage si plein ?)
+**** DONE [#A] Vérifier si on peut acheter des niveaux max overflow
