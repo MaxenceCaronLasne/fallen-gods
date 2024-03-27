@@ -1,7 +1,7 @@
 extends Node2D
 class_name GameScene
 
-var _MULT_PRELOAD := preload("res://mult_sprite.tscn")
+var _MULT_PRELOAD := preload ("res://mult_sprite.tscn")
 
 enum State {
 	Playing,
@@ -88,8 +88,9 @@ func _ready():
 	_boss_stats._init()
 	_inventory.setup()
 	
-	_level_door.visible = false
+	#_level_door.visible = false
 	if _inventory.first_time:
+		print_debug("first: ", _inventory.first_time)
 		_level_door.visible = false
 		_inventory.first_time = false
 

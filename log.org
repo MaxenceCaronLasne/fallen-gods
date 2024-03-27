@@ -304,3 +304,9 @@ Maintenant, le reste est du polish et de l'équilibrage.
 
 Je dirai 100 pièces pour le premier double-jump, et 200 pour la première vie
 supplémentaire.
+
+* <2024-03-27 Wed>
+
+*** TODO [#A] Tests and fixes
+**** TODO [#A] Vérifier si le compteur overflow (bloquer le ramassage si plein ?)
+**** TODO [#A] Vérifier si on peut acheter des niveaux max overflow

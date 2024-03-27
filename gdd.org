@@ -289,6 +289,10 @@ upgrades.
 **** DONE [#A] Rendre la game scene modulable
 **** TODO [#A] Add sound and feedback shake etc
 
+*** TODO [#A] Tests and fixes
+**** TODO [#A] Vérifier si le compteur overflow (bloquer le ramassage si plein ?)
+**** TODO [#A] Vérifier si on peut acheter des niveaux max overflow
+
 *** TODO [#B] Boss
 **** TODO [#C] Prise de dégat :PROG:ASSET:
 ***** TODO [#C] Animation dynamique :PROG:
