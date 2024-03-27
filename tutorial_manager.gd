@@ -22,5 +22,6 @@ func _on_saw_destroyed():
 		.set_trans(Tween.TRANS_LINEAR)
 
 	await tween.finished
+	await get_tree().create_timer(1.0).timeout
 	_inventory.position = _player.position
 	get_tree().change_scene_to_file.call_deferred("res://game_scene.tscn")
