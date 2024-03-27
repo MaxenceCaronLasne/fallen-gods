@@ -42,6 +42,7 @@ neighbor_down = NodePath("../RestartButton")
 position = Vector2(67, 48)
 texture = ExtResource("5_k3evn")
 frame = 0
+_prices = Array[int]([10, 50, 200, 500, 0])
 _kind = 1
 neighbor_left = NodePath("../LivesBuy")
 neighbor_down = NodePath("../RestartButton")

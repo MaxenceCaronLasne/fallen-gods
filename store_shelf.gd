@@ -28,7 +28,7 @@ func maybe_buy() -> bool:
 				var res := _maybe_buy_life()
 				_update_price()
 				return res
-		Kind.Jump: 
+		Kind.Jump:
 			if _inventory.is_able_to_pay(_prices[_inventory.jump_level]):
 				var res := _maybe_buy_jump()
 				_update_price()
@@ -65,11 +65,19 @@ func _maybe_buy_jump() -> bool:
 func _update_price() -> void:
 	if not _counter:
 		return
+
+	var price := 0
+
 	match _kind:
 		Kind.Life:
-			_counter.set_value(_prices[_inventory.live_level])
+			price = _prices[_inventory.live_level]
 		Kind.Jump:
-			_counter.set_value(_prices[_inventory.jump_level])
+			price = _prices[_inventory.jump_level]
+	
+	if price <= 0:
+		_counter.visible = false
+	else:
+		_counter.set_value(price)
 
 func _ready():
 	_counter = get_node_or_null("Counter")

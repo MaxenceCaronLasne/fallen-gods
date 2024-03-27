@@ -4,3 +4,7 @@
 
 [resource]
 script = ExtResource("1_0s7lm")
+first_time = true
+coins = 0
+live_level = 1
+jump_level = 0

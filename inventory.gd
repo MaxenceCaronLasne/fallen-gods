@@ -4,7 +4,7 @@ class_name Inventory
 const MAX_LEVEL := 4
 
 @export var first_time := true
-var coins := 0
+@export var coins := 0
 @export var live_level := 1
 @export var jump_level := 0
 
