@@ -279,19 +279,21 @@ upgrades.
 
 *** TODO [#A] Musique :ASSET:
 
-*** TODO [#A] Fix from reviews
-**** TODO [#A] Rendre les boulettes survolées clignotantes
-***** TODO [#A] En faire un Toggle
-**** TODO [#A] Faire disparaitre les boulettes survolées
-***** TODO [#A] En faire un Toggle
+*** WAIT Fix from reviews
+**** KILL [#A] Rendre les boulettes survolées clignotantes
+***** KILL [#A] En faire un Toggle
+**** KILL [#A] Faire disparaitre les boulettes survolées
+***** KILL [#A] En faire un Toggle
+
 
 *** TODO [#A] Tutoriel
-**** DONE [#A] Rendre la game scene modulable
 **** TODO [#A] Add sound and feedback shake etc
+**** DONE [#A] Rendre la game scene modulable
 
 *** WAIT Tests and fixes
 **** DONE [#A] Vérifier si le compteur overflow (bloquer le ramassage si plein ?)
 **** DONE [#A] Vérifier si on peut acheter des niveaux max overflow
+
 
 *** TODO [#B] Boss
 **** TODO [#C] Prise de dégat :PROG:ASSET:

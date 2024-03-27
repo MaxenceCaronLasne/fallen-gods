@@ -88,10 +88,9 @@ func _ready():
 	_boss_stats._init()
 	_inventory.setup()
 	
-	#_level_door.visible = false
-	if _inventory.first_time:
-		print_debug("first: ", _inventory.first_time)
-		_level_door.visible = false
+	_level_door.visible = not _inventory.first_time
+
+	if _inventory.first_time and not _is_tutorial:
 		_inventory.first_time = false
 
 	_enter_playing()
@@ -150,6 +149,7 @@ func _on_player_just_hit():
 	_ui.hit_player()
 
 func _on_player_stats_died():
+	_level_door.visible = not _inventory.first_time
 	_player.die()
 	_stop_saws()
 	_destroy_coins()

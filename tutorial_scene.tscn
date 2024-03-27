@@ -7,10 +7,11 @@
 [node name="TutorialScene" instance=ExtResource("1_1d1o3")]
 _is_tutorial = true
 
-[node name="TutorialManager" type="Node" parent="." index="0" node_paths=PackedStringArray("_saw_spawner", "_background")]
+[node name="TutorialManager" type="Node" parent="." index="0" node_paths=PackedStringArray("_saw_spawner", "_background", "_player")]
 script = ExtResource("2_yfa3k")
 _saw_spawner = NodePath("../SawSpawner")
 _background = NodePath("../Background")
+_player = NodePath("../Player")
 
 [node name="TutorialText" type="Sprite2D" parent="." index="1"]
 position = Vector2(65, 63)
@@ -23,7 +24,7 @@ modulate = Color(1, 1, 1, 0)
 _is_tutorial = true
 
 [node name="LevelDoorSprite" parent="." index="6"]
-visible = false
+visible = true
 
 [node name="Ui" parent="." index="7"]
 _show_ui_left = false

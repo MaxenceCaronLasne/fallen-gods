@@ -16,6 +16,8 @@ signal just_touched_floor
 signal just_hit
 signal finished_dying
 
+var _inventory := load("res://inventory.tres") as Inventory
+
 @onready var _hitbox := $HitBox as Area2D
 @onready var _on_floor_notifier := $OnFloorNotifier as OnFloorNotifier
 @onready var _animated_sprite := $Sprite2D as AnimatedSprite2D
@@ -30,7 +32,7 @@ signal finished_dying
 
 var _is_invuln: bool = false
 
-var _state: State = State.Idle :
+var _state: State = State.Idle:
 	set(value):
 		_state = value
 
@@ -122,6 +124,9 @@ func _enter_crash() -> void:
 	finished_dying.emit()
 
 func _ready() -> void:
+	if _inventory.first_time:
+		position = _inventory.position
+
 	_hitbox.body_entered.connect(_on_hit_box_body_entered)
 	_on_floor_notifier.just_touched_floor.connect(
 		_on_floor_notifier_just_touched_floor)
@@ -212,7 +217,6 @@ func _on_move_state_stopped_walking():
 		State.Land: pass
 		_: push_warning("stopped walking from unprocessed state: ", _state)
 
-
 func _on_jump_state_jump_from_ground():
 	match _state:
 		State.Idle: _enter_up(true)
@@ -220,19 +224,16 @@ func _on_jump_state_jump_from_ground():
 		State.Land: _enter_up(true)
 		_: push_warning("jump from ground in unprocessed state: ", _state)
 
-
 func _on_jump_state_reached_apogea():
 	match _state:
 		State.Idle: pass # Falling when game starts
 		State.Up: _enter_down()
 		_: push_warning("reached apogea in unprocessed state: ", _state)
 
-
 func _on_double_jump_state_jump_from_air():
 	match _state:
 		State.Up: _enter_up(false)
 		State.Down: _enter_up(false)
-
 
 func _on_double_jump_state_reached_apogea():
 	match _state:

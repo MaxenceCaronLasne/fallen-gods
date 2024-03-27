@@ -8,6 +8,8 @@ const MAX_LEVEL := 4
 @export var live_level := 1
 @export var jump_level := 0
 
+var position := Vector2(65, 116)
+
 func setup() -> void:
 	EventBus.update_coin_score.emit(coins)
 
