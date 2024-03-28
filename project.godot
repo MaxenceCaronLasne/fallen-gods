@@ -31,6 +31,10 @@ window/size/viewport_height=128
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[editor]
+
+movie_writer/movie_file="/home/maxence/proj/saw-jumper/movies/rush.avi"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_sfxr/plugin.cfg")
