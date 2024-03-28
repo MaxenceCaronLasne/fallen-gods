@@ -73,7 +73,7 @@ func _update_price() -> void:
 			price = _prices[_inventory.live_level]
 		Kind.Jump:
 			price = _prices[_inventory.jump_level]
-	
+
 	if price <= 0:
 		_counter.visible = false
 	else:

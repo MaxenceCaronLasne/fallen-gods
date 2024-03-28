@@ -34,6 +34,8 @@ func _enter_playing() -> void:
 	print_debug("enter playing")
 	_state = State.Playing
 	_animation_player.play("open_door")
+	if not _is_tutorial:
+		MusicManager.play()
 
 func _enter_waiting_to_close() -> void:
 	print_debug("enter waiting to close")
@@ -87,7 +89,7 @@ func _ready():
 	_player_stats._init()
 	_boss_stats._init()
 	_inventory.setup()
-	
+
 	_level_door.visible = not _inventory.first_time
 
 	if _inventory.first_time and not _is_tutorial:
@@ -153,6 +155,7 @@ func _on_player_stats_died():
 	_player.die()
 	_stop_saws()
 	_destroy_coins()
+	MusicManager.tone_down()
 
 func _on_player_just_touched_floor():
 	var nb_of_destroyed_saws := _destroy_saws()

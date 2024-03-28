@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=3 uid="uid://dqxuif6cea3le"]
+
+[ext_resource type="Script" path="res://music_manager.gd" id="1_138yj"]
+[ext_resource type="Script" path="res://song.gd" id="2_1qid0"]
+[ext_resource type="AudioStream" uid="uid://c0ht8m4dmalu8" path="res://assets/music/01 Tonic fallen-gods-part-1.aif.wav" id="2_gd3je"]
+[ext_resource type="AudioStream" uid="uid://dembr40fhudk5" path="res://assets/music/02 KO fallen-gods-part-1.aif.wav" id="3_0ca1l"]
+[ext_resource type="AudioStream" uid="uid://dge7h27ck20nh" path="res://assets/music/03 Arcade fallen-gods-part-1.aif.wav" id="4_flnvp"]
+[ext_resource type="AudioStream" uid="uid://1ae755o0gc44" path="res://assets/music/01 Tonic fallen-gods-part-2.aif.wav" id="5_0pab5"]
+[ext_resource type="AudioStream" uid="uid://v3o70hfmhw35" path="res://assets/music/02 KO fallen-gods-part-2.aif.wav" id="6_wcumk"]
+[ext_resource type="AudioStream" uid="uid://dssmxbgiojlh5" path="res://assets/music/03 Arcade fallen-gods-part-2.aif.wav" id="7_wu6ta"]
+
+[node name="MusicManager" type="Node" node_paths=PackedStringArray("_songs")]
+script = ExtResource("1_138yj")
+_songs = [NodePath("Loop1"), NodePath("Loop2")]
+
+[node name="Loop1" type="Node" parent="." node_paths=PackedStringArray("_rhythm_audio_stream_player", "_samples_audio_stream_player", "_bass_audio_stream_player")]
+script = ExtResource("2_1qid0")
+_rhythm_audio_stream_player = NodePath("TonicAudioStreamPlayer")
+_samples_audio_stream_player = NodePath("KoAudioStreamPlayer")
+_bass_audio_stream_player = NodePath("ArcadeAudioStreamPlayer")
+
+[node name="TonicAudioStreamPlayer" type="AudioStreamPlayer" parent="Loop1"]
+stream = ExtResource("2_gd3je")
+bus = &"Music"
+
+[node name="KoAudioStreamPlayer" type="AudioStreamPlayer" parent="Loop1"]
+stream = ExtResource("3_0ca1l")
+volume_db = 5.0
+bus = &"Music"
+
+[node name="ArcadeAudioStreamPlayer" type="AudioStreamPlayer" parent="Loop1"]
+stream = ExtResource("4_flnvp")
+bus = &"Music"
+
+[node name="Loop2" type="Node" parent="." node_paths=PackedStringArray("_rhythm_audio_stream_player", "_samples_audio_stream_player", "_bass_audio_stream_player")]
+script = ExtResource("2_1qid0")
+_rhythm_audio_stream_player = NodePath("TonicAudioStreamPlayer")
+_samples_audio_stream_player = NodePath("KoAudioStreamPlayer")
+_bass_audio_stream_player = NodePath("ArcadeAudioStreamPlayer")
+
+[node name="TonicAudioStreamPlayer" type="AudioStreamPlayer" parent="Loop2"]
+stream = ExtResource("5_0pab5")
+bus = &"Music"
+
+[node name="KoAudioStreamPlayer" type="AudioStreamPlayer" parent="Loop2"]
+stream = ExtResource("6_wcumk")
+volume_db = 5.0
+bus = &"Music"
+
+[node name="ArcadeAudioStreamPlayer" type="AudioStreamPlayer" parent="Loop2"]
+stream = ExtResource("7_wu6ta")
+bus = &"Music"

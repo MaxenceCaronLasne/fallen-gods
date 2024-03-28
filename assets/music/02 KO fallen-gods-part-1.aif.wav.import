@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dembr40fhudk5"
+path="res://.godot/imported/02 KO fallen-gods-part-1.aif.wav-2d7fed8dff9c7edda6c1f6947ed4e1a6.sample"
+
+[deps]
+
+source_file="res://assets/music/02 KO fallen-gods-part-1.aif.wav"
+dest_files=["res://.godot/imported/02 KO fallen-gods-part-1.aif.wav-2d7fed8dff9c7edda6c1f6947ed4e1a6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
