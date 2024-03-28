@@ -10,9 +10,11 @@ config_version=5
 
 [application]
 
-config/name="saw-jumper"
+config/name="Fallen Gods"
+config/version="0.1"
 run/main_scene="res://tutorial_scene.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [autoload]
