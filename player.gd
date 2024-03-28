@@ -93,7 +93,6 @@ func _enter_land() -> void:
 		_enter_idle()
 
 func _enter_pause() -> void:
-	print_debug("enter pause")
 	_state = State.Pause
 	_invuln_timer.stop()
 	_animated_sprite.modulate.a = 1.0

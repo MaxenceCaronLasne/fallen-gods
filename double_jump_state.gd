@@ -68,7 +68,6 @@ func _process_break() -> void:
 
 func _ready():
 	max_double_jump = _inventory.jump_level
-	print_debug("max double jump: ", max_double_jump)
 
 func _process(delta: float):
 	if _current_state == State.Idle:

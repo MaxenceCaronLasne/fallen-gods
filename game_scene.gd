@@ -31,36 +31,30 @@ func shake(intensity: float) -> void:
 	EventBus.shake.emit(intensity)
 
 func _enter_playing() -> void:
-	print_debug("enter playing")
 	_state = State.Playing
 	_animation_player.play("open_door")
 	if not _is_tutorial:
 		MusicManager.play()
 
 func _enter_waiting_to_close() -> void:
-	print_debug("enter waiting to close")
 	_state = State.WaitingToClose
 	await get_tree().create_timer(1.0).timeout
 	_enter_closing()
 
 func _enter_closing() -> void:
-	print_debug("enter closing")
 	_state = State.Closing
 	_animation_player.play("close_door")
 	await _animation_player.animation_finished
 	_enter_choosing()
 
 func _enter_choosing() -> void:
-	print_debug("enter choosing")
 	_ui.enter_choosing_state()
 	_state = State.Choosing
 
 func _enter_resetting() -> void:
-	print_debug("enter resetting")
 	_state = State.Resetting
 
 func _enter_boss_dying() -> void:
-	print_debug("enter boss dying")
 	_state = State.BossDying
 	_stop_saws()
 	await get_tree().create_timer(0.2).timeout
